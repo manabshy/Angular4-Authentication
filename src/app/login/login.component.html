@@ -1,23 +1,22 @@
-<div class="container boxcontainer" >
-  
-    <div class="container">
+
+<div class="container" >
         <div class="row">
             <div class="col-sm-3">
-                <label for="email">Email</label>
+                <label for="email" class="label-control">Email</label>
             </div>   
             <div class="col-sm-3"> 
                 <input [(ngModel)]="user.email" id="email" 
-                    type="email" class="validate">         
+                    type="email" class="form-control">         
             </div>
         </div>
 
         <div class="row">
           <div class="col-sm-3">
-               <label for="password">Password</label>
+               <label for="password" class="label-control">Password</label>
           </div>
           <div class="col-sm-3">
               <input [(ngModel)]="user.password" id="password" 
-                    type="password" class="validate">   
+                    type="password" class="form-control">   
           </div>
         </div>
 
@@ -25,5 +24,4 @@
         <button (click)="login()" 
             class="btn waves-effect waves-light" 
             type="submit" name="action">Login</button>
-    </div>
 </div>
