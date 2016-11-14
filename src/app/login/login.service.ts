@@ -1,4 +1,7 @@
 import {Injectable} from '@angular/core';
+import { Http, Headers, Response } from '@angular/http';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map'
 
 export class User {
 
@@ -26,5 +29,8 @@ export class LoginService {
     }
     return false;
   }
-
+   logout(): void {
+        // clear token remove user from local storage to log user out     
+        localStorage.removeItem('currentUser');
+    }
 }

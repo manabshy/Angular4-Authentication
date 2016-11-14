@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-@Component({
-  selector: 'app-routing',
-  templateUrl: './routing.component.html',
-  styleUrls: ['./routing.component.css']
-})
-export class RoutingComponent implements OnInit {
+import { LoginComponent } from '../login/login.component';
+import { HomeComponent } from '../home/home.component';
 
-  constructor() { }
+const appRoutes: Routes = [
+    { path: 'login', component: LoginComponent },
+    { path: '', component: HomeComponent},
 
-  ngOnInit() {
-  }
+    // otherwise redirect to home
+    { path: '**', redirectTo: '' }
+];
 
-}
+export const routing = RouterModule.forRoot(appRoutes);

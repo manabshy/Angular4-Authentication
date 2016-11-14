@@ -1,23 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 import {LoginService,User} from './login.service';
+
 @Component({
-  selector: 'app-login',
-  providers:[LoginService],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent{
+export class LoginComponent implements OnInit {
 
   public user = new User('','');
   public errorMsg = '';
 
-  constructor(private _service:LoginService) { }
+    constructor(
+        private router: Router,
+        private loginService: LoginService) { }
 
-  login(): void {
-      this._service.login(this.user);
-      console.log('login core' + this.user);
+  ngOnInit() {
+        // reset login status
+        this.loginService.logout();
+    }
+ 
+  login(){
+      if(this.loginService.login(this.user)){
+        
+        console.log('logged in mate' + this.user);
+        this.router.navigate(['/']);
+      }
+      else {
+        console.log('error loggin in');
+      }
   }
 
 
