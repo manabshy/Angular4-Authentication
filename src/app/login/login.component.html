@@ -1,27 +1,20 @@
+<form role="form" (submit)="login()">
+  <h2 class="form-signin-heading">Please sign in</h2>
+  <div class="form-group">
+    <label for="userEmail" class="sr-only">Email address</label>
+    <input type="email" id="userEmail" name="email" class="form-control" placeholder="Email address"
+           [(ngModel)]="user.email" required
+           autofocus>
+  </div>
+  <div class="form-group">
+    <label for="userPassword" class="sr-only">Password</label>
+    <input type="password" name="password" [(ngModel)]="user.password" id="userPassword" class="form-control"
+           placeholder="Password" required>
+  </div>
+  <span>{{errorMsg}}</span>
 
-<div class="container" >
-        <div class="row">
-            <div class="col-sm-3">
-                <label for="email" class="label-control">Email</label>
-            </div>   
-            <div class="col-sm-3"> 
-                <input [(ngModel)]="user.email" id="email" 
-                    type="email" class="form-control">         
-            </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-3">
-               <label for="password" class="label-control">Password</label>
-          </div>
-          <div class="col-sm-3">
-              <input [(ngModel)]="user.password" id="password" 
-                    type="password" class="form-control">   
-          </div>
-        </div>
-
-        <span>{{errorMsg}}</span>
-        <button (click)="login()" 
-            class="btn waves-effect waves-light" 
-            type="submit" name="action">Login</button>
-</div>
+  <label>
+    <input type="checkbox" value="remember-me"> Remember me
+  </label>
+  <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">Sign in</button>
+</form>

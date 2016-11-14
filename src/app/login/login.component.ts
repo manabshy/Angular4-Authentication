@@ -12,11 +12,11 @@ export class LoginComponent{
   public errorMsg = '';
 
   constructor(private _service:LoginService) { }
-  
+
   login(): void {
       this._service.login(this.user);
   }
-  
+
 
 
 }

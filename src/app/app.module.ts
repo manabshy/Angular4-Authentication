@@ -11,7 +11,7 @@ import { FileuploadComponent } from './fileupload/fileupload.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    FileuploadComponent
+    FileuploadComponent,
   ],
   imports: [
     BrowserModule,
