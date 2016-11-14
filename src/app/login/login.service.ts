@@ -25,6 +25,9 @@ export class LoginService {
     let loggedInUser = users.find(u => u.email === user.email); //should be changed to filter
     console.log(loggedInUser);
     if (loggedInUser) {
+     // store username  in local storage to keep user logged in between page refreshes
+      localStorage.setItem('currentUser', user.email);
+
       return true;
     }
     return false;

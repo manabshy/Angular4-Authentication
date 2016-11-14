@@ -11,6 +11,8 @@ export class LoginComponent implements OnInit {
 
   public user = new User('','');
   public errorMsg = '';
+  public loading = false;
+    
 
     constructor(
         private router: Router,
@@ -22,13 +24,16 @@ export class LoginComponent implements OnInit {
     }
  
   login(){
+      this.loading = true;
       if(this.loginService.login(this.user)){
         
-        console.log('logged in mate' + this.user);
+        //console.log('logged in mate' + this.user);
         this.router.navigate(['/']);
       }
       else {
-        console.log('error loggin in');
+        this.errorMsg = 'Username or password is incorrect'; 
+        this.loading = false;       
+        //console.log('error loggin in');
       }
   }
 
