@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
 import {LoginService,User} from './login.service';
 @Component({
   selector: 'app-login',
@@ -15,6 +17,7 @@ export class LoginComponent{
 
   login(): void {
       this._service.login(this.user);
+      console.log('login core' + this.user);
   }
 
 

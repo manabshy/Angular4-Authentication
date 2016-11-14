@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {AuthGuardService} from './logged-in/auth-guard.service';
+
+import{LoggedInComponent} from './logged-in/logged-in.component'
 
 @Component({
   selector: 'app-root',
@@ -8,3 +11,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Login Page!!';
 }
+
