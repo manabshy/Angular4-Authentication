@@ -1,33 +1,46 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/do'
+import 'rxjs/add/operator/catch'
 import { User } from './Users';
 
-const users = [
-  new User('ali@qa.com', 'a'),
-  new User('mj@qa.com', 'b')
-];
 
 @Injectable()
 export class LoginService {
 
-  constructor() {
+  constructor(private _http: Http) {
   }
 
-  login(user) {
-    let loggedInUser = users.find(u => u.email === user.email && u.password == user.password) ;
-    console.log(loggedInUser);
-    if (loggedInUser) {
-     // store username  in local storage to keep user logged in between page refreshes
-      localStorage.setItem('currentUser', user.email);
+  private _userDataUrl = '/app/userDb.json';
+  private _users;
 
-      return true;
-    }
-    return false;
+  login(user: User): Observable<boolean> {
+    return this._http.get(this._userDataUrl)
+      .map((res: Response) => {
+        this._users = <User[]>res.json();
+        var loggedinUser = this._users.find(u => u.email === user.email && u.password === user.password);
+        if (loggedinUser) {
+          localStorage.setItem("userName", loggedinUser.firstName + ' ' + loggedinUser.lastName );
+          return true;
+        } else {
+          return false;
+        }
+      })
+      .do(data => console.log(JSON.stringify(data)))
+      ._catch(this.handleError);
   }
-   logout(): void {
-        // clear token remove user from local storage to log user out     
-        localStorage.removeItem('currentUser');
-    }
+
+  private handleError(error: Response) {
+    console.log(error);
+    return Observable.throw('server error');
+  }
+
+  logout(): void {
+    // clear token remove user from local storage to log user out     
+    localStorage.removeItem('userName');
+  }
+
+
 }
