@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LoginService } from './login.service';
@@ -8,7 +8,7 @@ import { User } from './users';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   public user = new User('', '');
   public errorMsg = '';
@@ -18,11 +18,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private loginService: LoginService) { }
-
-  ngOnInit() {
-    // reset login status
-    //this.loginService.logout();
-  }
 
   login(): void {
     this.loginService.login(this.user)
@@ -36,6 +31,7 @@ export class LoginComponent implements OnInit {
         }
       }, error=> this.errorMsg = <any> error);
   }
+
 
 
 }
