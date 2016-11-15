@@ -8,10 +8,10 @@ export class AuthGuardService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
 
-    var user = localStorage.getItem("user");
+    var user = localStorage.getItem("userName");
 
     if(!user){
-      this._router.navigate(['Home']);
+      this._router.navigate(['login']);
     }
 
     return true;

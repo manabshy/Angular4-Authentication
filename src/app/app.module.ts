@@ -4,12 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { routing }        from './routing/routing.component';
+import { routing } from './routing/routing.component';
 
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { FileuploadComponent } from './fileupload/fileupload.component';
 import { LoginService } from './login/login.service';
+import { AuthGuardService } from './guards/auth-guard.service';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { LoginService } from './login/login.service';
     AppComponent,
     LoginComponent,
     HomeComponent
-    
+
   ],
   imports: [
     BrowserModule,
@@ -25,7 +26,10 @@ import { LoginService } from './login/login.service';
     HttpModule,
     routing
   ],
-  providers: [LoginService],
+  providers: [
+    LoginService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
