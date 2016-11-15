@@ -22,7 +22,7 @@ export class LoginService {
   }
 
   login(user) {
-    let loggedInUser = users.find(u => u.email === user.email); //should be changed to filter
+    let loggedInUser = users.find(u => u.email === user.email && u.password == user.password) ;
     console.log(loggedInUser);
     if (loggedInUser) {
      // store username  in local storage to keep user logged in between page refreshes
