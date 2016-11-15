@@ -2,13 +2,7 @@ import {Injectable} from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
-
-export class User {
-
-  constructor(public email: string, public password: string) {
-  }
-
-}
+import { User } from './Users';
 
 const users = [
   new User('ali@qa.com', 'a'),
