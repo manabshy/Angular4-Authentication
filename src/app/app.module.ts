@@ -17,8 +17,8 @@ import { AuthGuardService } from './guards/auth-guard.service';
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
-
+    HomeComponent,
+    FileuploadComponent
   ],
   imports: [
     BrowserModule,

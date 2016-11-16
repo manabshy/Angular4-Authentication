@@ -1,3 +1,11 @@
-<p>
-  fileupload works!
-</p>
+<form role="form" (submit)="upload()">
+  <h2>Select a file to upload</h2>
+  <div class="form-group">
+
+    <input type="file" (change)="fileChangeEvent($event)" name="file-upload" id="files" class="form-control"
+           placeholder="Upload a file..." required>
+
+  </div>
+
+  <button class="btn btn-lg btn-primary btn-block col-md-4 pull-right" name="submit" type="submit">Upload</button>
+</form>

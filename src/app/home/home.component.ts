@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../login/login.service';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {LoginService} from '../login/login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +9,12 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   private userName: string;
-  constructor(private _loginService: LoginService, private _router: Router) { }
+
+  constructor(private _loginService: LoginService, private _router: Router) {
+  }
 
   ngOnInit() {
-    this.userName = localStorage.getItem("userName");
+    this.userName = localStorage.getItem('userName');
   }
 
   logout(): void {
