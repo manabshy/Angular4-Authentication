@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
-import { User } from './users';
+import { User } from './user.model';
 
 @Component({
   templateUrl: './login.component.html',
@@ -12,13 +12,12 @@ export class LoginComponent {
   public user = new User('', '');
   public errorMsg = '';
   public loading = false;
-  title = "Please Login now";
+  title = "Please sign in";
 
 
-  constructor(
-    private router: Router,
-    private loginService: LoginService) { }
-
+  constructor(private router: Router,
+              private loginService: LoginService) {
+  }
   login(): void {
     this.loginService.login(this.user)
       .subscribe(result => {
@@ -28,7 +27,6 @@ export class LoginComponent {
           this.errorMsg = 'Username or password is incorrect';
           this.loading = false;
         }
-      }, error=> this.errorMsg = <any> error);
+      }, error => this.errorMsg = <any> error);
   }
-  
 }
