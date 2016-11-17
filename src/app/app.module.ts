@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { Router } from '@angular/Router';
 
 import { AppComponent } from './app.component';
 import { routing } from './routing/routing.component';
@@ -17,8 +18,7 @@ import { AuthGuardService } from './guards/auth-guard.service';
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
-
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
