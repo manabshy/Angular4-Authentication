@@ -10,10 +10,12 @@ import { LoginService } from './login.service';
 
 
 describe('LoginComponent', () => {
+
 let component: LoginComponent;
 let fixture: ComponentFixture<LoginComponent>;
 let loginService: LoginService; // the TestBed injected service
 let componentLoginService: LoginService; // the actually injected service
+
 let loginServiceStub: {
     isLoggedIn: boolean;
     user: { name: string}
@@ -47,33 +49,35 @@ let loginServiceStub: {
     // loginService from the root injector
     loginService = TestBed.get(LoginService);
 
-  });
-
-  it('check for component', () => {
+  }));
+  it('check for Login component', () => {
     expect(component).toBeTruthy();
   });
   it('should check for title', () => {
     let de = fixture.debugElement.query(By.css('h2'));
     expect(de.nativeElement.textContent).toContain(component.title);
   });
-  it('should request login if not logged in', () => {
-    loginServiceStub.isLoggedIn = false; // welcome message hasn't been shown yet
-    fixture.detectChanges();
-    let de = fixture.debugElement.query(By.css('button'));
-    let el = de.nativeElement;
-    const content = el.textContent;
-    expect(content).toMatch(/Sign in/i, '"Sign in"'); 
-
-  });
   it('should check for input fields Email and Password',() =>{
     fixture.detectChanges();
-    
+
     let emailInput = fixture.debugElement.query(By.css('input[name="email"]')).nativeElement
     let passwordInput = fixture.debugElement.query(By.css('input[name="password"]')).nativeElement
     
     expect(emailInput).toBeTruthy();
     expect(passwordInput).toBeTruthy();   
   });
+  it('should request login if not logged in', () => {
+    loginServiceStub.isLoggedIn = false; // welcome message hasn't been shown yet
+    fixture.detectChanges();
+
+    let de = fixture.debugElement.query(By.css('button'));
+    let el = de.nativeElement;
+    const content = el.textContent;
+
+    expect(content).toMatch(/Sign in/i, '"Sign in"'); 
+
+  });
+
   it('should inject the component\'s UserService instance',
     inject([LoginService], (service: LoginService) => {
     expect(service).toBe(componentLoginService);
@@ -82,6 +86,8 @@ let loginServiceStub: {
   it('TestBed and Component UserService should be the same', () => {
     expect(loginService === componentLoginService).toBe(true);
   });
+
+  /***************************************************************************************/
   it('Tell ROUTER to navigate when Sign in button clicked',
 
     inject([Router], (router: Router) => { // ...
@@ -89,6 +95,5 @@ let loginServiceStub: {
     const spy = spyOn(router, 'navigateByUrl');
 
     }));
-
 });
 
