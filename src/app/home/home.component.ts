@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Directive} from '@angular/core';
 import {LoginService} from '../login/login.service';
 import {Router} from '@angular/router';
 
@@ -7,6 +7,8 @@ import {Router} from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
+
 export class HomeComponent implements OnInit {
   private userName: string;
 
@@ -23,3 +25,4 @@ export class HomeComponent implements OnInit {
   }
 
 }
+

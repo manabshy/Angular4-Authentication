@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { HomeComponent } from './home.component';
 import { LoginService } from '../login/login.service';
 import { Router } from '@angular/router';
+import { FileUploadComponent } from '../fileupload/file-upload.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -13,7 +14,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ],
+      declarations: [ HomeComponent, FileUploadComponent ],
       providers:[{provide: LoginService },
                   {provide: Router}  ],
       imports:[HttpModule]

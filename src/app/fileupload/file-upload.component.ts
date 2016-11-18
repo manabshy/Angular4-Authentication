@@ -1,15 +1,17 @@
-import {Component} from '@angular/core';
+import {Component, Directive} from '@angular/core';
 import {Router} from '@angular/router';
-import {FileUploadService} from './fileupload.service';
+import {FileUploadService} from './file-upload.service';
+
+@Directive({ selector: 'app-fileupload' })
 
 @Component({
   selector: 'app-fileupload',
-  templateUrl: './fileupload.component.html',
-  styleUrls: ['./fileupload.component.css'],
+  templateUrl: './file-upload.component.html',
+  styleUrls: ['./file-upload.component.css'],
   providers: [FileUploadService]
 })
 
-export class FileuploadComponent {
+export class FileUploadComponent {
 
   filesToUpload: Array<File>;
 

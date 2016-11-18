@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { FileuploadComponent } from './fileupload.component';
+import { MetadataComponent } from './metadata.component';
 
-describe('FileuploadComponent', () => {
-  let component: FileuploadComponent;
-  let fixture: ComponentFixture<FileuploadComponent>;
+describe('MetadataComponent', () => {
+  let component: MetadataComponent;
+  let fixture: ComponentFixture<MetadataComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FileuploadComponent ]
+      declarations: [ MetadataComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FileuploadComponent);
+    fixture = TestBed.createComponent(MetadataComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
