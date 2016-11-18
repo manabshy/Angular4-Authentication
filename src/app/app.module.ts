@@ -5,10 +5,9 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { routing } from './routing/routing.component';
-
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { FileUploadComponent } from './fileupload/file-upload.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 import { LoginService } from './login/login.service';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { MetadataComponent } from './metadata/metadata.component';

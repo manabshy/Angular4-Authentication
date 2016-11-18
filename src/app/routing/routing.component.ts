@@ -2,7 +2,7 @@ import {Routes, RouterModule} from '@angular/router';
 
 import {LoginComponent} from '../login/login.component';
 import {HomeComponent} from '../home/home.component';
-import {FileUploadComponent} from '../fileupload/file-upload.component';
+import {FileUploadComponent} from '../file-upload/file-upload.component';
 
 import {AuthGuardService} from '../guards/auth-guard.service';
 const appRoutes: Routes = [
