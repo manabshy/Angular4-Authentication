@@ -14,7 +14,7 @@ export class FileUploadService {
     };
 
     let fileMetadata = new MetaDataModel(
-      'userModel.username',
+      localStorage.getItem('userName'),
       'angular app',
       file.type,
       file.lastModifiedDate,
