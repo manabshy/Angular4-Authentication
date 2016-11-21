@@ -1,6 +1,7 @@
 import {Component, Directive} from '@angular/core';
 import {Router} from '@angular/router';
 import {FileUploadService} from './file-upload.service';
+import {MetaDataModel} from "../metadata/metadata.model";
 // import {MetadataComponent} from "../metadata/metadata.component";
 
 @Directive({ selector: 'app-fileupload' })
@@ -21,15 +22,18 @@ export class FileUploadComponent {
     this.filesToUpload = [];
   }
 
+  // mymetadata: MetaDataModel[];
+
+  public metaDataObj: MetaDataModel;
 
   upload() {
     // upload to /document when live
-    this._service.makeFileRequest('http://localhost:3000/upload', [], this.filesToUpload)
-      .then((result) => {
-        console.log(result);
 
+    this._service.makeFileRequest('http://localhost:3000/upload', [], this.filesToUpload, this.metaDataObj)
+      .then((result) => {
         // this.metadataComponent = <MetadataComponent> result;
         // console.log("test after conversion: " + this.metadataComponent);
+        // this.mymetadata = <MetaDataModel[]>result;
 
         this.router.navigate(['upload-success']);
       }, (error) => {
@@ -40,6 +44,9 @@ export class FileUploadComponent {
   fileChangeEvent(fileInput: any) {
     let file = fileInput.target.files;
     this.filesToUpload = <Array<File>> file;
+
+    this.metaDataObj = this._service.populateFileModel(this.filesToUpload[0]);
+    console.log(this.metaDataObj);
   }
 }
 
