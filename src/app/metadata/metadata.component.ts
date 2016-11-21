@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import {MetaDataModel} from "./metadata.model";
+import { FormGroup, FormControl, Validators, FormBuilder,FormsModule } from '@angular/forms';
+import { MetaDataModel } from "./metadata.model";
 
 @Component({
   selector: 'app-metadata',
@@ -20,13 +20,15 @@ export class MetadataComponent implements OnInit {
 
   ngOnInit() {
     // let model = new MetaDataModel ("cust123", "angular app", "jpeg", new Date(12/10/2016), new Date(18/11/2016));
-    this.metaDataForm = this._formBuilder.group({
-      "customerId": this.model.customerId,
-      "sourceSystem" : this.model.sourceSystem,
-      "contentType": this.model.contentType,
-      "receivedDate": this.model.receivedDate,
-      "uploadDate": this.model.uploadDate
-    });
+
+    // this.metaDataForm = this._formBuilder.group({
+    //   "customerId": this.model.customerId,
+    //   "sourceSystem" : this.model.sourceSystem,
+    //   "contentType": this.model.contentType,
+    //   "receivedDate": this.model.receivedDate,
+    //   "uploadDate": this.model.uploadDate
+    // });
+
   }
 
 }
