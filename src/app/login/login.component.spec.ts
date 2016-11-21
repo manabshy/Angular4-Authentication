@@ -18,7 +18,7 @@ let componentLoginService: LoginService; // the actually injected service
 
 let loginServiceStub: {
     isLoggedIn: boolean;
-    user: { name: string}
+    user: { email: string,password:string}
   };
 
   beforeEach(async(() => {
@@ -26,14 +26,15 @@ let loginServiceStub: {
     // stub UserService for test purposes
     loginServiceStub = {
       isLoggedIn: true,
-      user: { name: 'Test User'}
+      user: { email: 'test@test.com',password:'test'}
     };   
     class RouterStub {
       navigateByUrl(url: string) { return url; }
     }
     TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
-      providers:    [ {provide: LoginService, useValue: loginServiceStub },//Don't provide a real service,provide a test double instead
+      providers:    [ //{provide: LoginService}, //Don't provide a real service,provide a test double instead
+                      {provide: LoginService , useValue: loginServiceStub },
                       {provide: Router, useClass: RouterStub} ], 
       imports: [ FormsModule ]
       
@@ -41,6 +42,7 @@ let loginServiceStub: {
     .compileComponents(); // compile template and css
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
+
     fixture.detectChanges();
  
    // LoginService actually injected into the component
@@ -85,15 +87,20 @@ let loginServiceStub: {
 
   it('TestBed and Component UserService should be the same', () => {
     expect(loginService === componentLoginService).toBe(true);
+
   });
 
+  it('stub object and injected UserService should not be the same', () => {
+    expect(loginServiceStub === loginService).toBe(false);
+    // Changing the stub object has no effect on the injected service
+    loginServiceStub.isLoggedIn = false;
+    expect(loginService.isLoggedIn).toBe(true);
+  });
   /***************************************************************************************/
   it('Tell ROUTER to navigate when Sign in button clicked',
-
     inject([Router], (router: Router) => { // ...
-
     const spy = spyOn(router, 'navigateByUrl');
+  }));
 
-    }));
 });
 
