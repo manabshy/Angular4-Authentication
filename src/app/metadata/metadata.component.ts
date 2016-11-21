@@ -8,26 +8,21 @@ import { MetaDataModel } from "./metadata.model";
   styleUrls: ['./metadata.component.css']
 })
 export class MetadataComponent implements OnInit {
-  @Input() model: MetaDataModel;
+  //@Input() model: MetaDataModel;
   metaDataForm: FormGroup;
-  customerId = new FormControl("", Validators.required);
-  sourceSystem = new FormControl("", Validators.required);
-  contentType = new FormControl("", Validators.required);
-  receivedDate = new FormControl("", Validators.required);
-  uploadDate = new FormControl("", Validators.required);
 
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    // let model = new MetaDataModel ("cust123", "angular app", "jpeg", new Date(12/10/2016), new Date(18/11/2016));
+    let model = new MetaDataModel("cust123", "angular app", "jpeg", new Date(12/10/2016), new Date(18/11/2016));
 
-    // this.metaDataForm = this._formBuilder.group({
-    //   "customerId": this.model.customerId,
-    //   "sourceSystem" : this.model.sourceSystem,
-    //   "contentType": this.model.contentType,
-    //   "receivedDate": this.model.receivedDate,
-    //   "uploadDate": this.model.uploadDate
-    // });
+    this.metaDataForm = this._formBuilder.group({
+      "customerId": new FormControl(model.customerId),
+      "sourceSystem" : new FormControl(model.sourceSystem),
+      "contentType": new FormControl(model.contentType),
+      "receivedDate": new FormControl(model.receivedDate),
+      "uploadDate": new FormControl(model.uploadDate)
+    });
 
   }
 
