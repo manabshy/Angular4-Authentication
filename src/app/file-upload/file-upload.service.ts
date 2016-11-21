@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {MetaDataModel} from "../metadata/metadata.model";
 
 
 @Injectable()
@@ -11,13 +12,15 @@ export class FileUploadService {
     fileReader.onload = function (e) {
       console.log(e);
     };
-    let fileMetadata = {
-      customerId: 'userModel.username',
-      sourceSystem: 'angular app',
-      receivedDate: file.lastModifiedDate,
-      uploadDate: new Date().toString(),
-      contentType: file.type,
-    };
+
+    let fileMetadata = new MetaDataModel(
+      'userModel.username',
+      'angular app',
+      file.type,
+      file.lastModifiedDate,
+      new Date(),
+    );
+
     const jsonMetadata = JSON.stringify(fileMetadata);
     console.log(jsonMetadata);
 
