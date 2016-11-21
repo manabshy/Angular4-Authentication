@@ -1,7 +1,10 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormBuilder, FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { MetaDataModel } from "./metadata.model";
 
 import { MetadataComponent } from './metadata.component';
 
@@ -11,7 +14,9 @@ describe('MetadataComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MetadataComponent ]
+      declarations: [ MetadataComponent ],
+      providers:[ {provide:FormBuilder, MetaDataModel} ]
+
     })
     .compileComponents();
   }));
