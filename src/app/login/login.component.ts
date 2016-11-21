@@ -21,8 +21,8 @@ export class LoginComponent {
   login(): void {
     this.loginService.login(this.user)
       .subscribe(result => {
-        if (result) {             
-             this.router.navigate(['/']);
+        if (result) {
+             this.router.navigate(['/home']);
         } else {
           this.errorMsg = 'Username or password is incorrect';
           this.loading = false;
