@@ -82,7 +82,7 @@ describe('Service: Login', () => {
         service.getUsers().toPromise()
           //.then(() => Promise.reject('deliberate'))
           .then(users => {
-            console.log('users.length:' + users.length);
+          //  console.log('users.length:' + users.length);
 
             expect(users.length).toBe(fakeUsers.length,
               'should have expected no. of users');
