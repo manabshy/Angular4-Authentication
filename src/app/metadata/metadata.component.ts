@@ -8,20 +8,21 @@ import { MetaDataModel } from "./metadata.model";
   styleUrls: ['./metadata.component.css']
 })
 export class MetadataComponent implements OnInit {
-  //@Input() model: MetaDataModel;
+  @Input() model: MetaDataModel;
+
   metaDataForm: FormGroup;
 
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    let model = new MetaDataModel("cust123", "angular app", "jpeg", new Date(12/10/2016), new Date(18/11/2016));
+    // let model = new MetaDataModel("cust123", "angular app", "jpeg", new Date(12/10/2016), new Date(18/11/2016));
 
     this.metaDataForm = this._formBuilder.group({
-      "customerId": new FormControl(model.customerId),
-      "sourceSystem" : new FormControl(model.sourceSystem),
-      "contentType": new FormControl(model.contentType),
-      "receivedDate": new FormControl(model.receivedDate),
-      "uploadDate": new FormControl(model.uploadDate)
+      "customerId": new FormControl(this.model.customerId),
+      "sourceSystem" : new FormControl(this.model.sourceSystem),
+      "contentType": new FormControl(this.model.contentType),
+      "receivedDate": new FormControl(this.model.receivedDate),
+      "uploadDate": new FormControl(this.model.uploadDate)
     });
 
   }
