@@ -1,7 +1,7 @@
 import {Component, OnInit, Directive} from '@angular/core';
 import {LoginService} from '../login/login.service';
 import {Router} from '@angular/router';
-
+import {FileUploadComponent} from '../file-upload/file-upload.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
