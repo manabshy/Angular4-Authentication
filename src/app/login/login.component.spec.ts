@@ -24,7 +24,7 @@ let loginServiceStub: {
 let location: SpyLocation;
 
   function expectPathToBe(path: string, expectationFailOutput?: any) {
-    console.log('location:' + location);
+    //console.log('location:' + location);
     expect('/login').toEqual(path, expectationFailOutput || 'location.path()');
   }
 
@@ -106,13 +106,13 @@ let location: SpyLocation;
   /***************************************************************************************/
   it('check if on a login page',
     inject([Router], (router: Router) => { // ...
-    console.log('loginBtn::' + loginBtn);  
+    //console.log('loginBtn::' + loginBtn);  
     loginBtn.triggerEventHandler('click', null);
     expect(loginBtn).toBeDefined();
     
     expectPathToBe('/login');
     const spy = spyOn(router, 'navigateByUrl');
-    console.log('spy:' + spy);
+    //console.log('spy:' + spy);
   }));
 });
 

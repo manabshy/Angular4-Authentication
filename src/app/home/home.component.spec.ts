@@ -8,6 +8,8 @@ import { HomeComponent } from './home.component';
 import { LoginService } from '../login/login.service';
 import { Router } from '@angular/router';
 import { FileUploadComponent } from '../file-upload/file-upload.component';
+import { MetadataComponent } from '../metadata/metadata.component';
+
 import { FormGroup, FormControl, Validators, FormBuilder, FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 
@@ -18,7 +20,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent, FileUploadComponent ],
+      declarations: [ HomeComponent, FileUploadComponent,MetadataComponent ],
       providers:[{provide: LoginService },
                   {provide: Router},FormBuilder  ],
       imports:[HttpModule,ReactiveFormsModule,FormsModule]
@@ -35,10 +37,5 @@ describe('HomeComponent', () => {
 
   it('check HomeComponent', () => {
     expect(component).toBeTruthy();
-  });
-  it('click logout',function(){
-     
-     logoutBtn.triggerEventHandler('click', null);
-   
   });
 });
