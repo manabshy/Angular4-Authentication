@@ -1,28 +1,29 @@
-<form [formGroup]="metaDataForm" novalidate>
+
+<form role="form">
 
   <div class="form-group">
     <label class="form-control-label">Customer Id</label>
-    <input type="text" class="form-control" formControlName="customerId" />
+    <input type="text" class="form-control" name="customerId" [(ngModel)]="model.customerId"/>
   </div>
 
   <div class="form-group">
     <label class="form-control-label">Source System</label>
-    <input type="text" class="form-control" formControlName="sourceSystem" />
+    <input type="text" class="form-control" name="sourceSystem" [(ngModel)]="model.sourceSystem"/>
   </div>
 
   <div class="form-group">
     <label class="form-control-label">Content Type</label>
-    <input type="text" class="form-control" formControlName="contentType" />
+    <input type="text" class="form-control" name="contentType" [(ngModel)]="model.contentType"/>
   </div>
 
   <div class="form-group">
     <label class="form-control-label">Received Date</label>
-    <input type="text" class="form-control" formControlName="receivedDate" />
+    <input type="text" class="form-control" name="receivedDate" [(ngModel)]="model.receivedDate"/>
   </div>
 
   <div class="form-group">
     <label class="form-control-label">Upload Date</label>
-    <input type="text" class="form-control" formControlName="uploadDate" />
+    <input type="text" class="form-control" name="uploadDate" [(ngModel)]="model.uploadDate"/>
   </div>
 
 </form>

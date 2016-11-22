@@ -11,7 +11,7 @@
   <button class="btn btn-lg btn-primary btn-block col-md-4 pull-right" name="submit" id="submitFile" type="submit">Upload</button>
 
   <div *ngIf="metaDataObj">
-    <app-metadata [model]="metaDataObj"></app-metadata>
+    <app-metadata (onChange)="makeFileRequestDone($event)" [model]="metaDataObj"></app-metadata>
   </div>
 
 </form>
