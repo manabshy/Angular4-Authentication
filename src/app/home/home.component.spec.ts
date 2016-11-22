@@ -17,7 +17,7 @@ describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
   let logoutBtn: DebugElement;
-
+  
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent, FileUploadComponent,MetadataComponent ],
@@ -26,16 +26,15 @@ describe('HomeComponent', () => {
       imports:[HttpModule,ReactiveFormsModule,FormsModule]
     })
     .compileComponents();
-  }));
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture   = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
-    logoutBtn  = fixture.debugElement.query(By.css('.btn'));
-
+    logoutBtn = fixture.debugElement.query(By.css('.btn'));
     fixture.detectChanges();
-  });
-
+     
+  }));
+  
   it('check HomeComponent', () => {
     expect(component).toBeTruthy();
   });
+  
 });

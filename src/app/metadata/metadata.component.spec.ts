@@ -6,31 +6,31 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { MetaDataModel } from "./metadata.model";
 import { MetadataComponent } from './metadata.component';
-/*
-describe('MetadataComponent', () => {
-  let component: MetadataComponent;
-  let fixture: ComponentFixture<MetadataComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ MetadataComponent ],
-      providers:[ FormBuilder,{provide: Router}, {provide: FileUploadComponent} ],
-      imports:[FormsModule]
+// describe('MetadataComponent', () => {
+//   let component: MetadataComponent;
+//   let fixture: ComponentFixture<MetadataComponent>;
 
-    })
-    .compileComponents();
-  }));
+//   beforeEach(async(() => {
+//     TestBed.configureTestingModule({
+//       declarations: [ MetadataComponent ],
+//       providers:[ FormBuilder],
+//       imports:[FormsModule]
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(MetadataComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//     })
+//     .compileComponents();
+//   }));
+
+//   beforeEach(() => {
+//     fixture = TestBed.createComponent(MetadataComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
   
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
   
-});
-*/
+// });
+
 
