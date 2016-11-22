@@ -5,7 +5,6 @@ import { FormGroup, FormControl, Validators, FormBuilder, FormsModule,ReactiveFo
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { MetaDataModel } from "./metadata.model";
-
 import { MetadataComponent } from './metadata.component';
 /*
 describe('MetadataComponent', () => {
@@ -15,8 +14,8 @@ describe('MetadataComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MetadataComponent ],
-      providers:[ FormBuilder ],
-      imports:[ReactiveFormsModule]
+      providers:[ FormBuilder,{provide: Router}, {provide: FileUploadComponent} ],
+      imports:[FormsModule]
 
     })
     .compileComponents();
@@ -34,3 +33,4 @@ describe('MetadataComponent', () => {
   
 });
 */
+
