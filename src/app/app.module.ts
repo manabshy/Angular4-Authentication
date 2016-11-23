@@ -12,6 +12,8 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { LoginService } from './login/login.service';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { MetaDataComponent } from './metadata/metadata.component';
+import { FileUploadUpdateComponent } from './file-upload-update/file-upload-update.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 /* Feature Modules */
 
@@ -21,7 +23,9 @@ import { MetaDataComponent } from './metadata/metadata.component';
     LoginComponent,
     FileUploadComponent,
     MetaDataComponent,
-    HomeComponent
+    HomeComponent,
+    FileUploadUpdateComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
