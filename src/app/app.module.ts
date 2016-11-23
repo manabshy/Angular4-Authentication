@@ -11,7 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { LoginService } from './login/login.service';
 import { AuthGuardService } from './guards/auth-guard.service';
-import { MetadataComponent } from './metadata/metadata.component';
+import { MetaDataComponent } from './metadata/metadata.component';
+
 /* Feature Modules */
 
 @NgModule({
@@ -19,15 +20,15 @@ import { MetadataComponent } from './metadata/metadata.component';
     AppComponent,
     LoginComponent,
     FileUploadComponent,
-    MetadataComponent,
+    MetaDataComponent,
     HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
     HttpModule,
-    routing
+    routing,
+    ReactiveFormsModule
   ],
   providers: [
     LoginService,

@@ -1,15 +1,12 @@
-
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, Input } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder,FormsModule } from '@angular/forms';
-import { MetaDataModel } from "./metadata.model";
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-metadata',
-  templateUrl: './metadata.component.html',
-  styleUrls: ['./metadata.component.css']
+  templateUrl: './metadata.component.html'
 })
-export class MetadataComponent {
-  @Input() model: MetaDataModel;
+export class MetaDataComponent {
+  // we will pass in address from App component
+  @Input('group')
+  public metaDataForm: FormGroup;
 }
-
