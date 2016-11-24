@@ -15,6 +15,7 @@ import { MetaDataComponent } from './metadata/metadata.component';
 import { FileUploadUpdateComponent } from './file-upload-update/file-upload-update.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { UploadSuccessComponent } from './upload-success/upload-success.component';
+import {FileUploadService} from "./file-upload/file-upload.service";
 
 /* Feature Modules */
 
@@ -37,6 +38,7 @@ import { UploadSuccessComponent } from './upload-success/upload-success.componen
     ReactiveFormsModule
   ],
   providers: [
+    FileUploadService,
     LoginService,
     AuthGuardService
   ],

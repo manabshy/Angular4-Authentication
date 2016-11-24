@@ -18,6 +18,12 @@ export class LoginService {
 
   constructor(private _http: Http) {}
 
+  ngOnInit() { 
+
+    console.log('userName', localStorage.getItem('userName'));
+
+  }
+
   getUsers (): Observable<User[]> {
     //console.log('in getUsers');
     return this._http.get(this._userDataUrl)

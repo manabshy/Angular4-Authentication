@@ -1,27 +1,20 @@
-import {Component, Directive,OnInit } from '@angular/core';
-import { Validators, FormGroup, FormArray, FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import {Router} from '@angular/router';
-import {FileUploadService} from './file-upload.service';
+import {Component, OnInit } from '@angular/core';
+import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import {MetaDataModel} from "../metadata/metadata.model";
-
-@Directive({selector: 'app-fileupload'})
+import {FileUploadService} from "./file-upload.service";
 
 @Component({
   selector: 'app-fileupload',
   templateUrl: './file-upload.component.html',
-  styleUrls: ['./file-upload.component.css'],
-  providers: [FileUploadService]
+  styleUrls: ['./file-upload.component.css']
 })
-
 export class FileUploadComponent  implements OnInit{
 
   myForm: FormGroup;
   filesToUpload: Array<File>;
   metaData: MetaDataModel;
 
-
-
-  constructor(private _fb: FormBuilder,public router: Router, private _service: FileUploadService) {
+  constructor(private _fb: FormBuilder, private _service: FileUploadService) {
     this.filesToUpload = [];
   }
 
@@ -78,18 +71,9 @@ export class FileUploadComponent  implements OnInit{
     //   });
 
     let metaData = <MetaDataModel>this.myForm.value.metaDataArray[0];
-    let tempData : tempMetaData =  new tempMetaData(metaData);
-    console.log(tempData.DocId);
-
-    this.router.navigate('/upload-success');
+    this._service.InitFileUploadResponse(metaData);
+    console.log(this._service.fileUploadResponse.DocId);
 
   }
 
 }
-
-export class tempMetaData extends MetaDataModel {
-  DocId: string = "DocId123";
-  constructor(private _metaData: MetaDataModel){ super(_metaData.customerId, _metaData.sourceSystem, _metaData.contentType, _metaData.receivedDate, _metaData.uploadDate)}
-}
-
-
