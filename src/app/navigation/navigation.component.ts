@@ -17,11 +17,8 @@ export class NavigationComponent implements OnInit {
   ngOnInit() {
     this.userName = localStorage.getItem('userName');
     this.isLoggedIn = this._loginService.isLoggedIn;
-
-    console.log('aa', this.isLoggedIn);
   }
 
-  
 
   logout(): void {
     this._loginService.logout();
@@ -29,7 +26,6 @@ export class NavigationComponent implements OnInit {
 
     this.isLoggedIn = this._loginService.isLoggedIn;
 
-    console.log('bb', this.isLoggedIn);
   }
 
 }
