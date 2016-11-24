@@ -5,4 +5,5 @@ export class MetaDataModel {
     public contentType: string,
     public receivedDate: Date,
     public uploadDate: Date) { }
+    public utr: string;
 };
