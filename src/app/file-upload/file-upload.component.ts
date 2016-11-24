@@ -67,18 +67,29 @@ export class FileUploadComponent  implements OnInit{
 
     return fileMetadata;
   }
+
   upload() {
-    const control = <FormArray>this.myForm.controls['metaDataArray'];
-    console.log('control: ' + control);
-    console.log('this.form.value:' + this.myForm.value.metaDataArray[0].customerId);
-    //console.log(<FormArray>this.myForm.controls['metaDataArray'][0].customerId);
-    this._service.makeFileRequest('http://localhost:3000/upload', [], this.filesToUpload, this.myForm.value.metaDataArray[0])
-      .then((result) => {
-        // this.router.navigate(['upload-success']);
-      }, (error) => {
-        console.error(error);
-      });
+
+    // this._service.makeFileRequest('http://localhost:3000/upload', [], this.filesToUpload, this.myForm.value.metaDataArray[0])
+    //   .then((result) => {
+    //     // this.router.navigate(['upload-success']);
+    //   }, (error) => {
+    //     console.error(error);
+    //   });
+
+    let metaData = <MetaDataModel>this.myForm.value.metaDataArray[0];
+    let tempData : tempMetaData =  new tempMetaData(metaData);
+    console.log(tempData.DocId);
+
+    this.router.navigate('/upload-success');
+
   }
 
 }
+
+export class tempMetaData extends MetaDataModel {
+  DocId: string = "DocId123";
+  constructor(private _metaData: MetaDataModel){ super(_metaData.customerId, _metaData.sourceSystem, _metaData.contentType, _metaData.receivedDate, _metaData.uploadDate)}
+}
+
 
