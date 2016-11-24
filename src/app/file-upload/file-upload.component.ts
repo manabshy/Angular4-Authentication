@@ -1,10 +1,10 @@
-import {Component, Directive} from '@angular/core';
+import {Component, Directive,OnInit } from '@angular/core';
+import { Validators, FormGroup, FormArray, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import {Router} from '@angular/router';
 import {FileUploadService} from './file-upload.service';
 import {MetaDataModel} from "../metadata/metadata.model";
-// import {MetadataComponent} from "../metadata/metadata.component";
 
-@Directive({ selector: 'app-fileupload' })
+@Directive({selector: 'app-fileupload'})
 
 @Component({
   selector: 'app-fileupload',
@@ -13,40 +13,72 @@ import {MetaDataModel} from "../metadata/metadata.model";
   providers: [FileUploadService]
 })
 
-export class FileUploadComponent {
+export class FileUploadComponent  implements OnInit{
 
+  myForm: FormGroup;
   filesToUpload: Array<File>;
-  // metadataComponent: MetadataComponent;
+  metaData: MetaDataModel;
 
-  constructor(public router: Router, private _service: FileUploadService) {
+
+
+  constructor(private _fb: FormBuilder,public router: Router, private _service: FileUploadService) {
     this.filesToUpload = [];
   }
 
-  // mymetadata: MetaDataModel[];
+  ngOnInit() {
+    this.myForm = this._fb.group({
+      file: ['', [Validators.required]],
+      metaDataArray: this._fb.array([])
+    });
+  }
+  fileChangeEvent(fileInput: any) {
+    let file = fileInput.target.files;
+    this.filesToUpload = <Array<File>>file;
+    this.metaData = this.populateFileModel(this.filesToUpload[0]);
+    this.addMetaDataForm(this.metaData);
+  }
+  addMetaDataForm(newMetaData: MetaDataModel) {
+    const control = <FormArray>this.myForm.controls['metaDataArray'];
+    control.setControl(0, this.initializeMetaDataForm(newMetaData));
+  }
 
-  public metaDataObj: MetaDataModel;
+  initializeMetaDataForm(newMetaData: MetaDataModel) {
+    return this._fb.group({
+      customerId: [newMetaData.customerId],
+      sourceSystem: [newMetaData.sourceSystem],
+      contentType: [newMetaData.contentType],
+      receivedDate: [newMetaData.receivedDate],
+      uploadDate: [newMetaData.uploadDate]
+    });
+  }
+  populateFileModel(file: any) {
+    let fileReader = new FileReader();
+    fileReader.onload = function (e) {
+      console.log(e);
+    };
 
+    let fileMetadata = new MetaDataModel(
+      localStorage.getItem('userName'),
+      'angular app',
+      file.type,
+      file.lastModifiedDate,
+      new Date(),
+    );
+
+    return fileMetadata;
+  }
   upload() {
-    // upload to /document when live
-
-    this._service.makeFileRequest('http://localhost:3000/upload', [], this.filesToUpload, this.metaDataObj)
+    const control = <FormArray>this.myForm.controls['metaDataArray'];
+    console.log('control: ' + control);
+    console.log('this.form.value:' + this.myForm.value.metaDataArray[0].customerId);
+    //console.log(<FormArray>this.myForm.controls['metaDataArray'][0].customerId);
+    this._service.makeFileRequest('http://localhost:3000/upload', [], this.filesToUpload, this.myForm.value.metaDataArray[0])
       .then((result) => {
-        // this.metadataComponent = <MetadataComponent> result;
-        // console.log("test after conversion: " + this.metadataComponent);
-        // this.mymetadata = <MetaDataModel[]>result;
-
-        this.router.navigate(['upload-success']);
+        // this.router.navigate(['upload-success']);
       }, (error) => {
         console.error(error);
       });
   }
 
-  fileChangeEvent(fileInput: any) {
-    let file = fileInput.target.files;
-    this.filesToUpload = <Array<File>> file;
-
-    this.metaDataObj = this._service.populateFileModel(this.filesToUpload[0]);
-    console.log(this.metaDataObj);
-  }
 }
 

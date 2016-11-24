@@ -40,7 +40,7 @@ export class FileUploadService {
       formData.append('file', files[0], files[0].name);
       formData.append('metaData', jsonMetadata);
       //}
-
+      console.log(formData.getAll('metaData'));
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {

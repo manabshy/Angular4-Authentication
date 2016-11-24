@@ -1,29 +1,23 @@
-<form [formGroup]="metaDataForm" novalidate>
-
-  <div class="form-group">
-    <label class="form-control-label">Customer Id</label>
-    <input type="text" class="form-control" formControlName="customerId" />
+<div [formGroup]="metaDataForm">
+  <div class="form-group col-xs-6">
+    <label>Customer Id</label>
+    <input type="text" class="form-control" formControlName="customerId">
+  </div>
+  <div class="form-group col-xs-6">
+    <label>source system</label>
+    <input type="text" class="form-control" formControlName="sourceSystem">
+  </div>
+  <div class="form-group col-xs-6">
+    <label>content type</label>
+    <input type="text" class="form-control" formControlName="contentType">
+  </div>
+  <div class="form-group col-xs-6">
+    <label>received date</label>
+    <input type="text" class="form-control" formControlName="receivedDate">
+  </div>
+  <div class="form-group col-xs-6">
+    <label>upload date</label>
+    <input type="text" class="form-control" formControlName="uploadDate">
   </div>
 
-  <div class="form-group">
-    <label class="form-control-label">Source System</label>
-    <input type="text" class="form-control" formControlName="sourceSystem" />
-  </div>
-
-  <div class="form-group">
-    <label class="form-control-label">Content Type</label>
-    <input type="text" class="form-control" formControlName="contentType" />
-  </div>
-
-  <div class="form-group">
-    <label class="form-control-label">Received Date</label>
-    <input type="text" class="form-control" formControlName="receivedDate" />
-  </div>
-
-  <div class="form-group">
-    <label class="form-control-label">Upload Date</label>
-    <input type="text" class="form-control" formControlName="uploadDate" />
-  </div>
-
-</form>
-
+</div>

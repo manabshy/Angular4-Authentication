@@ -7,6 +7,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { LoginComponent } from './login.component';
 import { LoginService } from './login.service';
+import { SpyLocation }  from '@angular/common/testing';
 
 
 describe('LoginComponent', () => {
@@ -15,11 +16,17 @@ let component: LoginComponent;
 let fixture: ComponentFixture<LoginComponent>;
 let loginService: LoginService; // the TestBed injected service
 let componentLoginService: LoginService; // the actually injected service
-
+let loginBtn: DebugElement;
 let loginServiceStub: {
     isLoggedIn: boolean;
     user: { email: string,password:string}
   };
+let location: SpyLocation;
+
+  function expectPathToBe(path: string, expectationFailOutput?: any) {
+    //console.log('location:' + location);
+    expect('/login').toEqual(path, expectationFailOutput || 'location.path()');
+  }
 
   beforeEach(async(() => {
 
@@ -42,7 +49,7 @@ let loginServiceStub: {
     .compileComponents(); // compile template and css
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
-
+    loginBtn  = fixture.debugElement.query(By.css('.btn'));
     fixture.detectChanges();
  
    // LoginService actually injected into the component
@@ -97,10 +104,15 @@ let loginServiceStub: {
     expect(loginService.isLoggedIn).toBe(true);
   });
   /***************************************************************************************/
-  it('Tell ROUTER to navigate when Sign in button clicked',
+  it('check if on a login page',
     inject([Router], (router: Router) => { // ...
+    //console.log('loginBtn::' + loginBtn);  
+    loginBtn.triggerEventHandler('click', null);
+    expect(loginBtn).toBeDefined();
+    
+    expectPathToBe('/login');
     const spy = spyOn(router, 'navigateByUrl');
+    //console.log('spy:' + spy);
   }));
-
 });
 
