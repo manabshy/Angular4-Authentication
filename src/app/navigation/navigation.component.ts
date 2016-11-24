@@ -19,6 +19,9 @@ export class NavigationComponent implements OnInit {
     this.isLoggedIn = this._loginService.isLoggedIn;
   }
 
+  isActive(instrction: any) :boolean {
+    return this._router.url == instrction
+  }
 
   logout(): void {
     this._loginService.logout();
