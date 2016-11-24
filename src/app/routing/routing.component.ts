@@ -9,7 +9,7 @@ import {AuthGuardService} from '../guards/auth-guard.service';
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: '', component: HomeComponent, canActivate: [AuthGuardService]},
-  {path: 'add', component: HomeComponent, canActivate: [AuthGuardService]},
+  {path: 'create', component: HomeComponent, canActivate: [AuthGuardService]},
   {path: 'update', component: FileUploadUpdateComponent, canActivate: [AuthGuardService]},
   {path: '**', redirectTo: ''}
 ];
