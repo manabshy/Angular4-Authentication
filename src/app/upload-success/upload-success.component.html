@@ -1,5 +1,36 @@
 <app-navigation></app-navigation>
-<div class="container">
-  File Uploaded successfully.
-  {{mdResponseModel.contentType}}
+
+
+<div class="row flex-items-xs-center">
+  <div class="card col-md-4">
+    <div class="card-block">
+      <Form [formGroup]="myForm" novalidate>
+        <div class="row">
+          <div class="col-sm-10">
+            <div class="form-group">
+              <div class="alert alert-success" >File uploaded successfully</div>
+            </div>
+          </div>
+        </div>
+        <div formArrayName="metaDataArray">
+          <div *ngFor="let md of myForm.controls.metaDataArray.controls; let i=index" class="panel panel-default">
+            <div class="card">
+              <h3 class="card-header">
+                Meta Data Response
+              </h3>
+              <div class="card-block" [formGroupName]="i">
+                <app-metadata [group]="myForm.controls.metaDataArray.controls[i]" [viewType]="false" ></app-metadata>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button id="updateMetaData" class="btn btn-lg btn-primary btn-block" name="updateMetaData" (click)="updateMetaData()">Update Meta Data</button>
+        </div>
+      </Form>
+    </div>
+  </div>
 </div>
+
+
+

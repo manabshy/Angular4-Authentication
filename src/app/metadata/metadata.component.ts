@@ -9,4 +9,5 @@ export class MetaDataComponent {
   // we will pass in address from App component
   @Input('group')
   public metaDataForm: FormGroup;
+  @Input() viewType: boolean;
 }

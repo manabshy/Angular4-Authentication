@@ -1,4 +1,5 @@
 <div [formGroup]="metaDataForm">
+
   <div class="form-group">
     <label>Customer Id</label>
     <input type="text" class="form-control" formControlName="customerId">
@@ -19,5 +20,26 @@
     <label>upload date</label>
     <input type="text" class="form-control" formControlName="uploadDate">
   </div>
+
+  <div class="form-group" *ngIf="!viewType">
+    <label>UTR</label>
+    <input type="text" class="form-control" formControlName="utr">
+  </div>
+
+  <div class="form-group" *ngIf="!viewType">
+    <label>Document Id</label>
+    <input type="text" class="form-control" formControlName="documentId">
+  </div>
+
+  <div class="form-group" *ngIf="!viewType">
+    <label>Response Code</label>
+    <input type="text" class="form-control" formControlName="responseCode">
+  </div>
+
+  <div class="form-group" *ngIf="!viewType">
+    <label>Total Execution Time</label>
+    <input type="text" class="form-control" formControlName="totalExecutionTime">
+  </div>
+
 
 </div>

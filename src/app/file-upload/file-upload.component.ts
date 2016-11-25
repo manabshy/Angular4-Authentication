@@ -41,7 +41,8 @@ export class FileUploadComponent  implements OnInit{
       sourceSystem: [newMetaData.sourceSystem],
       contentType: [newMetaData.contentType],
       receivedDate: [newMetaData.receivedDate],
-      uploadDate: [newMetaData.uploadDate]
+      uploadDate: [newMetaData.uploadDate],
+      utr: ['']
     });
   }
   populateFileModel(file: any) {
