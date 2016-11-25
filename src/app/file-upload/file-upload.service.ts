@@ -17,9 +17,9 @@ export class FileUploadService {
     this.fileUploadResponse.DocId = "12345";
   }
 
-
   updateMetaData(fileUpdateMetaData: MetaDataResponseModel): void{
-
   }
+
+
 }
 
