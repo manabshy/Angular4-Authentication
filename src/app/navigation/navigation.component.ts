@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../login/login.service';
-import {Router} from '@angular/router';
+import { Router,RouterModule,ActivatedRoute,RouterLink } from '@angular/router';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @Component({
   selector: 'app-navigation',
@@ -9,26 +10,27 @@ import {Router} from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
   private userName: string;
-  private isLoggedIn: boolean;
-
-  constructor(private _loginService: LoginService, private _router: Router) {
+  isLoggedIn:boolean = false;
+  
+  constructor( private _loginService:LoginService, private _router: Router) {
   }
   //_loginService.isLoggedIn
   ngOnInit() {
     this.userName = localStorage.getItem('userName');
-    this.isLoggedIn = this._loginService.isLoggedIn;
+    //this.isLoggedIn = this._loginService.isLoggedIn;
   }
-
-  isActive(instrction: any) :boolean {
-    return this._router.url == instrction
-  }
+  
+  // isActive(instrction: any) :boolean {
+  //   console.log('instrction:' + instrction);
+  //   return this._router.url == instrction
+  // }
+  
 
   logout(): void {
     this._loginService.logout();
     this._router.navigate(['login']);
 
-    this.isLoggedIn = this._loginService.isLoggedIn;
-
+   
   }
 
 }

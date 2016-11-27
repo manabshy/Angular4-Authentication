@@ -34,7 +34,7 @@ export class LoginService {
 
   login(user: User): Observable<boolean> {
     return this._http.get(this._userDataUrl)
-      .map((response: Response) => {
+    .map((response: Response) => {
         this.extractData(response);
         return this.Authenticate(user);
       })

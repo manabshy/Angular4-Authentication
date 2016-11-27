@@ -12,10 +12,13 @@ import { Component }                 from '@angular/core';
 import { LoginComponent }           from './login/login.component';
 import { HomeComponent }             from './home/home.component';
 import { FileUploadComponent }      from './file-upload/file-upload.component';
-import { MetadataComponent} from './metadata/metadata.component';
+import { MetaDataComponent} from './metadata/metadata.component';
+import { NavigationComponent} from './navigation/navigation.component';
 import { LoginService } from './login/login.service';
+import {FileUploadService} from './file-upload/file-upload.service';
 import { RouterLinkStubDirective }   from './testing/router-stubs';
 import { RouterOutletStubComponent } from './testing/router-stubs';
+
 import { Router } from '@angular/router';
 
 import { FormGroup, FormControl, Validators, FormBuilder, FormsModule,ReactiveFormsModule } from '@angular/forms';
@@ -31,11 +34,11 @@ describe('AppComponent & TestModule', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        LoginComponent, HomeComponent,FileUploadComponent,
-        RouterLinkStubDirective, RouterOutletStubComponent,MetadataComponent
+        LoginComponent, HomeComponent,FileUploadComponent,NavigationComponent,
+        RouterLinkStubDirective, RouterOutletStubComponent,MetaDataComponent
       ],
-      providers:[FormBuilder,{provide:LoginService},{provide:Router}],
-      imports:[FormsModule]
+      providers:[FormBuilder,{provide:LoginService},{provide:Router},{provide:FileUploadService}],
+      imports:[FormsModule,ReactiveFormsModule]
     })
     
     .compileComponents()
@@ -76,6 +79,6 @@ function tests() {
   
   it('can get RouterLinks from HomeComponent template', () => {
     console.log('links.length:' +  links.length);
-    expect(links.length).toBe(1, 'should have No links as there are No links at present');
+    expect(links.length).toBe(5, 'should have No links as there are No links at present');
   });  
 }

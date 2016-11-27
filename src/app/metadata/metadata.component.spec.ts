@@ -5,7 +5,7 @@ import { FormGroup, FormControl, Validators, FormBuilder, FormsModule,ReactiveFo
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { MetaDataModel } from "./metadata.model";
-import { MetadataComponent } from './metadata.component';
+import { MetaDataComponent } from './metadata.component';
 
 // describe('MetadataComponent', () => {
 //   let component: MetadataComponent;

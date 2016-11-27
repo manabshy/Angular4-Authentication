@@ -12,6 +12,7 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'create', component: HomeComponent, canActivate: [AuthGuardService]},
   {path: 'update', component: FileUploadUpdateComponent, canActivate: [AuthGuardService]},
+  {path: 'dashboard', component: HomeComponent, canActivate: [AuthGuardService]},
   {path: 'upload-success', component: UploadSuccessComponent, canActivate: [AuthGuardService]},
 
   {path: '**', redirectTo: ''}

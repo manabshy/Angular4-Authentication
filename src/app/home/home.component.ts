@@ -1,4 +1,4 @@
-import {Component, OnInit, Directive} from '@angular/core';
+import {Component,Input, OnInit, Directive} from '@angular/core';
 import {FileUploadComponent} from '../file-upload/file-upload.component';
 
 @Component({
@@ -6,9 +6,9 @@ import {FileUploadComponent} from '../file-upload/file-upload.component';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-
 export class HomeComponent implements OnInit {
-
+  loggedIn:boolean = true;
+  //@Input() loggedIn:Boolean = true;
   constructor() {
   }
 
