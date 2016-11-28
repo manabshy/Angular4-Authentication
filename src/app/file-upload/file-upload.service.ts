@@ -11,7 +11,7 @@ export class FileUploadService {
 
   metaDataArray : MetaDataModel[];
   fileUploadResponse: MetaDataResponseModel;
-  fileUploadEndPoint: string = "http://172.19.32.73:8081/ingestion-service-web/igs/document/upload";
+  fileUploadEndPoint: string = 'http://172.19.32.73:8081/ingestion-service-web/igs/document/upload';
 
   constructor(private _http: Http){  }
 
