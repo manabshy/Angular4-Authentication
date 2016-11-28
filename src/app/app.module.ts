@@ -18,6 +18,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { UploadSuccessComponent } from './upload-success/upload-success.component';
 import {FileUploadService} from "./file-upload/file-upload.service";
 import {GlobalEventsManagerService} from './global-events-manager.service';
+import {FileUploadResolve} from "./file-upload/file-upload.resolve";
 
 
 
@@ -45,7 +46,8 @@ import {GlobalEventsManagerService} from './global-events-manager.service';
     FileUploadService,
     LoginService,
     AuthGuardService,
-    GlobalEventsManagerService
+    GlobalEventsManagerService,
+    FileUploadResolve
 
   ],
   bootstrap: [AppComponent]

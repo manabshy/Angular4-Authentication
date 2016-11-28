@@ -11,7 +11,7 @@ export class FileUploadService {
 
   metaDataArray : MetaDataModel[];
   fileUploadResponse: MetaDataResponseModel;
-  fileUploadEndPoint: string = "http://localhost:3032/";
+  fileUploadEndPoint: string = "http://172.19.32.73:8081/ingestion-service-web/igs/document/upload";
 
   constructor(private _http: Http){  }
 
@@ -28,18 +28,21 @@ export class FileUploadService {
 
   makeFileRequest(fileUploadMetaData: MetaDataModel): Observable<MetaDataResponseModel> {
     let headers = new Headers({'Content-Type' : 'application/json'});
+    headers.append('Authorization', 'Basic ' + 'am9lOmJsb2dnc3B3ZA==​');
     let options = new RequestOptions({headers: headers});
     let body = JSON.stringify(fileUploadMetaData);
+
     return this._http.post(this.fileUploadEndPoint, body, headers)
       .map((res: Response) =>  {
-      <MetaDataResponseModel>res.json();
+      console.log("got response:");
       this.fileUploadResponse = <MetaDataResponseModel>res.json();
+      return <MetaDataResponseModel>res.json();
     })
       .catch(this.handleError);
   }
 
   private handleError(error: Response) {
-    console.log(error);
+    console.log("upload error: ", error);
     return Observable.throw(error.json() || 'server error');
   }
 
