@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import {Router,RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { routing } from './routing/routing.component';
@@ -16,6 +17,9 @@ import { FileUploadUpdateComponent } from './file-upload-update/file-upload-upda
 import { NavigationComponent } from './navigation/navigation.component';
 import { UploadSuccessComponent } from './upload-success/upload-success.component';
 import {FileUploadService} from "./file-upload/file-upload.service";
+import {GlobalEventsManagerService} from './global-events-manager.service';
+
+
 
 /* Feature Modules */
 
@@ -40,7 +44,9 @@ import {FileUploadService} from "./file-upload/file-upload.service";
   providers: [
     FileUploadService,
     LoginService,
-    AuthGuardService
+    AuthGuardService,
+    GlobalEventsManagerService
+
   ],
   bootstrap: [AppComponent]
 })

@@ -1,8 +1,9 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {Router} from '@angular/router';
+import { Router} from '@angular/router';
 import { FileUploadComponent } from './file-upload.component';
 import { MetaDataComponent } from '../metadata/metadata.component';
+import {FileUploadService} from "./file-upload.service";
 import { FormGroup, FormControl, Validators, FormBuilder, FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { NavigationComponent } from '../navigation/navigation.component';
 
@@ -23,10 +24,9 @@ describe('FileUploadComponent', () => {
       }
     };
 
-
     TestBed.configureTestingModule({
-      declarations: [ FileUploadComponent, MetaDataComponent, NavigationComponent ],
-      providers: [{provide: Router}, {provide: FileUploadComponent, usesValue: fileUploadServiceStub}],
+      declarations: [ FileUploadComponent,MetaDataComponent,NavigationComponent ],
+      providers: [{provide: Router},{provide:MetaDataComponent},{provide:FileUploadService}],
       imports:[ReactiveFormsModule,FormsModule]
     })
     .compileComponents();
