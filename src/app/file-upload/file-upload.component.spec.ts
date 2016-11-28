@@ -2,10 +2,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import {Router} from '@angular/router';
 import { FileUploadComponent } from './file-upload.component';
-import { MetadataComponent } from '../metadata/metadata.component';
+import { MetaDataComponent } from '../metadata/metadata.component';
 import { FormGroup, FormControl, Validators, FormBuilder, FormsModule,ReactiveFormsModule } from '@angular/forms';
-
-
+import { NavigationComponent } from '../navigation/navigation.component';
 
 describe('FileUploadComponent', () => {
   let component:FileUploadComponent;
@@ -26,7 +25,7 @@ describe('FileUploadComponent', () => {
 
 
     TestBed.configureTestingModule({
-      declarations: [ FileUploadComponent,MetadataComponent ],
+      declarations: [ FileUploadComponent, MetaDataComponent, NavigationComponent ],
       providers: [{provide: Router}, {provide: FileUploadComponent, usesValue: fileUploadServiceStub}],
       imports:[ReactiveFormsModule,FormsModule]
     })
@@ -38,7 +37,7 @@ describe('FileUploadComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-  
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
@@ -48,6 +47,6 @@ describe('FileUploadComponent', () => {
   it('should accept a file for upload', () => {
     //var file = new File()
   });
-  
+
 });
 

@@ -1,13 +1,19 @@
 import {Injectable} from '@angular/core';
 import {MetaDataModel, MetaDataResponseModel} from "../metadata/metadata.model";
+import {Http, Response, Headers, RequestOptions} from "@angular/http";
+import {Observable} from "rxjs";
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class FileUploadService {
 
   metaDataArray : MetaDataModel[];
   fileUploadResponse: MetaDataResponseModel;
+  fileUploadEndPoint: string = "http://localhost:3032/";
 
-  constructor(){  }
+  constructor(private _http: Http){  }
 
   InitFileUploadResponse(fileUploadMetaData: MetaDataModel): void {
     this.fileUploadResponse = new MetaDataResponseModel(fileUploadMetaData);
@@ -20,6 +26,19 @@ export class FileUploadService {
   updateMetaData(fileUpdateMetaData: MetaDataResponseModel): void{
   }
 
+  makeFileRequest(fileUploadMetaData: MetaDataModel): Observable<MetaDataResponseModel> {
+    let headers = new Headers({'Content-Type' : 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    let body = JSON.stringify(fileUploadMetaData);
+    return this._http.post(this.fileUploadEndPoint, body, headers)
+      .map((res: Response) =>  <MetaDataResponseModel>res.json())
+      .catch(this.handleError);
+  }
+
+  private handleError(error: Response) {
+    console.log(error);
+    return Observable.throw(error.json() || 'server error');
+  }
 
 }
 

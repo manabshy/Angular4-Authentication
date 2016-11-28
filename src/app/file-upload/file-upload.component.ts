@@ -1,6 +1,6 @@
 import {Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
-import {MetaDataModel} from "../metadata/metadata.model";
+import {MetaDataModel, MetaDataResponseModel} from "../metadata/metadata.model";
 import {FileUploadService} from "./file-upload.service";
 
 @Component({
@@ -13,6 +13,8 @@ export class FileUploadComponent  implements OnInit{
   myForm: FormGroup;
   filesToUpload: Array<File>;
   metaData: MetaDataModel;
+  metaDataResponse: MetaDataResponseModel;
+  errorMessage: string;
 
   constructor(private _fb: FormBuilder, private _service: FileUploadService) {
     this.filesToUpload = [];
@@ -64,16 +66,19 @@ export class FileUploadComponent  implements OnInit{
 
   upload() {
 
-    // this._service.makeFileRequest('http://localhost:3000/upload', [], this.filesToUpload, this.myForm.value.metaDataArray[0])
+    let currentMetaData = <MetaDataModel>this.myForm.value.metaDataArray[0];
+    this._service.makeFileRequest(currentMetaData)
+      .subscribe( response => this.metaDataResponse = response, error=> this.errorMessage = <any>error );
+
     //   .then((result) => {
     //     // this.router.navigate(['upload-success']);
     //   }, (error) => {
     //     console.error(error);
     //   });
-
-    let metaData = <MetaDataModel>this.myForm.value.metaDataArray[0];
-    this._service.InitFileUploadResponse(metaData);
-    console.log(this._service.fileUploadResponse.DocId);
+    //
+    // let metaData = <MetaDataModel>this.myForm.value.metaDataArray[0];
+    // this._service.InitFileUploadResponse(metaData);
+    // console.log(this._service.fileUploadResponse.DocId);
 
   }
 

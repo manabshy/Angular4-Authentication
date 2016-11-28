@@ -1,9 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
 import { FileUploadUpdateComponent } from './file-upload-update.component';
+import {NavigationComponent} from "../navigation/navigation.component";
 
 describe('FileUploadUpdateComponent', () => {
   let component: FileUploadUpdateComponent;
@@ -11,7 +9,7 @@ describe('FileUploadUpdateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FileUploadUpdateComponent ]
+      declarations: [ FileUploadUpdateComponent, NavigationComponent ]
     })
     .compileComponents();
   }));

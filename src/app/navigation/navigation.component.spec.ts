@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { NavigationComponent } from './navigation.component';
+import {LoginService} from "../login/login.service";
 
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
@@ -11,7 +12,8 @@ describe('NavigationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavigationComponent ]
+      declarations: [ NavigationComponent ],
+      providers: [ LoginService ]
     })
     .compileComponents();
   }));

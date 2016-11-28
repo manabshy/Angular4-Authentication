@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { UploadSuccessComponent } from './upload-success.component';
+import {NavigationComponent} from "../navigation/navigation.component";
 
 describe('UploadSuccessComponent', () => {
   let component: UploadSuccessComponent;
@@ -11,7 +12,7 @@ describe('UploadSuccessComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UploadSuccessComponent ]
+      declarations: [ UploadSuccessComponent, NavigationComponent ]
     })
     .compileComponents();
   }));
