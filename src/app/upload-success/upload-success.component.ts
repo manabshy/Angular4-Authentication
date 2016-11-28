@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FileUploadService } from "../file-upload/file-upload.service";
 import {MetaDataResponseModel} from "../metadata/metadata.model";
 import {FormBuilder, FormArray, FormGroup} from "@angular/forms";
-import {Router, ActivatedRouteSnapshot, ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-upload-success',
@@ -15,9 +15,8 @@ export class UploadSuccessComponent implements OnInit{
   constructor(private _service: FileUploadService, private _fb: FormBuilder, private _route: ActivatedRoute) { }
 
   ngOnInit() {
-    //let mdResponseModel = this._service.fileUploadResponse;
     let mdResponseModel = this._route.snapshot.data['uploadResponse'];
-      console.log("ngonInit: ", mdResponseModel);
+      console.log("in upload success init: ", mdResponseModel);
     this.myForm = this._fb.group({
       metaDataArray: this._fb.array([])
     });

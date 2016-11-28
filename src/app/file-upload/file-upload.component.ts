@@ -69,8 +69,13 @@ export class FileUploadComponent  implements OnInit{
 
     let currentMetaData = <MetaDataModel>this.myForm.value.metaDataArray[0];
     this._service.makeFileRequest(currentMetaData)
-      .subscribe( response => this.metaDataResponse = response, error=> this.errorMessage = <any>error );
-    this._router.navigate(['upload-success']);
+      .subscribe(
+        (response) => {
+          this.metaDataResponse = response;
+          this._router.navigate(['upload-success']);
+        },
+        error=> this.errorMessage = <any>error );
+
 
     //   .then((result) => {
     //     // this.router.navigate(['upload-success']);

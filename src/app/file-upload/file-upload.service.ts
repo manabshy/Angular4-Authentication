@@ -11,7 +11,7 @@ export class FileUploadService {
 
   metaDataArray : MetaDataModel[];
   fileUploadResponse: MetaDataResponseModel;
-  fileUploadEndPoint: string = "http://172.19.32.73:8081/ingestion-service-web/igs/document/upload";
+  fileUploadEndPoint: string = 'http://172.19.32.73:8081/ingestion-service-web/igs/document/upload';
 
   constructor(private _http: Http){  }
 
@@ -27,14 +27,15 @@ export class FileUploadService {
   }
 
   makeFileRequest(fileUploadMetaData: MetaDataModel): Observable<MetaDataResponseModel> {
+    console.log("in service makeFileRequest:", fileUploadMetaData);
     let headers = new Headers({'Content-Type' : 'application/json'});
-    headers.append('Authorization', 'Basic ' + 'am9lOmJsb2dnc3B3ZA==​');
+    //headers.append('Authorization', 'Basic ' + 'am9lOmJsb2dnc3B3ZA==​');
     let options = new RequestOptions({headers: headers});
     let body = JSON.stringify(fileUploadMetaData);
 
     return this._http.post(this.fileUploadEndPoint, body, headers)
       .map((res: Response) =>  {
-      console.log("got response:");
+      console.log("in service response:");
       this.fileUploadResponse = <MetaDataResponseModel>res.json();
       return <MetaDataResponseModel>res.json();
     })
@@ -42,7 +43,7 @@ export class FileUploadService {
   }
 
   private handleError(error: Response) {
-    console.log("upload error: ", error);
+    console.log("in service error: ", error);
     return Observable.throw(error.json() || 'server error');
   }
 
