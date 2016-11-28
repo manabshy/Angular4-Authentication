@@ -6,6 +6,7 @@ import {FileUploadUpdateComponent} from '../file-upload-update/file-upload-updat
 
 import {AuthGuardService} from '../guards/auth-guard.service';
 import {UploadSuccessComponent} from "../upload-success/upload-success.component";
+import {FileUploadResolve} from "../file-upload/file-upload.resolve";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuardService]},
@@ -13,7 +14,7 @@ const appRoutes: Routes = [
   {path: 'create', component: HomeComponent, canActivate: [AuthGuardService]},
   {path: 'update', component: FileUploadUpdateComponent, canActivate: [AuthGuardService]},
   {path: 'dashboard', component: HomeComponent, canActivate: [AuthGuardService]},
-  {path: 'upload-success', component: UploadSuccessComponent, canActivate: [AuthGuardService]},
+  {path: 'upload-success', component: UploadSuccessComponent, canActivate: [AuthGuardService], resolve: { uploadResponse: FileUploadResolve }},
 
   {path: '**', redirectTo: ''}
 ];

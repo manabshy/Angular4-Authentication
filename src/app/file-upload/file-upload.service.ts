@@ -31,7 +31,10 @@ export class FileUploadService {
     let options = new RequestOptions({headers: headers});
     let body = JSON.stringify(fileUploadMetaData);
     return this._http.post(this.fileUploadEndPoint, body, headers)
-      .map((res: Response) =>  <MetaDataResponseModel>res.json())
+      .map((res: Response) =>  {
+      <MetaDataResponseModel>res.json();
+      this.fileUploadResponse = <MetaDataResponseModel>res.json();
+    })
       .catch(this.handleError);
   }
 

@@ -2,6 +2,7 @@ import {Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import {MetaDataModel, MetaDataResponseModel} from "../metadata/metadata.model";
 import {FileUploadService} from "./file-upload.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-fileupload',
@@ -16,7 +17,7 @@ export class FileUploadComponent  implements OnInit{
   metaDataResponse: MetaDataResponseModel;
   errorMessage: string;
 
-  constructor(private _fb: FormBuilder, private _service: FileUploadService) {
+  constructor(private _fb: FormBuilder, private _service: FileUploadService, private _router: Router) {
     this.filesToUpload = [];
   }
 
@@ -69,6 +70,7 @@ export class FileUploadComponent  implements OnInit{
     let currentMetaData = <MetaDataModel>this.myForm.value.metaDataArray[0];
     this._service.makeFileRequest(currentMetaData)
       .subscribe( response => this.metaDataResponse = response, error=> this.errorMessage = <any>error );
+    this._router.navigate(['upload-success']);
 
     //   .then((result) => {
     //     // this.router.navigate(['upload-success']);

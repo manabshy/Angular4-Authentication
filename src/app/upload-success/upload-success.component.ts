@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FileUploadService } from "../file-upload/file-upload.service";
 import {MetaDataResponseModel} from "../metadata/metadata.model";
 import {FormBuilder, FormArray, FormGroup} from "@angular/forms";
+import {Router, ActivatedRouteSnapshot, ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-upload-success',
@@ -11,11 +12,12 @@ import {FormBuilder, FormArray, FormGroup} from "@angular/forms";
 export class UploadSuccessComponent implements OnInit{
 
   myForm: FormGroup;
-  constructor(private _service: FileUploadService, private _fb: FormBuilder) { }
+  constructor(private _service: FileUploadService, private _fb: FormBuilder, private _route: ActivatedRoute) { }
 
   ngOnInit() {
-    let mdResponseModel = this._service.fileUploadResponse;
-    console.log(mdResponseModel);
+    //let mdResponseModel = this._service.fileUploadResponse;
+    let mdResponseModel = this._route.snapshot.data['uploadResponse'];
+      console.log("ngonInit: ", mdResponseModel);
     this.myForm = this._fb.group({
       metaDataArray: this._fb.array([])
     });
