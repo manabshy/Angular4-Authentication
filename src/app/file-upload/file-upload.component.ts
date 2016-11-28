@@ -71,6 +71,7 @@ export class FileUploadComponent  implements OnInit{
     this._service.makeFileRequest(currentMetaData)
       .subscribe(
         (response) => {
+          console.log('got a upload response');
           this.metaDataResponse = response;
           this._router.navigate(['upload-success']);
         },

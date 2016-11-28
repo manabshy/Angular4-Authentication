@@ -10,8 +10,9 @@ export class MetaDataModel {
 
 
 export class MetaDataResponseModel extends MetaDataModel {
+  metadata: MetaDataModel;
   responseCode: string;
   totalExecutionTime: string;
-  DocId: string;
+  documentId: string;
   constructor(private _metaData: MetaDataModel){ super(_metaData.customerId, _metaData.sourceSystem, _metaData.contentType, _metaData.receivedDate, _metaData.uploadDate)}
 }

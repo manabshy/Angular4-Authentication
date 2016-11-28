@@ -30,14 +30,14 @@ export class UploadSuccessComponent implements OnInit{
 
   initializeMetaDataForm(metaDataResponse: MetaDataResponseModel) {
     return this._fb.group({
-      customerId: [metaDataResponse.customerId],
-      sourceSystem: [metaDataResponse.sourceSystem],
-      contentType: [metaDataResponse.contentType],
-      receivedDate: [metaDataResponse.receivedDate],
-      uploadDate: [metaDataResponse.uploadDate],
-      utr: [metaDataResponse.utr],
+      customerId: [metaDataResponse.metadata.customerId],
+      sourceSystem: [metaDataResponse.metadata.sourceSystem],
+      contentType: [metaDataResponse.metadata.contentType],
+      receivedDate: [metaDataResponse.metadata.receivedDate],
+      uploadDate: [metaDataResponse.metadata.uploadDate],
+      utr: [metaDataResponse.metadata.utr],
       responseCode: [metaDataResponse.responseCode],
-      documentId: [metaDataResponse.DocId],
+      documentId: [metaDataResponse.documentId],
       totalExecutionTime: [metaDataResponse.totalExecutionTime]
     });
   }

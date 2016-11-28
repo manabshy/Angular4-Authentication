@@ -11,16 +11,16 @@ export class FileUploadService {
 
   metaDataArray : MetaDataModel[];
   fileUploadResponse: MetaDataResponseModel;
-  fileUploadEndPoint: string = 'http://172.19.32.73:8081/ingestion-service-web/igs/document/upload';
+  fileUploadEndPoint: string = 'http://localhost:8090/ingestion-service-web/igs/document/upload';
 
   constructor(private _http: Http){  }
 
   InitFileUploadResponse(fileUploadMetaData: MetaDataModel): void {
-    this.fileUploadResponse = new MetaDataResponseModel(fileUploadMetaData);
-    this.fileUploadResponse.utr ="4343455454323";
-    this.fileUploadResponse.responseCode = "200";
-    this.fileUploadResponse.totalExecutionTime = "12.12ms";
-    this.fileUploadResponse.DocId = "12345";
+    //this.fileUploadResponse = new MetaDataResponseModel(fileUploadMetaData);
+    // this.fileUploadResponse.utr ="4343455454323";
+    // this.fileUploadResponse.responseCode = "200";
+    // this.fileUploadResponse.totalExecutionTime = "12.12ms";
+    // this.fileUploadResponse.DocId = "12345";
   }
 
   updateMetaData(fileUpdateMetaData: MetaDataResponseModel): void{
