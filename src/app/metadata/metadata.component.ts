@@ -10,4 +10,5 @@ export class MetaDataComponent {
   @Input('group')
   public metaDataForm: FormGroup;
   @Input() viewType: boolean;
+  @Input() isUploadDateVisible: boolean;
 }

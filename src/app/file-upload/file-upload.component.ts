@@ -44,7 +44,7 @@ export class FileUploadComponent  implements OnInit{
       sourceSystem: [newMetaData.sourceSystem],
       contentType: [newMetaData.contentType],
       receivedDate: [newMetaData.receivedDate],
-      uploadDate: [newMetaData.uploadDate],
+      uploadDate: null,
       utr: ['']
     });
   }
@@ -58,25 +58,31 @@ export class FileUploadComponent  implements OnInit{
       localStorage.getItem('userName'),
       'angular app',
       file.type,
-      file.lastModifiedDate,
-      new Date(),
+      file.lastModifiedDate
     );
-
     return fileMetadata;
   }
 
   upload() {
 
-    let currentMetaData = <MetaDataModel>this.myForm.value.metaDataArray[0];
-    this._service.makeFileRequest(currentMetaData)
-      .subscribe(
-        (response) => {
-          console.log('got a upload response');
-          this.metaDataResponse = response;
-          this._router.navigate(['upload-success']);
-        },
-        error=> this.errorMessage = <any>error );
+    // let currentMetaData = <MetaDataModel>this.myForm.value.metaDataArray[0];
+    // this._service.makeFileRequest(currentMetaData, this.filesToUpload)
+    //   .subscribe(
+    //     (response) => {
+    //       console.log('got a upload response');
+    //       this.metaDataResponse = response;
+    //       this._router.navigate(['upload-success']);
+    //     },
+    //     error=> this.errorMessage = <any>error );
 
+    this._service.makeFileRequestXHR([], this.filesToUpload)
+      .then((result) => {
+        console.log("results: ", result);
+        this._service.fileUploadResponse = <MetaDataResponseModel>result;
+        this._router.navigate(['upload-success']);
+      }, (error) => {
+        console.error(error);
+      });
 
     //   .then((result) => {
     //     // this.router.navigate(['upload-success']);

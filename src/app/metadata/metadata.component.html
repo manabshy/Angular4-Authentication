@@ -35,7 +35,7 @@
     <input type="text" class="form-control" formControlName="receivedDate">
   </div>
 
-  <div class="form-group">
+  <div class="form-group" *ngIf="isUploadDateVisible">
     <label>upload date</label>
     <input type="text" class="form-control" formControlName="uploadDate">
   </div>

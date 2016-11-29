@@ -34,11 +34,11 @@ export class UploadSuccessComponent implements OnInit{
       sourceSystem: [metaDataResponse.metadata.sourceSystem],
       contentType: [metaDataResponse.metadata.contentType],
       receivedDate: [metaDataResponse.metadata.receivedDate],
-      uploadDate: [metaDataResponse.metadata.uploadDate],
-      utr: [metaDataResponse.metadata.utr],
+      utr: [metaDataResponse.metadata.UTR],
       responseCode: [metaDataResponse.responseCode],
       documentId: [metaDataResponse.documentId],
-      totalExecutionTime: [metaDataResponse.totalExecutionTime]
+      totalExecutionTime: [metaDataResponse.totalExecutionTime],
+      uploadDate: [metaDataResponse.uploadDate]
     });
   }
 
