@@ -21,14 +21,14 @@ describe('HomeComponent', () => {
   let fixture: ComponentFixture<HomeComponent>;
   let logoutBtn: DebugElement;
 
-  
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent, FileUploadComponent,MetaDataComponent,NavigationComponent ],
       providers:[{provide: FileUploadService},{provide:LoginService},
-                  {provide:Router},{provide:ActivatedRoute},{provide:LocationStrategy},FormBuilder  ],
-      imports:[HttpModule,ReactiveFormsModule,FormsModule,RouterModule ]
+                  {provide:Router},FormBuilder  ],
+      imports:[HttpModule,ReactiveFormsModule,FormsModule ]
     })
     .compileComponents();
     fixture   = TestBed.createComponent(HomeComponent);

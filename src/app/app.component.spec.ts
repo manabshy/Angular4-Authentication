@@ -39,8 +39,8 @@ describe('AppComponent & TestModule', () => {
         LoginComponent, HomeComponent,FileUploadComponent,NavigationComponent,
         RouterLinkStubDirective, RouterOutletStubComponent,MetaDataComponent
       ],
-      providers:[FormBuilder,{provide:LoginService},{provide:Router},{provide:FileUploadService},{provide:ActivatedRoute},{provide:LocationStrategy}],
-      imports:[FormsModule,ReactiveFormsModule,RouterModule]
+      providers:[FormBuilder,{provide:LoginService},{provide:Router},{provide:FileUploadService}],
+      imports:[FormsModule,ReactiveFormsModule]
     })
 
     .compileComponents()
@@ -81,6 +81,6 @@ function tests() {
 
   it('can get RouterLinks from HomeComponent template', () => {
     console.log('links.length:' +  links.length);
-    expect(links.length).toBe(5, 'should have No links as there are No links at present');
+    expect(links.length).toBe(4, 'should have No links as there are No links at present');
   });
 }

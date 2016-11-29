@@ -5,7 +5,7 @@ import { DebugElement } from '@angular/core';
 import { NavigationComponent } from './navigation.component';
 
 import { LoginService } from '../login/login.service';
-import { Router,RouterModule,ActivatedRoute,RouterLink } from '@angular/router';
+import { Router,RouterModule} from '@angular/router';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { Provider } from '@angular/core';
 
@@ -16,9 +16,7 @@ describe('NavigationComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ NavigationComponent ],
-      providers:[{provide:LoginService},{provide: Router},
-      {provide:ActivatedRoute},{provide:LocationStrategy}],
-      imports:[RouterModule]
+      providers:[{provide:LoginService},{provide: Router}],
     })
     .compileComponents();
   }));

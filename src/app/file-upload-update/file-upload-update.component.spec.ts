@@ -23,9 +23,8 @@ describe('FileUploadUpdateComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ FileUploadComponent,FileUploadUpdateComponent,NavigationComponent,MetaDataComponent ],
-      providers:[{provide:FormGroup},{provide:Router},{provide:FileUploadService},{provide:LoginService},
-                 {provide:Router},{provide:ActivatedRoute},{provide:LocationStrategy}],
-      imports:[ FormsModule,ReactiveFormsModule,RouterModule]
+      providers:[{provide:FormGroup},{provide:Router},{provide:FileUploadService},{provide:LoginService}],
+      imports:[ FormsModule,ReactiveFormsModule]
 
     })
     .compileComponents();
