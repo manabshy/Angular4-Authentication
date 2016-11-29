@@ -1,5 +1,5 @@
 <form [formGroup]="metaDataForm">
-
+  <app-fileupload *ngIf="!viewType"></app-fileupload>
   <div class="form-group" *ngIf="!viewType">
     <label>Document Id</label>
     <input type="text" class="form-control" formControlName="documentId">
@@ -44,5 +44,8 @@
     <label>UTR</label>
     <input type="text" class="form-control" formControlName="utr">
   </div>
-
+  <div class="form-group" *ngIf="!viewType">
+    <a class="btn btn-primary col-md-4" >Update</a>
+    <!--<button class="btn btn-md btn-primary btn-block col-md-3" (click)="upload()" >Upload</button>-->
+  </div>
 </form>

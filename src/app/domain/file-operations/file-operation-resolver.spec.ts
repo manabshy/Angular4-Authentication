@@ -19,8 +19,8 @@ describe('Resolver: FileOperationResolver', () => {
     expect(resolver).toBeTruthy();
   }));
 
-  it('should ...', inject([FileOperationHistoryService], (service: FileOperationHistoryService) => {
-    expect(service).toBeTruthy();
-  }));
+  // it('should ...', inject([FileOperationHistoryService], (service: FileOperationHistoryService) => {
+  //   expect(service).toBeTruthy();
+  // }));
 
 });
