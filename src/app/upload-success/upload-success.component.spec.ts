@@ -14,7 +14,6 @@ import { Router,RouterModule,ActivatedRoute,RouterLink } from '@angular/router';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { Provider } from '@angular/core';
 
-
 describe('UploadSuccessComponent', () => {
   let component: UploadSuccessComponent;
   let fixture: ComponentFixture<UploadSuccessComponent>;
@@ -22,8 +21,8 @@ describe('UploadSuccessComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ UploadSuccessComponent,NavigationComponent,MetaDataComponent ],
-      providers:[{provide:FileUploadService},{provide:FormGroup},{provide:Router},{provide:LoginService}],
-      imports:[ FormsModule,ReactiveFormsModule]
+      providers:[{provide:FileUploadService},{provide:FormGroup},{provide:Router},{provide:ActivatedRoute},{provide:LocationStrategy},{provide:LoginService}],
+      imports:[ FormsModule,ReactiveFormsModule,RouterModule]
     })
     .compileComponents();
   }));

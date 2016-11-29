@@ -18,7 +18,9 @@ import {FileUploadService} from './file-upload/file-upload.service';
 import { RouterLinkStubDirective }   from './testing/router-stubs';
 import { RouterOutletStubComponent } from './testing/router-stubs';
 
-import { Router } from '@angular/router';
+import { Router,RouterModule,ActivatedRoute,RouterLink } from '@angular/router';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { Provider } from '@angular/core';
 import {NavigationComponent} from "./navigation/navigation.component";
 import { FormGroup, FormControl, Validators, FormBuilder, FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/directives";
@@ -37,8 +39,8 @@ describe('AppComponent & TestModule', () => {
         LoginComponent, HomeComponent,FileUploadComponent,NavigationComponent,
         RouterLinkStubDirective, RouterOutletStubComponent,MetaDataComponent
       ],
-      providers:[FormBuilder,{provide:LoginService},{provide:Router},{provide:FileUploadService}],
-      imports:[FormsModule,ReactiveFormsModule]
+      providers:[FormBuilder,{provide:LoginService},{provide:Router},{provide:FileUploadService},{provide:ActivatedRoute},{provide:LocationStrategy}],
+      imports:[FormsModule,ReactiveFormsModule,RouterModule]
     })
 
     .compileComponents()

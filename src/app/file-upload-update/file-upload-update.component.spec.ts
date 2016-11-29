@@ -1,22 +1,20 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-<<<<<<< HEAD
-=======
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import {FormBuilder, FormArray, FormsModule,FormGroup,ReactiveFormsModule} from "@angular/forms";
 
 import { FileUploadComponent } from '../file-upload/file-upload.component';
 
->>>>>>> 0ec8ae0561b0bc15df8a1fa003fbb7ba365f71ae
 import { FileUploadUpdateComponent } from './file-upload-update.component';
-import {NavigationComponent} from "../navigation/navigation.component";
 
 import { NavigationComponent} from '../navigation/navigation.component';
 import {MetaDataComponent} from '../metadata/metadata.component';
 import {FileUploadService} from '../file-upload/file-upload.service';
 import {LoginService} from '../login/login.service';
-import {Router} from '@angular/router';
+import { Router,RouterModule,ActivatedRoute,RouterLink } from '@angular/router';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { Provider } from '@angular/core';
 
 describe('FileUploadUpdateComponent', () => {
   let component: FileUploadUpdateComponent;
@@ -24,14 +22,11 @@ describe('FileUploadUpdateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-<<<<<<< HEAD
-      declarations: [ FileUploadUpdateComponent, NavigationComponent ]
-=======
       declarations: [ FileUploadComponent,FileUploadUpdateComponent,NavigationComponent,MetaDataComponent ],
-      providers:[{provide:FormGroup},{provide:Router},{provide:FileUploadService},{provide:LoginService}],
-      imports:[ FormsModule,ReactiveFormsModule]
+      providers:[{provide:FormGroup},{provide:Router},{provide:FileUploadService},{provide:LoginService},
+                 {provide:Router},{provide:ActivatedRoute},{provide:LocationStrategy}],
+      imports:[ FormsModule,ReactiveFormsModule,RouterModule]
 
->>>>>>> 0ec8ae0561b0bc15df8a1fa003fbb7ba365f71ae
     })
     .compileComponents();
   }));
