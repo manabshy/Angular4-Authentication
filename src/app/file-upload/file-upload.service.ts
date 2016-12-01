@@ -6,14 +6,15 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 
+import { AppConfigs } from '../app.config'
+
 @Injectable()
 export class FileUploadService {
 
   metaDataArray : MetaDataModel[];
   fileUploadResponse: MetaDataResponseModel;
-  fileUploadEndPoint: string = 'http://172.19.32.45:8080/ingestion-service-web/igs/document/upload/';
 
-  constructor(private _http: Http){  }
+  constructor(private _http: Http, private appConfig: AppConfigs){  }
 
   InitFileUploadResponse(fileUploadMetaData: MetaDataModel): void {
     //this.fileUploadResponse = new MetaDataResponseModel(fileUploadMetaData);
@@ -30,21 +31,21 @@ export class FileUploadService {
     headers.append('Authorization', 'Basic ' + btoa('joe:bloggspwd'));
   }
 
-  makeFileRequest(fileUploadMetaData: MetaDataModel, fileUploadArray: Array<any>): Observable<MetaDataResponseModel> {
-    console.log("in service makeFileRequest:", fileUploadMetaData, fileUploadArray[0]);
-    let headers = new Headers({'Content-Type' : 'multipart/form-data', 'file': fileUploadArray[0]});
-    this.createAuthorizationHeader(headers);
-    // let options = new RequestOptions({headers: headers});
-    let body = JSON.stringify(fileUploadMetaData);
+  // makeFileRequest(fileUploadMetaData: MetaDataModel, fileUploadArray: Array<any>): Observable<MetaDataResponseModel> {
+  //   console.log("in service makeFileRequest:", fileUploadMetaData, fileUploadArray[0]);
+  //   let headers = new Headers({'Content-Type' : 'multipart/form-data', 'file': fileUploadArray[0]});
+  //   this.createAuthorizationHeader(headers);
+  //   // let options = new RequestOptions({headers: headers});
+  //   let body = JSON.stringify(fileUploadMetaData);
 
-    return this._http.post(this.fileUploadEndPoint, body, {headers: headers})
-      .map((res: Response) =>  {
-      console.log("in service response:");
-      this.fileUploadResponse = <MetaDataResponseModel>res.json();
-      return <MetaDataResponseModel>res.json();
-    })
-      .catch(this.handleError);
-  }
+  //   return this._http.post(this.fileUploadEndPoint, body, {headers: headers})
+  //     .map((res: Response) =>  {
+  //     console.log("in service response:");
+  //     this.fileUploadResponse = <MetaDataResponseModel>res.json();
+  //     return <MetaDataResponseModel>res.json();
+  //   })
+  //     .catch(this.handleError);
+  // }
 
   populateFileModel(file) {
     let fileReader = new FileReader();
@@ -90,7 +91,7 @@ export class FileUploadService {
       };
       console.log(formData, files.length, files);
       let token: string = btoa('joe:bloggspwd');
-      xhr.open('POST', this.fileUploadEndPoint, true);
+      xhr.open('POST', this.appConfig.uploadUri, true);
       xhr.setRequestHeader('Authorization', 'Basic ' + token);
       xhr.send(formData);
     });
@@ -121,7 +122,7 @@ export class FileUploadService {
        };
        console.log(formData, files.length, files);
        let token: string = btoa('joe:bloggspwd');
-       xhr.open('PUT', this.fileUploadEndPoint, true);
+       xhr.open('PUT', this.appConfig.updateUri, true);
        xhr.setRequestHeader('Authorization', 'Basic ' +  token);
        xhr.send(formData);
      });

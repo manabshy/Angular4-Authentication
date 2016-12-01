@@ -45,7 +45,8 @@ export class FileUploadComponent  implements OnInit{
       contentType: [newMetaData.contentType],
       receivedDate: [newMetaData.receivedDate],
       uploadDate: null,
-      utr: ['']
+      utr: [''],
+      version:null
     });
   }
   populateFileModel(file: any) {
@@ -104,7 +105,19 @@ export class FileUploadComponent  implements OnInit{
     // let metaData = <MetaDataModel>this.myForm.value.metaDataArray[0];
     // this._service.InitFileUploadResponse(metaData);
     // console.log(this._service.fileUploadResponse.DocId);
+  }
 
+  upload_update() {
+
+    this._service.updateFileRequestXHR([], this.filesToUpload)
+      .then((result) => {
+        console.log("results: ", result);
+        this._service.fileUploadResponse = <MetaDataResponseModel>result;
+        this._router.navigate(['upload-success']);
+      }, (error) => {
+        console.error(error);
+      });
   }
 
 }
+

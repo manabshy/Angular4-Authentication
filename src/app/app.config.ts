@@ -7,9 +7,9 @@ export class AppConfigs {
 	constructor() { }
 
 	//upload url 
-	public upload_uri:string  = 'http://localhost:8090/ingestion-service-web/igs/document/upload';
+	public uploadUri:string  = 'http://172.19.32.45:8080/ingestion-service-web/igs/document/upload/';
 
 	//file upload end point 
-	public update_uri:string = 'http://localhost:8090/ingestion-service-web/igs/document/update/';
+	public updateUri:string = 'http://172.19.32.73:8081/ingestion-service-web/igs/document/update/';
 
 }

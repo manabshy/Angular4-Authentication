@@ -38,7 +38,8 @@ export class UploadSuccessComponent implements OnInit{
       responseCode: [metaDataResponse.responseCode],
       documentId: [metaDataResponse.documentId],
       totalExecutionTime: [metaDataResponse.totalExecutionTime],
-      uploadDate: [metaDataResponse.uploadDate]
+      uploadDate: [metaDataResponse.uploadDate],
+      version: [metaDataResponse.version]
     });
   }
 
