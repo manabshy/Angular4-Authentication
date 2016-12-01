@@ -15,5 +15,6 @@ export class MetaDataResponseModel extends MetaDataModel {
   totalExecutionTime: string;
   documentId: string;
   uploadDate: Date;
+  version: string;
   constructor(private _metaData: MetaDataModel){ super(_metaData.customerId, _metaData.sourceSystem, _metaData.contentType, _metaData.receivedDate)}
 }

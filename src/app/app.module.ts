@@ -19,7 +19,8 @@ import { UploadSuccessComponent } from './upload-success/upload-success.componen
 import {FileUploadService} from "./file-upload/file-upload.service";
 import {GlobalEventsManagerService} from './global-events-manager.service';
 import {FileUploadResolve} from "./file-upload/file-upload.resolve";
-
+import { AppConfigs } from './app.config';
+import { HttpClient } from './core/http-client';
 
 
 /* Feature Modules */
@@ -40,15 +41,16 @@ import {FileUploadResolve} from "./file-upload/file-upload.resolve";
     FormsModule,
     HttpModule,
     routing,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     FileUploadService,
     LoginService,
     AuthGuardService,
     GlobalEventsManagerService,
-    FileUploadResolve
-
+    FileUploadResolve,
+    AppConfigs,
+    HttpClient
   ],
   bootstrap: [AppComponent]
 })

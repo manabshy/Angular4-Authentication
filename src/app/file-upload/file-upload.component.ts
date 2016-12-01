@@ -63,6 +63,17 @@ export class FileUploadComponent  implements OnInit{
     return fileMetadata;
   }
 
+  update() {
+      this._service.updateFileRequestXHR([], this.filesToUpload)
+       .then((result) => {
+         console.log("results to update: ", result);
+         this._service.fileUploadResponse = <MetaDataResponseModel>result;
+         this._router.navigate(['upload-success']);
+       }, (error) => {
+         console.error(error);
+       });
+   }
+
   upload() {
 
     // let currentMetaData = <MetaDataModel>this.myForm.value.metaDataArray[0];
