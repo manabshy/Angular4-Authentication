@@ -1,5 +1,6 @@
 import {Component,Input, OnInit, Directive} from '@angular/core';
 import {FileUploadComponent} from '../file-upload/file-upload.component';
+import { NavigationComponent } from '../navigation/navigation.component';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,6 @@ import {FileUploadComponent} from '../file-upload/file-upload.component';
 })
 export class HomeComponent implements OnInit {
   loggedIn:boolean = true;
-  //@Input() loggedIn:Boolean = true;
   constructor() {
   }
 

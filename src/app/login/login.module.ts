@@ -11,10 +11,10 @@ import { BrowserModule } from '@angular/platform-browser';
   imports: [FormsModule,BrowserModule
   ],
   declarations: [
-    LoginComponent,
+    LoginComponent
      ],
   providers: [
-    LoginService,
+    LoginService
     
   ]
 })

@@ -28,7 +28,6 @@ import { LoginModule } from './login/login.module';
 @NgModule({
   declarations: [
     AppComponent,
-//    LoginComponent,
     FileUploadComponent,
     MetaDataComponent,
     HomeComponent,
@@ -46,7 +45,6 @@ import { LoginModule } from './login/login.module';
   ],
   providers: [
     FileUploadService,
-   // LoginService,
     AuthGuardService,
     GlobalEventsManagerService,
     FileUploadResolve,

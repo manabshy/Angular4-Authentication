@@ -2,11 +2,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import {MetaDataComponent} from "../metadata/metadata.component";
-import {MetaDataResponseModel} from "../metadata/metadata.model";
-import {NavigationComponent} from "../navigation/navigation.component"
-import {FormBuilder, FormArray, FormsModule,FormGroup,ReactiveFormsModule} from "@angular/forms";
-import {FileUploadService} from "../file-upload/file-upload.service";
+import {MetaDataComponent} from '../metadata/metadata.component';
+import {MetaDataResponseModel} from '../metadata/metadata.model';
+import {NavigationComponent} from '../navigation/navigation.component'
+import {FormBuilder, FormArray, FormsModule,FormGroup,ReactiveFormsModule} from '@angular/forms';
+import {FileUploadService} from '../file-upload/file-upload.service';
 import {LoginService} from "../login/login.service";
 import { UploadSuccessComponent } from './upload-success.component';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +14,7 @@ import { Router,RouterModule,ActivatedRoute,RouterLink,ActivatedRouteSnapshot } 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { Provider } from '@angular/core';
 
-describe('UploadSuccessComponent', () => {
+describe('UploadSuccessComponent',() => {
   let component: UploadSuccessComponent;
   let fixture: ComponentFixture<UploadSuccessComponent>;
 
