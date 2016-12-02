@@ -1,4 +1,4 @@
-import {Component, OnInit } from '@angular/core';
+import {Component, Input,OnInit } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import {MetaDataModel, MetaDataResponseModel} from "../metadata/metadata.model";
 import {FileUploadService} from "./file-upload.service";
@@ -10,6 +10,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./file-upload.component.css']
 })
 export class FileUploadComponent  implements OnInit{
+  
+  viewUploadInCreate: boolean = false;
 
   myForm: FormGroup;
   filesToUpload: Array<File>;

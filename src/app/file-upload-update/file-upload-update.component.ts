@@ -6,7 +6,8 @@ import { Component, Input,OnInit } from '@angular/core';
   styleUrls: ['./file-upload-update.component.css']
 })
 export class FileUploadUpdateComponent implements OnInit {
-  @Input() viewType: boolean;
+  
+  @Input() viewUploadInCreate: boolean;
 
   constructor() { }
 

@@ -7,10 +7,8 @@ import {Router,RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { routing } from './routing/routing.component';
-import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
-import { LoginService } from './login/login.service';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { MetaDataComponent } from './metadata/metadata.component';
 import { FileUploadUpdateComponent } from './file-upload-update/file-upload-update.component';
@@ -22,13 +20,15 @@ import {FileUploadResolve} from "./file-upload/file-upload.resolve";
 import { AppConfigs } from './app.config';
 import { HttpClient } from './core/http-client';
 
+/* Feature Modules */
+import { LoginModule } from './login/login.module';
 
 /* Feature Modules */
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
+//    LoginComponent,
     FileUploadComponent,
     MetaDataComponent,
     HomeComponent,
@@ -42,10 +42,11 @@ import { HttpClient } from './core/http-client';
     HttpModule,
     routing,
     ReactiveFormsModule,
+    LoginModule
   ],
   providers: [
     FileUploadService,
-    LoginService,
+   // LoginService,
     AuthGuardService,
     GlobalEventsManagerService,
     FileUploadResolve,
