@@ -1,27 +1,25 @@
-import {Component, Directive,OnInit } from '@angular/core';
-import { Validators, FormGroup, FormArray, FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import {Router} from '@angular/router';
-import {FileUploadService} from './file-upload.service';
-import {MetaDataModel} from "../metadata/metadata.model";
-
-@Directive({selector: 'app-fileupload'})
+import {Component, Input,OnInit } from '@angular/core';
+import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import {MetaDataModel, MetaDataResponseModel} from "../metadata/metadata.model";
+import {FileUploadService} from "./file-upload.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-fileupload',
   templateUrl: './file-upload.component.html',
-  styleUrls: ['./file-upload.component.css'],
-  providers: [FileUploadService]
+  styleUrls: ['./file-upload.component.css']
 })
-
 export class FileUploadComponent  implements OnInit{
+
+  viewUploadInCreate: boolean = false;
 
   myForm: FormGroup;
   filesToUpload: Array<File>;
   metaData: MetaDataModel;
+  metaDataResponse: MetaDataResponseModel;
+  errorMessage: string;
 
-
-
-  constructor(private _fb: FormBuilder,public router: Router, private _service: FileUploadService) {
+  constructor(private _fb: FormBuilder, private _service: FileUploadService, private _router: Router) {
     this.filesToUpload = [];
   }
 
@@ -48,7 +46,9 @@ export class FileUploadComponent  implements OnInit{
       sourceSystem: [newMetaData.sourceSystem],
       contentType: [newMetaData.contentType],
       receivedDate: [newMetaData.receivedDate],
-      uploadDate: [newMetaData.uploadDate]
+      uploadDate: null,
+      utr: [''],
+      version:null
     });
   }
   populateFileModel(file: any) {
@@ -61,21 +61,61 @@ export class FileUploadComponent  implements OnInit{
       localStorage.getItem('userName'),
       'angular app',
       file.type,
-      file.lastModifiedDate,
-      new Date(),
+      file.lastModifiedDate
     );
-
     return fileMetadata;
   }
+
+  update() {
+      this._service.updateFileRequestXHR([], this.filesToUpload)
+       .then((result) => {
+         console.log("results to update: ", result);
+         this._service.fileUploadResponse = <MetaDataResponseModel>result;
+         this._router.navigate(['upload-success']);
+       }, (error) => {
+         console.error(error);
+       });
+   }
+
   upload() {
-    const control = <FormArray>this.myForm.controls['metaDataArray'];
-    console.log('control: ' + control);
-    console.log('this.form.value:' + this.myForm.value.metaDataArray[0].customerId);
-    //console.log(<FormArray>this.myForm.controls['metaDataArray'][0].customerId);
-    this._service.makeFileRequest('http://localhost:3000/upload', [], this.filesToUpload, this.myForm.value.metaDataArray[0])
+
+    // let currentMetaData = <MetaDataModel>this.myForm.value.metaDataArray[0];
+    // this._service.makeFileRequest(currentMetaData, this.filesToUpload)
+    //   .subscribe(
+    //     (response) => {
+    //       console.log('got a upload response');
+    //       this.metaDataResponse = response;
+    //       this._router.navigate(['upload-success']);
+    //     },
+    //     error=> this.errorMessage = <any>error );
+
+    this._service.makeFileRequestXHR([], this.filesToUpload)
       .then((result) => {
-        console.log(result)
-        // this.router.navigate(['upload-success']);
+        console.log("results: ", result);
+        this._service.fileUploadResponse = <MetaDataResponseModel>result;
+        this._router.navigate(['upload-success']);
+      }, (error) => {
+        console.error(error);
+      });
+
+    //   .then((result) => {
+    //     // this.router.navigate(['upload-success']);
+    //   }, (error) => {
+    //     console.error(error);
+    //   });
+    //
+    // let metaData = <MetaDataModel>this.myForm.value.metaDataArray[0];
+    // this._service.InitFileUploadResponse(metaData);
+    // console.log(this._service.fileUploadResponse.DocId);
+  }
+
+  upload_update() {
+
+    this._service.updateFileRequestXHR([], this.filesToUpload)
+      .then((result) => {
+        console.log("results: ", result);
+        this._service.fileUploadResponse = <MetaDataResponseModel>result;
+        this._router.navigate(['upload-success']);
       }, (error) => {
         console.error(error);
       });
