@@ -53,6 +53,7 @@ export class FileUploadService {
 
       //console.log(formData, files.length, files);
       xhr.open('POST', url, true);
+      xhr.setRequestHeader('Authorization', 'basic ');// AUTHORIZATION HERE
       xhr.send(formData);
 
     });

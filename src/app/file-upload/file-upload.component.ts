@@ -74,6 +74,7 @@ export class FileUploadComponent  implements OnInit{
     //console.log(<FormArray>this.myForm.controls['metaDataArray'][0].customerId);
     this._service.makeFileRequest('http://localhost:3000/upload', [], this.filesToUpload, this.myForm.value.metaDataArray[0])
       .then((result) => {
+        console.log(result)
         // this.router.navigate(['upload-success']);
       }, (error) => {
         console.error(error);
