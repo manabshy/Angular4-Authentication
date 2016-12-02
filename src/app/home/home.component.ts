@@ -1,28 +1,19 @@
-import {Component, OnInit, Directive} from '@angular/core';
-import {LoginService} from '../login/login.service';
-import {Router} from '@angular/router';
+import {Component,Input, OnInit, Directive} from '@angular/core';
 import {FileUploadComponent} from '../file-upload/file-upload.component';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-
-
 export class HomeComponent implements OnInit {
-  private userName: string;
-
-  constructor(private _loginService: LoginService, private _router: Router) {
+  loggedIn:boolean = true;
+  //@Input() loggedIn:Boolean = true;
+  constructor() {
   }
 
-  ngOnInit() {
-    this.userName = localStorage.getItem('userName');
-  }
+  ngOnInit() { }
 
-  logout(): void {
-    this._loginService.logout();
-    this._router.navigate(['login']);
-  }
 
 }
 

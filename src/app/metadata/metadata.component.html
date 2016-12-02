@@ -1,23 +1,57 @@
-<div [formGroup]="metaDataForm">
-  <div class="form-group col-xs-6">
+<form [formGroup]="metaDataForm">
+  <app-fileupload *ngIf="!viewType"></app-fileupload>
+  <div class="form-group" *ngIf="!viewType">
+    <label>Document Id</label>
+    <input type="text" class="form-control" formControlName="documentId">
+  </div>
+
+  <div class="form-group" *ngIf="!viewType">
+    <label>Response Code</label>
+    <input type="text" class="form-control" formControlName="responseCode">
+  </div>
+
+  <div class="form-group" *ngIf="!viewType">
+    <label>Total Execution Time</label>
+    <input type="text" class="form-control" formControlName="totalExecutionTime">
+  </div>
+
+  <div class="form-group">
     <label>Customer Id</label>
     <input type="text" class="form-control" formControlName="customerId">
   </div>
-  <div class="form-group col-xs-6">
+
+  <div class="form-group">
     <label>source system</label>
     <input type="text" class="form-control" formControlName="sourceSystem">
   </div>
-  <div class="form-group col-xs-6">
+
+  <div class="form-group">
     <label>content type</label>
     <input type="text" class="form-control" formControlName="contentType">
   </div>
-  <div class="form-group col-xs-6">
+
+  <div class="form-group">
     <label>received date</label>
     <input type="text" class="form-control" formControlName="receivedDate">
   </div>
-  <div class="form-group col-xs-6">
+
+  <div class="form-group" *ngIf="isUploadDateVisible">
     <label>upload date</label>
     <input type="text" class="form-control" formControlName="uploadDate">
   </div>
 
-</div>
+  <div class="form-group" *ngIf="!viewType">
+    <label>UTR</label>
+    <input type="text" class="form-control" formControlName="utr">
+  </div>
+
+   <div class="form-group" *ngIf="!viewType">
+     <label>Version NO</label>
+     <input type="text" class="form-control" formControlName="version">
+  </div>
+
+  <div class="form-group" *ngIf="!viewType">
+    <a class="btn btn-primary float-xs-right" >Update</a>
+    <!--<button class="btn btn-md btn-primary btn-block col-md-3" (click)="upload()" >Upload</button>-->
+  </div>
+</form>

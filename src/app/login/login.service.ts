@@ -18,6 +18,12 @@ export class LoginService {
 
   constructor(private _http: Http) {}
 
+  ngOnInit() { 
+
+    console.log('userName', localStorage.getItem('userName'));
+
+  }
+
   getUsers (): Observable<User[]> {
     //console.log('in getUsers');
     return this._http.get(this._userDataUrl)
@@ -28,7 +34,7 @@ export class LoginService {
 
   login(user: User): Observable<boolean> {
     return this._http.get(this._userDataUrl)
-      .map((response: Response) => {
+    .map((response: Response) => {
         this.extractData(response);
         return this.Authenticate(user);
       })

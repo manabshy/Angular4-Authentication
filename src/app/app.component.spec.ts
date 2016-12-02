@@ -12,13 +12,18 @@ import { Component }                 from '@angular/core';
 import { LoginComponent }           from './login/login.component';
 import { HomeComponent }             from './home/home.component';
 import { FileUploadComponent }      from './file-upload/file-upload.component';
-import { MetadataComponent} from './metadata/metadata.component';
+import { MetaDataComponent} from './metadata/metadata.component';
 import { LoginService } from './login/login.service';
+import {FileUploadService} from './file-upload/file-upload.service';
 import { RouterLinkStubDirective }   from './testing/router-stubs';
 import { RouterOutletStubComponent } from './testing/router-stubs';
-import { Router } from '@angular/router';
 
+import { Router,RouterModule,ActivatedRoute,RouterLink } from '@angular/router';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { Provider } from '@angular/core';
+import {NavigationComponent} from "./navigation/navigation.component";
 import { FormGroup, FormControl, Validators, FormBuilder, FormsModule,ReactiveFormsModule } from '@angular/forms';
+import {REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/directives";
 
 @Component({selector: ' app-fileupload', template: ''})
   class HomeStubComponent {}
@@ -31,13 +36,13 @@ describe('AppComponent & TestModule', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        LoginComponent, HomeComponent,FileUploadComponent,
-        RouterLinkStubDirective, RouterOutletStubComponent,MetadataComponent
+        LoginComponent, HomeComponent,FileUploadComponent,NavigationComponent,
+        RouterLinkStubDirective, RouterOutletStubComponent,MetaDataComponent
       ],
-      providers:[FormBuilder,{provide:LoginService},{provide:Router}],
-      imports:[FormsModule]
+      providers:[FormBuilder,{provide:LoginService},{provide:Router},{provide:FileUploadService}],
+      imports:[FormsModule,ReactiveFormsModule]
     })
-    
+
     .compileComponents()
     .then(() => {
       fixture = TestBed.createComponent(HomeComponent);
@@ -58,7 +63,7 @@ function tests() {
 
     // find DebugElements with an attached RouterLinkStubDirective
     linkDes = fixture.debugElement
-      .queryAll(By.directive(RouterLinkStubDirective));  
+      .queryAll(By.directive(RouterLinkStubDirective));
 
     // get the attached link directive instances using the DebugElement injectors
     //console.log('linkDes:' + linkDes);
@@ -69,13 +74,13 @@ function tests() {
     const buttons    = fixture.debugElement.queryAll(By.css('button'));
    // this.logBtn = buttons[0];
   });
-  
+
   it('can instantiate it', () => {
       expect(comp).not.toBeNull();
     });
-  
+
   it('can get RouterLinks from HomeComponent template', () => {
     console.log('links.length:' +  links.length);
-    expect(links.length).toBe(1, 'should have No links as there are No links at present');
-  });  
+    expect(links.length).toBe(4, 'should have No links as there are No links at present');
+  });
 }

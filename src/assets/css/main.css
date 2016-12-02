@@ -7952,6 +7952,6 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
 
 /* line 1, ../scss/theme/bootstrap-overrides/_body.scss */
 body {
-  padding-top: 5rem;
+  /*padding-top: 5rem;*/
   background-color: #eee;
 }
