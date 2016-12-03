@@ -1,7 +1,7 @@
 import {Component,Input, OnInit, Directive} from '@angular/core';
 import {FileUploadComponent} from '../file-upload/file-upload.component';
-import { NavigationComponent } from '../navigation/navigation.component';
-
+import { AsideComponent } from '../shared/aside/aside.component';
+import { HeaderComponent } from '../shared/header/header.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
