@@ -4,7 +4,6 @@ import { FileUploadComponent } from './file-upload.component';
 import { MetaDataComponent } from '../metadata/metadata.component';
 import {FileUploadService} from "./file-upload.service";
 import { FormGroup, FormControl, Validators, FormBuilder, FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { NavigationComponent } from '../navigation/navigation.component';
 import { Router,RouterModule,ActivatedRoute,RouterLink } from '@angular/router';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { Provider } from '@angular/core';
@@ -27,7 +26,7 @@ describe('FileUploadComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      declarations: [ FileUploadComponent,MetaDataComponent,NavigationComponent ],
+      declarations: [ FileUploadComponent,MetaDataComponent ],
       providers: [{provide: Router},{provide:MetaDataComponent},{provide:FileUploadService},{provide:Router},{provide:ActivatedRoute},{provide:LocationStrategy}],
       imports:[ FormsModule,ReactiveFormsModule,RouterModule]
     })
