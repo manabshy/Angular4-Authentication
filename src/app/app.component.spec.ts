@@ -21,9 +21,10 @@ import { RouterOutletStubComponent } from './testing/router-stubs';
 import { Router,RouterModule,ActivatedRoute,RouterLink } from '@angular/router';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { Provider } from '@angular/core';
-import {NavigationComponent} from "./navigation/navigation.component";
 import { FormGroup, FormControl, Validators, FormBuilder, FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/directives";
+import { AsideComponent } from './shared/aside/aside.component';
+import { HeaderComponent } from './shared/header/header.component';
 
 @Component({selector: ' app-fileupload', template: ''})
   class HomeStubComponent {}
@@ -36,7 +37,7 @@ describe('AppComponent & TestModule', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        LoginComponent, HomeComponent,FileUploadComponent,NavigationComponent,
+        LoginComponent, HomeComponent,FileUploadComponent,AsideComponent,HeaderComponent,
         RouterLinkStubDirective, RouterOutletStubComponent,MetaDataComponent
       ],
       providers:[FormBuilder,{provide:LoginService},{provide:Router},{provide:FileUploadService}],
@@ -80,7 +81,7 @@ function tests() {
     });
 
   it('can get RouterLinks from HomeComponent template', () => {
-    console.log('links.length:' +  links.length);
+    //console.log('links.length:' +  links.length);
     expect(links.length).toBe(4, 'should have No links as there are No links at present');
   });
 }

@@ -6,7 +6,10 @@ import { HttpModule } from '@angular/http';
 import { HomeComponent } from './home.component';
 import { FileUploadComponent } from '../file-upload/file-upload.component';
 import { MetaDataComponent } from '../metadata/metadata.component';
-import { NavigationComponent} from '../navigation/navigation.component';
+import { AsideComponent } from '../shared/aside/aside.component';
+import { HeaderComponent } from '../shared/header/header.component';
+
+//import { NavigationComponent} from '../navigation/navigation.component';
 import { FormGroup, FormControl, Validators, FormBuilder, FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {MetaDataModel} from "../metadata/metadata.model";
 import {LoginService} from "../login/login.service";
@@ -25,7 +28,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent, FileUploadComponent,MetaDataComponent,NavigationComponent ],
+      declarations: [ HomeComponent, FileUploadComponent,MetaDataComponent,AsideComponent,HeaderComponent ],
       providers:[{provide: FileUploadService},{provide:LoginService},
                   {provide:Router},FormBuilder  ],
       imports:[HttpModule,ReactiveFormsModule,FormsModule ]

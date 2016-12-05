@@ -7,8 +7,9 @@ import {FormBuilder, FormArray, FormsModule,FormGroup,ReactiveFormsModule} from 
 import { FileUploadComponent } from '../file-upload/file-upload.component';
 
 import { FileUploadUpdateComponent } from './file-upload-update.component';
+import { AsideComponent } from '../shared/aside/aside.component';
+import { HeaderComponent } from '../shared/header/header.component';
 
-import { NavigationComponent} from '../navigation/navigation.component';
 import {MetaDataComponent} from '../metadata/metadata.component';
 import {FileUploadService} from '../file-upload/file-upload.service';
 import {LoginService} from '../login/login.service';
@@ -22,7 +23,7 @@ describe('FileUploadUpdateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FileUploadComponent,FileUploadUpdateComponent,NavigationComponent,MetaDataComponent ],
+      declarations: [ FileUploadComponent,FileUploadUpdateComponent,AsideComponent,HeaderComponent,MetaDataComponent ],
       providers:[{provide:FormGroup},{provide:Router},{provide:FileUploadService},{provide:LoginService}],
       imports:[ FormsModule,ReactiveFormsModule]
 
