@@ -4,7 +4,6 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import {MetaDataComponent} from '../metadata/metadata.component';
 import {MetaDataResponseModel} from '../metadata/metadata.model';
-import {NavigationComponent} from '../navigation/navigation.component'
 import {FormBuilder, FormArray, FormsModule,FormGroup,ReactiveFormsModule} from '@angular/forms';
 import {FileUploadService} from '../file-upload/file-upload.service';
 import {LoginService} from "../login/login.service";
@@ -20,7 +19,7 @@ describe('UploadSuccessComponent',() => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UploadSuccessComponent,NavigationComponent,MetaDataComponent ],
+      declarations: [ UploadSuccessComponent,MetaDataComponent ],
       providers:[{provide:FileUploadService},{provide:FormGroup},{provide:Router},{provide:LoginService},{provide:ActivatedRoute}],
       imports:[ FormsModule,ReactiveFormsModule]
     })
