@@ -1,0 +1,24 @@
+.box {
+  font-size: 1.25rem;
+  background-color: #c8dadf;
+  position: relative;
+  padding: 100px 20px;
+}
+
+.box__uploading {
+  font-style: italic;
+}
+.box__uploading, .box__success, .box__error {
+  display: none;
+}
+
+.box.has-advanced-upload {
+  outline: 2px dashed #92b0b3;
+  /* outline-offset: -10px; */
+  -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+  transition: outline-offset .15s ease-in-out, background-color .15s linear;
+}
+*, *::before, *::after {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

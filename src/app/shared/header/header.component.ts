@@ -18,11 +18,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.userName = localStorage.getItem('userName');
   }
+
   logout(): void {
     this._loginService.logout();
     this._router.navigate(['login']);
-
-   
   }
 }
 

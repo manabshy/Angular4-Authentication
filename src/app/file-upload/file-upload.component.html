@@ -1,31 +1,44 @@
-<form [formGroup]="myForm" novalidate>
-  <h2>Select a file to upload</h2>
-  <div class="row">
-     <div class="col-sm-12">
-        <div class="form-group">
-          <input type="file" class="form-control" (change)="fileChangeEvent($event)"
-                formControlName="file" placeholder="Upload a file...">
-        </div>
-     </div>
+<form class="box" method="post" action="" enctype="multipart/form-data" class="box has-advanced-upload">
+  <div class="box__input">
+    <input class="box__file col-lg-6 col-offset-3" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+    <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
   </div>
-  <div formArrayName="metaDataArray">
-    <div *ngFor="let md of myForm.controls.metaDataArray.controls; let i=index" class="panel panel-default">
-      <div class="card">
-        <h3 class="card-header">
-          Meta Data
-        </h3>
-        <div class="card-block" [formGroupName]="i">
-          <app-metadata [group]="myForm.controls.metaDataArray.controls[i]" [viewType]="true" [isUploadDateVisible]="false"></app-metadata>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div>
-    <a class="btn btn-primary float-xs-right" (click)="upload()" >Upload</a>
-    <a [hidden]=(!viewUploadInCreate) class="btn btn-primary float-xs-right" (click)="upload_update()" >Upload-Update</a>
-
-    <!--<button class="btn btn-md btn-primary btn-block col-md-3" (click)="upload()" >Upload</button>-->
-  </div>
+  <div class="box__uploading">Uploading&hellip;</div>
+  <div class="box__success">Done!</div>
+  <div class="box__error">Error! <span></span>.</div>
 </form>
+
+
+
+
+<!--<form [formGroup]="myForm" novalidate>-->
+  <!--<h2>Select a file to upload</h2>-->
+  <!--<div class="row">-->
+     <!--<div class="col-sm-12">-->
+        <!--<div class="form-group">-->
+          <!--<input type="file" class="form-control" (change)="fileChangeEvent($event)"-->
+                <!--formControlName="file" placeholder="Upload a file...">-->
+        <!--</div>-->
+     <!--</div>-->
+  <!--</div>-->
+  <!--<div formArrayName="metaDataArray">-->
+    <!--<div *ngFor="let md of myForm.controls.metaDataArray.controls; let i=index" class="panel panel-default">-->
+      <!--<div class="card">-->
+        <!--<h3 class="card-header">-->
+          <!--Meta Data-->
+        <!--</h3>-->
+        <!--<div class="card-block" [formGroupName]="i">-->
+          <!--<app-metadata [group]="myForm.controls.metaDataArray.controls[i]" [viewType]="true" [isUploadDateVisible]="false"></app-metadata>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div>-->
+    <!--<a class="btn btn-primary float-xs-right" (click)="upload()" >Upload</a>-->
+    <!--<a [hidden]=(!viewUploadInCreate) class="btn btn-primary float-xs-right" (click)="upload_update()" >Upload-Update</a>-->
+
+    <!--&lt;!&ndash;<button class="btn btn-md btn-primary btn-block col-md-3" (click)="upload()" >Upload</button>&ndash;&gt;-->
+  <!--</div>-->
+<!--</form>-->
 
 
