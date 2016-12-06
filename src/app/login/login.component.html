@@ -1,26 +1,34 @@
 
 <div class="container">
   <div class="row flex-items-xs-center">
-    <div class="card col-md-5">
+    <div class="card col-md-4 login-card">
       <div class="card-block">
         <form role="form" (submit)="login()">
-          <h2 class="form-signin-heading">{{title}}</h2>
+          <p class="card-title mb-2">
+            <!--{{title}}-->
+            Welcome to this App.<br> 
+            Please enter your login details.
+          </p>
           <div class="form-group">
             <label for="userEmail" class="sr-only">Email address</label>
-            <input type="email" id="userEmail" name="email" class="form-control" placeholder="Email address"
-                   [(ngModel)]="user.email" required
-                   autofocus>
+            
+              <input type="email" id="userEmail" name="email" class="form-control" placeholder="Email address"
+                    [(ngModel)]="user.email" required autofocus>
+            
           </div>
           <div class="form-group">
             <label for="userPassword" class="sr-only">Password</label>
-            <input type="password" id="userPassword" name="password" [(ngModel)]="user.password" class="form-control"
-                   placeholder="Password" required>
+            
+              <input type="password" id="userPassword" name="password" [(ngModel)]="user.password" class="form-control"
+                    placeholder="Password" required>
+            
           </div>
-          <div *ngIf="errorMsg" class="alert alert-danger">{{errorMsg}}</div>
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-          <button [disabled]="loading" id="submitLogin" class="btn btn-lg btn-primary btn-block" name="submit" type="submit">Sign in
+          <p *ngIf="errorMsg" class="text-danger small font-weight-bold">
+            <!--{{errorMsg}}-->
+            It seems your details are not correct.<br>
+            Please enter them again.
+          </p>
+          <button [disabled]="loading" id="submitLogin" class="btn btn-lg btn-primary btn-block mt-2" name="submit" type="submit">Login
           </button>
         </form>
       </div>
