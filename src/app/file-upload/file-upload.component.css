@@ -62,3 +62,7 @@ svg:not(:root) {
   overflow: hidden;
 
 }
+
+.thead-inverse {
+  background-color: #0275d8;
+}

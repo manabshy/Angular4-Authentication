@@ -16,7 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
- imports: [FormsModule,BrowserModule,ReactiveFormsModule
+ imports: [FormsModule,BrowserModule,ReactiveFormsModule, RouterModule
   ],
   declarations: [
     HomeComponent,
