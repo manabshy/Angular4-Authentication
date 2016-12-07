@@ -1,9 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
 import { AsideComponent } from './aside.component';
+import {RouterModule, Router } from '@angular/router';
 
 describe('AsideComponent', () => {
   let component: AsideComponent;
@@ -11,7 +9,9 @@ describe('AsideComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AsideComponent ]
+      declarations: [ AsideComponent ],
+      providers:[{provide:Router}],
+      imports: [ RouterModule ]
     })
     .compileComponents();
   }));

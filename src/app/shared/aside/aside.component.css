@@ -1,5 +1,17 @@
 .nav-item {
   background-color: #696969;
+  font-weight: bold;
+  padding: inherit;
+}
+
+.nav-item a {
+  display: block;
+  background-color: #696969;
   color: #ffffff;
+  font-weight: bold;
+}
+
+ul li a:hover,ul li.active a, ul li.selected a{
+  background-color: #808080;
   font-weight: bold;
 }
