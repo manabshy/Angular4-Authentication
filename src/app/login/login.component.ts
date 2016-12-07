@@ -12,7 +12,7 @@ export class LoginComponent {
   public user = new User('', '');
   public errorMsg = '';
   public loading = false;
-  title = "Please sign in";
+  title = "Welcome to this App.";
   public loggedIn = Boolean;
 
   constructor(private router: Router,
@@ -29,7 +29,7 @@ export class LoginComponent {
              loggedIn = result;         
              this.router.navigate(['/']);
         } else {
-          this.errorMsg = 'Username or password is incorrect';
+          this.errorMsg = 'It seems your details are not correct. Please enter them again.';
           this.loading = false;
           loggedIn = result;
         }
