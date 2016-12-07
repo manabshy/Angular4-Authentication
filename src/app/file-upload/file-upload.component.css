@@ -63,6 +63,10 @@ svg:not(:root) {
 
 }
 
-.thead-inverse {
-  background-color: #0275d8;
+.box_file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
 }
