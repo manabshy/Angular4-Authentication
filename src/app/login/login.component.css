@@ -4,19 +4,18 @@
     border-top: 4px #57d995 solid;
 }
 
-.login-card .card-block { 
+.login-card .card-block {
     padding: 2rem 1.25rem;
 }
 
 .btn-primary {
-    background-color: #127674;
     border-color: #127674;
 }
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-    background-color: #0f605e;
-    border-color: #0f605e;
-}
+/*.btn-primary:hover, .btn-primary:focus, .btn-primary:active {*/
+    /*background-color: #0f605e;*/
+    /*border-color: #0f605e;*/
+/*}*/
 
 .form-control {
     background-color: #e6e6e6;
