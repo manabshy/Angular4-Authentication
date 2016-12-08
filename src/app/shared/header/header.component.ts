@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService}  from '../../login/login.service';
-import { Router,RouterModule,ActivatedRoute,RouterLink } from '@angular/router';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,20 +8,19 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-   
+
   private userName: string;
   isLoggedIn:boolean = false;
-  
+
   constructor( private _loginService:LoginService, private _router: Router) {
   }
   ngOnInit() {
     this.userName = localStorage.getItem('userName');
   }
+
   logout(): void {
     this._loginService.logout();
     this._router.navigate(['login']);
-
-   
   }
 }
 

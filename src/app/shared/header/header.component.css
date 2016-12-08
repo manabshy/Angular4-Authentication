@@ -1,0 +1,11 @@
+.masthead {
+    padding: 0.5rem 1rem;
+    background-color: #fff;
+    border-top: 4px #57d995 solid;
+    border-bottom: 1px #e6e6e6 solid ;
+}
+
+.masthead-title {
+    float: left;
+    font-weight: bold;
+}

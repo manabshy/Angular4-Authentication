@@ -30,8 +30,8 @@ describe('HomeComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent, FileUploadComponent,MetaDataComponent,AsideComponent,HeaderComponent ],
       providers:[{provide: FileUploadService},{provide:LoginService},
-                  {provide:Router},FormBuilder  ],
-      imports:[HttpModule,ReactiveFormsModule,FormsModule ]
+                  {provide:Router}, {provide:ActivatedRoute},{provide:LocationStrategy},FormBuilder  ],
+      imports:[HttpModule, ReactiveFormsModule, FormsModule, RouterModule ]
     })
     .compileComponents();
     fixture   = TestBed.createComponent(HomeComponent);

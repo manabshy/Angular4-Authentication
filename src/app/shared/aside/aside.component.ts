@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-aside',
   templateUrl: './aside.component.html',
-  styleUrls: ['./aside.component.css']
+  styleUrls: ['./aside.component.css'],
 })
-export class AsideComponent implements OnInit {
+export class AsideComponent {
 
-  constructor() { }
+  constructor(private _router: Router) {}
 
-  ngOnInit() {
+  navigateTo(location: string): void{
+    this._router.navigate([location]);
   }
 
 }

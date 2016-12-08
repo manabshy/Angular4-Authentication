@@ -1,13 +1,9 @@
 /* tslint:disable:no-unused-variable */
 
 import { AppComponent } from './app.component';
-import { async, ComponentFixture, TestBed
-} from '@angular/core/testing';
-
+import { async, ComponentFixture, TestBed} from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-
-import { NO_ERRORS_SCHEMA }          from '@angular/core';
 import { Component }                 from '@angular/core';
 import { LoginComponent }           from './login/login.component';
 import { HomeComponent }             from './home/home.component';
@@ -17,17 +13,12 @@ import { LoginService } from './login/login.service';
 import {FileUploadService} from './file-upload/file-upload.service';
 import { RouterLinkStubDirective }   from './testing/router-stubs';
 import { RouterOutletStubComponent } from './testing/router-stubs';
-
-import { Router,RouterModule,ActivatedRoute,RouterLink } from '@angular/router';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { Provider } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder, FormsModule,ReactiveFormsModule } from '@angular/forms';
-import {REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/directives";
+import { Router} from '@angular/router';
+import { FormBuilder, FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AsideComponent } from './shared/aside/aside.component';
 import { HeaderComponent } from './shared/header/header.component';
 
-@Component({selector: ' app-fileupload', template: ''})
-  class HomeStubComponent {}
+
 
 let comp:    HomeComponent;
 let fixture: ComponentFixture<HomeComponent>;
@@ -82,6 +73,6 @@ function tests() {
 
   it('can get RouterLinks from HomeComponent template', () => {
     //console.log('links.length:' +  links.length);
-    expect(links.length).toBe(4, 'should have No links as there are No links at present');
+    expect(links.length).toBe(0, 'should have No links as there are No links at present');
   });
 }

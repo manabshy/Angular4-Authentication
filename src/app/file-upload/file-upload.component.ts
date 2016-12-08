@@ -1,6 +1,6 @@
-import {Component, Input,OnInit } from '@angular/core';
-import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
-import {MetaDataModel, MetaDataResponseModel} from "../metadata/metadata.model";
+import {Component, Input, OnInit} from '@angular/core';
+import {Validators, FormGroup, FormArray, FormBuilder} from '@angular/forms';
+import {MetaDataModel, MetaDataResponseModel, FileDocument} from "../metadata/metadata.model";
 import {FileUploadService} from "./file-upload.service";
 import {Router} from "@angular/router";
 
@@ -9,73 +9,66 @@ import {Router} from "@angular/router";
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.css']
 })
-export class FileUploadComponent  implements OnInit{
-
-  viewUploadInCreate: boolean = false;
+export class FileUploadComponent {
 
   myForm: FormGroup;
   filesToUpload: Array<File>;
   metaData: MetaDataModel;
-  metaDataResponse: MetaDataResponseModel;
-  errorMessage: string;
+  FileSelected: boolean = false;
+  files: Array<FileDocument>;
 
   constructor(private _fb: FormBuilder, private _service: FileUploadService, private _router: Router) {
     this.filesToUpload = [];
   }
 
-  ngOnInit() {
-    this.myForm = this._fb.group({
-      file: ['', [Validators.required]],
-      metaDataArray: this._fb.array([])
-    });
-  }
   fileChangeEvent(fileInput: any) {
+    this.files = new Array<FileDocument>();
     let file = fileInput.target.files;
-    this.filesToUpload = <Array<File>>file;
-    this.metaData = this.populateFileModel(this.filesToUpload[0]);
-    this.addMetaDataForm(this.metaData);
-  }
-  addMetaDataForm(newMetaData: MetaDataModel) {
-    const control = <FormArray>this.myForm.controls['metaDataArray'];
-    control.setControl(0, this.initializeMetaDataForm(newMetaData));
+    let selectedFiles: Array<File> = <Array<File>>file;
+    for(let f of selectedFiles){
+      this.files.push(this.getFileDocument(f));
+    }
+    this.FileSelected = true;
   }
 
-  initializeMetaDataForm(newMetaData: MetaDataModel) {
-    return this._fb.group({
-      customerId: [newMetaData.customerId],
-      sourceSystem: [newMetaData.sourceSystem],
-      contentType: [newMetaData.contentType],
-      receivedDate: [newMetaData.receivedDate],
-      uploadDate: null,
-      utr: [''],
-      version:null
-    });
+  getFileDocument(f: File): FileDocument {
+    let fDoc: FileDocument = new FileDocument();
+    fDoc.file = f;
+    fDoc.customer = "Customer1";
+    fDoc.type = f.type;
+    fDoc.name =f.name;
+    fDoc.size =f.size.toString();
+    fDoc.receivedDate = f.lastModifiedDate;
+    fDoc.creationDate = f.lastModifiedDate;
+    fDoc.uploadDate = new Date(Date.now());
+    return fDoc;
   }
-  populateFileModel(file: any) {
-    let fileReader = new FileReader();
-    fileReader.onload = function (e) {
-      console.log(e);
-    };
 
-    let fileMetadata = new MetaDataModel(
-      localStorage.getItem('userName'),
-      'angular app',
-      file.type,
-      file.lastModifiedDate
-    );
-    return fileMetadata;
+  addAnotherFile(fileInput: any) {
+    let selectedFiles = <Array<File>>fileInput.target.files;
+    let file = selectedFiles[0];
+    this.files.push(this.getFileDocument(file));
+  }
+
+  cancelUpload(): void {
+    this.files = [];
+    this.FileSelected = false;
+  }
+
+  DiscardFile(f: FileDocument){
+    console.log("Will not be uploaded: ", f);
   }
 
   update() {
-      this._service.updateFileRequestXHR([], this.filesToUpload)
-       .then((result) => {
-         console.log("results to update: ", result);
-         this._service.fileUploadResponse = <MetaDataResponseModel>result;
-         this._router.navigate(['upload-success']);
-       }, (error) => {
-         console.error(error);
-       });
-   }
+    this._service.updateFileRequestXHR([], this.filesToUpload)
+      .then((result) => {
+        console.log("results to update: ", result);
+        this._service.fileUploadResponse = <MetaDataResponseModel>result;
+        this._router.navigate(['upload-success']);
+      }, (error) => {
+        console.error(error);
+      });
+  }
 
   upload() {
 
