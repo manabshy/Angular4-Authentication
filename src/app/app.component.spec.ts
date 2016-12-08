@@ -73,6 +73,6 @@ function tests() {
 
   it('can get RouterLinks from HomeComponent template', () => {
     //console.log('links.length:' +  links.length);
-    expect(links.length).toBe(2, 'should have No links as there are No links at present');
+    expect(links.length).toBe(0, 'should have No links as there are No links at present');
   });
 }

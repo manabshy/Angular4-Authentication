@@ -1,9 +1,11 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed, inject} from '@angular/core/testing';
 import { AsideComponent } from './aside.component';
-import {RouterModule, Router, ActivatedRoute} from '@angular/router';
-import {CommonModule} from "@angular/common";
-import {BrowserModule} from "@angular/platform-browser";
+import { RouterModule, Router, ActivatedRoute } from '@angular/router';
+import {CommonModule, LocationStrategy, HashLocationStrategy} from "@angular/common";
+import { BrowserModule } from "@angular/platform-browser";
+import {RouterTestingModule} from "@angular/router/testing";
+import { Component } from '@angular/core';
 
 describe('AsideComponent', () => {
   let component: AsideComponent;
@@ -13,7 +15,9 @@ describe('AsideComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ AsideComponent ],
       providers:[{provide:Router},
-        {provide: ActivatedRoute}
+        {provide: ActivatedRoute},
+        {provide: LocationStrategy},
+        {provide: HashLocationStrategy }
       ],
       imports: [ RouterModule, CommonModule, BrowserModule ]
     })

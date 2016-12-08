@@ -1,8 +1,10 @@
   <ul class="nav nav-pills nav-stacked">
     <li class="nav-item">
-      <a [routerLink]="['/']">Dashboard</a>
+      <a (click)="navigateTo('/')">Dashboard</a>
     </li>
     <li class="nav-item">
-      <a [routerLink]="['/create']">Upload File</a>
+      <a (click)="navigateTo('/create')">Upload File</a>
     </li>
   </ul>
+
+

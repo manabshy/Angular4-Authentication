@@ -12,7 +12,8 @@ import { HeaderComponent } from '../shared/header/header.component';
 import {MetaDataComponent} from '../metadata/metadata.component';
 import {FileUploadService} from '../file-upload/file-upload.service';
 import {LoginService} from '../login/login.service';
-import { Router,RouterModule } from '@angular/router';
+import {Router, RouterModule, ActivatedRoute} from '@angular/router';
+import {LocationStrategy} from "@angular/common";
 
 
 describe('FileUploadUpdateComponent', () => {
@@ -22,7 +23,7 @@ describe('FileUploadUpdateComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ FileUploadComponent,FileUploadUpdateComponent,AsideComponent,HeaderComponent,MetaDataComponent ],
-      providers:[{provide:FormGroup},{provide:Router},{provide:FileUploadService},{provide:LoginService}],
+      providers:[{provide:FormGroup},{provide:Router},{provide:FileUploadService},{provide:LoginService}, {provide: ActivatedRoute}, {provide: LocationStrategy }],
       imports:[ FormsModule,ReactiveFormsModule, RouterModule]
 
     })
