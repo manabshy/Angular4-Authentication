@@ -4,11 +4,8 @@
     <div class="card col-md-4 login-card">
       <div class="card-block">
         <form role="form" (submit)="login()">
-          <p class="card-title mb-2">
-            <!--{{title}}-->
-            Welcome to this App.<br> 
-            Please enter your login details.
-          </p>
+          <p class="card-title mb-0" id="loginTitle">{{title}}</p>
+          <p id="welcomeMessage">Please enter your login details.</p>
           <div class="form-group">
             <label for="userEmail" class="sr-only">Email address</label>
             
@@ -23,10 +20,8 @@
                     placeholder="Password" required>
             
           </div>
-          <p *ngIf="errorMsg" class="text-danger small font-weight-bold">
-            <!--{{errorMsg}}-->
-            It seems your details are not correct.<br>
-            Please enter them again.
+          <p *ngIf="errorMsg" class="text-danger small font-weight-bold" id="errorMessage">
+            {{errorMsg}}
           </p>
           <button [disabled]="loading" id="submitLogin" class="btn btn-lg btn-primary btn-block mt-2" name="submit" type="submit">Login
           </button>

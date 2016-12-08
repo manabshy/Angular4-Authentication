@@ -63,7 +63,7 @@ let location: SpyLocation;
     expect(component).toBeTruthy();
   });
   it('should check for title', () => {
-    let de = fixture.debugElement.query(By.css('h2'));
+    let de = fixture.debugElement.query(By.css('p.card-title'));
     expect(de.nativeElement.textContent).toContain(component.title);
   });
   it('should check for input fields Email and Password',() =>{
@@ -83,7 +83,7 @@ let location: SpyLocation;
     let el = de.nativeElement;
     const content = el.textContent;
 
-    expect(content).toMatch(/Sign in/i, '"Sign in"'); 
+    expect(content).toMatch(/Login/i, '"Login"'); 
 
   });
 
