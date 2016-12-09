@@ -27,8 +27,8 @@ describe('FileUploadComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [ FileUploadComponent,MetaDataComponent ],
-      providers: [{provide: Router},{provide:MetaDataComponent},{provide:FileUploadService},{provide:Router},{provide:ActivatedRoute},{provide:LocationStrategy}],
-      imports:[ FormsModule,ReactiveFormsModule,RouterModule]
+      providers: [{provide: Router},{provide:MetaDataComponent},{provide:FileUploadService},{provide:ActivatedRoute},{provide:LocationStrategy}],
+      imports:[ FormsModule, ReactiveFormsModule, RouterModule]
     })
     .compileComponents();
   }));

@@ -15,7 +15,6 @@ const appRoutes: Routes = [
   {path: 'update', component: FileUploadUpdateComponent, canActivate: [AuthGuardService]},
   {path: 'dashboard', component: HomeComponent, canActivate: [AuthGuardService]},
   {path: 'upload-success', component: UploadSuccessComponent, canActivate: [AuthGuardService], resolve: { uploadResponse: FileUploadResolve }},
-
   {path: '**', redirectTo: ''}
 ];
 
