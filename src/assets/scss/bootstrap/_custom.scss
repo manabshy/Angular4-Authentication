@@ -51,14 +51,14 @@ $gray-light:                #818a91 !default;
 $gray-lighter:              #eceeef !default;
 $gray-lightest:             #f7f7f9 !default;
 
-$brand-primary:             #0275d8 !default;
+$brand-primary:             #127674 !default;
 $brand-success:             #5cb85c !default;
 $brand-info:                #5bc0de !default;
 $brand-warning:             #f0ad4e !default;
 $brand-danger:              #d9534f !default;
 $brand-inverse:             $gray-dark !default;
 
-
+$brand-secondary:           $gray-light;
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
@@ -67,7 +67,7 @@ $enable-flex:               false !default;
 $enable-rounded:            true !default;
 $enable-shadows:            false !default;
 $enable-gradients:          false !default;
-$enable-transitions:        false !default;
+$enable-transitions:        true !default;
 $enable-hover-media-query:  false !default;
 $enable-grid-classes:       true !default;
 $enable-print-styles:       true !default;
@@ -258,8 +258,8 @@ $table-cell-padding:            .75rem !default;
 $table-sm-cell-padding:         .3rem !default;
 
 $table-bg:                      transparent !default;
-$table-bg-accent:               rgba(0,0,0,.05) !default;
-$table-bg-hover:                rgba(0,0,0,.075) !default;
+$table-bg-accent:               #f2f2f2 !default;
+$table-bg-hover:                #d4e958 !default;
 $table-bg-active:               $table-bg-hover !default;
 
 $table-border-width:            $border-width !default;
