@@ -9,11 +9,11 @@ export class AppConfigs {
 	private useMockData:boolean = false;
 	private mockUrl: string = "http://localhost:8090";
 
-	//upload url 
-	public uploadUri:string  = ((this.useMockData) ? this.mockUrl : "http://172.19.32.45:8080") + '/ingestion-service-web/igs/document/upload';
+	//upload url
+	public uploadUri:string  = ((this.useMockData) ? this.mockUrl : "http://172.19.32.126:8080") + '/ingestion-service-web/igs/document/upload';
 
-	//file upload end point 
-	public updateUri:string =  ((this.useMockData) ? this.mockUrl : "http://172.19.32.73:8081") + '/ingestion-service-web/igs/document/update';
+	//file upload end point
+	public updateUri:string =  ((this.useMockData) ? this.mockUrl : "http://172.19.32.126:8081") + '/ingestion-service-web/igs/document/update';
 
 
 }

@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Validators, FormGroup, FormArray, FormBuilder} from '@angular/forms';
-import {MetaDataModel, MetaDataResponseModel, FileDocument} from "../metadata/metadata.model";
+import {Component, Input,OnInit } from '@angular/core';
+import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import {MetaDataModel, MetaDataResponseModel} from "../metadata/metadata.model";
 import {FileUploadService} from "./file-upload.service";
 import {Router} from "@angular/router";
 
@@ -9,68 +9,72 @@ import {Router} from "@angular/router";
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.css']
 })
-export class FileUploadComponent {
+export class FileUploadComponent  implements OnInit{
 
   myForm: FormGroup;
   filesToUpload: Array<File>;
   metaData: MetaDataModel;
-  FileSelected: boolean = false;
-  files: Array<FileDocument>;
+  metaDataResponse: MetaDataResponseModel;
+  errorMessage: string;
 
   constructor(private _fb: FormBuilder, private _service: FileUploadService, private _router: Router) {
     this.filesToUpload = [];
   }
 
+  ngOnInit() {
+    this.myForm = this._fb.group({
+      file: ['', [Validators.required]],
+      metaDataArray: this._fb.array([])
+    });
+  }
   fileChangeEvent(fileInput: any) {
-    this.files = new Array<FileDocument>();
     let file = fileInput.target.files;
-    let selectedFiles: Array<File> = <Array<File>>file;
-    for(let f of selectedFiles){
-      this.files.push(this.getFileDocument(f));
-    }
-    this.FileSelected = true;
+    this.filesToUpload = <Array<File>>file;
+    this.metaData = this.populateFileModel(this.filesToUpload[0]);
+    this.addMetaDataForm(this.metaData);
+  }
+  addMetaDataForm(newMetaData: MetaDataModel) {
+    const control = <FormArray>this.myForm.controls['metaDataArray'];
+    control.setControl(0, this.initializeMetaDataForm(newMetaData));
   }
 
-  getFileDocument(f: File): FileDocument {
-    let fDoc: FileDocument = new FileDocument();
-    fDoc.file = f;
-    fDoc.customer = "Customer1";
-    fDoc.type = f.type;
-    fDoc.name =f.name;
-    fDoc.size =f.size.toString();
-    fDoc.receivedDate = f.lastModifiedDate;
-    fDoc.creationDate = f.lastModifiedDate;
-    fDoc.uploadDate = new Date(Date.now());
-    return fDoc;
+  initializeMetaDataForm(newMetaData: MetaDataModel) {
+    return this._fb.group({
+      customerId: [newMetaData.customerId],
+      sourceSystem: [newMetaData.sourceSystem],
+      contentType: [newMetaData.contentType],
+      receivedDate: [newMetaData.receivedDate],
+      uploadDate: null,
+      utr: [''],
+      version:null
+    });
   }
+  populateFileModel(file: any) {
+    let fileReader = new FileReader();
+    fileReader.onload = function (e) {
+      console.log(e);
+    };
 
-  addAnotherFile(fileInput: any) {
-    let selectedFiles = <Array<File>>fileInput.target.files;
-    let file = selectedFiles[0];
-    this.files.push(this.getFileDocument(file));
-  }
-
-  cancelUpload(): void {
-    this.files = [];
-    this.FileSelected = false;
-  }
-
-  DiscardFile(f: FileDocument){
-    console.log("Will not be uploaded: ", f);
-  }
-
-  update() {
-    this._service.updateFileRequestXHR([], this.filesToUpload)
-      .then((result) => {
-        console.log("results to update: ", result);
-        this._service.fileUploadResponse = <MetaDataResponseModel>result;
-        this._router.navigate(['upload-success']);
-      }, (error) => {
-        console.error(error);
-      });
+    let fileMetadata = new MetaDataModel(
+      localStorage.getItem('userName'),
+      'angular app',
+      file.type,
+      file.lastModifiedDate
+    );
+    return fileMetadata;
   }
 
   upload() {
+
+    this._service.makeFileRequestXHR([], this.filesToUpload)
+      .then((result) => {
+        console.log("results: ", result);
+        this._service.fileUploadResponse = <MetaDataResponseModel>result;
+        this._router.navigate(['upload-success']);
+      }, (error) => {
+        console.log("ERRORS",error);
+      });
+
 
     // let currentMetaData = <MetaDataModel>this.myForm.value.metaDataArray[0];
     // this._service.makeFileRequest(currentMetaData, this.filesToUpload)
@@ -82,15 +86,6 @@ export class FileUploadComponent {
     //     },
     //     error=> this.errorMessage = <any>error );
 
-    this._service.makeFileRequestXHR([], this.filesToUpload)
-      .then((result) => {
-        console.log("results: ", result);
-        this._service.fileUploadResponse = <MetaDataResponseModel>result;
-        this._router.navigate(['upload-success']);
-      }, (error) => {
-        console.error(error);
-      });
-
     //   .then((result) => {
     //     // this.router.navigate(['upload-success']);
     //   }, (error) => {
@@ -100,18 +95,6 @@ export class FileUploadComponent {
     // let metaData = <MetaDataModel>this.myForm.value.metaDataArray[0];
     // this._service.InitFileUploadResponse(metaData);
     // console.log(this._service.fileUploadResponse.DocId);
-  }
-
-  upload_update() {
-
-    this._service.updateFileRequestXHR([], this.filesToUpload)
-      .then((result) => {
-        console.log("results: ", result);
-        this._service.fileUploadResponse = <MetaDataResponseModel>result;
-        this._router.navigate(['upload-success']);
-      }, (error) => {
-        console.error(error);
-      });
   }
 
 }

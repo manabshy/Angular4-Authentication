@@ -1,51 +1,12 @@
 import {Injectable} from '@angular/core';
 import {MetaDataModel, MetaDataResponseModel} from "../metadata/metadata.model";
-import {Http, Response, Headers, RequestOptions} from "@angular/http";
-import {Observable} from "rxjs";
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/map';
-
-import { AppConfigs } from '../app.config'
 
 @Injectable()
 export class FileUploadService {
 
   metaDataArray : MetaDataModel[];
   fileUploadResponse: MetaDataResponseModel;
-
-  constructor(private _http: Http, private appConfig: AppConfigs){  }
-
-  InitFileUploadResponse(fileUploadMetaData: MetaDataModel): void {
-    //this.fileUploadResponse = new MetaDataResponseModel(fileUploadMetaData);
-    // this.fileUploadResponse.utr ="4343455454323";
-    // this.fileUploadResponse.responseCode = "200";
-    // this.fileUploadResponse.totalExecutionTime = "12.12ms";
-    // this.fileUploadResponse.DocId = "12345";
-  }
-
-  updateMetaData(fileUpdateMetaData: MetaDataResponseModel): void{
-  }
-
-  createAuthorizationHeader(headers: Headers) {
-    headers.append('Authorization', 'Basic ' + btoa('joe:bloggspwd'));
-  }
-
-  // makeFileRequest(fileUploadMetaData: MetaDataModel, fileUploadArray: Array<any>): Observable<MetaDataResponseModel> {
-  //   console.log("in service makeFileRequest:", fileUploadMetaData, fileUploadArray[0]);
-  //   let headers = new Headers({'Content-Type' : 'multipart/form-data', 'file': fileUploadArray[0]});
-  //   this.createAuthorizationHeader(headers);
-  //   // let options = new RequestOptions({headers: headers});
-  //   let body = JSON.stringify(fileUploadMetaData);
-
-  //   return this._http.post(this.fileUploadEndPoint, body, {headers: headers})
-  //     .map((res: Response) =>  {
-  //     console.log("in service response:");
-  //     this.fileUploadResponse = <MetaDataResponseModel>res.json();
-  //     return <MetaDataResponseModel>res.json();
-  //   })
-  //     .catch(this.handleError);
-  // }
+  uploadUrl: string = "http://172.19.32.126:8080/ingestion-service-web/igs/document/upload";
 
   populateFileModel(file) {
     let fileReader = new FileReader();
@@ -82,56 +43,18 @@ export class FileUploadService {
       }
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
+          if (xhr.status === 201) {
             resolve(JSON.parse(xhr.response));
           } else {
             reject(xhr.response);
           }
         }
       };
-      console.log(formData, files.length, files);
       let token: string = btoa('joe:bloggspwd');
-      xhr.open('POST', this.appConfig.uploadUri, true);
+      xhr.open('POST', this.uploadUrl, true);
       xhr.setRequestHeader('Authorization', 'Basic ' + token);
       xhr.send(formData);
     });
   }
-
-  updateFileRequestXHR(params: Array<string>, files: Array<File>) {
-     // added params log to silence linting until we need it
-     // params will include header options
-     if(params){
-       console.log("params:updateFileRequestXHR::",  params);
-     }
-
-     return new Promise((resolve, reject) => {
-       let formData: any = new FormData();
-       let xhr = new XMLHttpRequest();
-      for (let i = 0; i < files.length; i++) {
-         formData.append('file', files[i], files[i].name);
-         formData.append('metaData', this.populateFileModel(files[i]));
-       }
-       xhr.onreadystatechange = function () {
-         if (xhr.readyState === 4) {
-           if (xhr.status === 200) {
-             resolve(JSON.parse(xhr.response));
-           } else {
-             reject(xhr.response);
-           }
-         }
-       };
-       console.log(formData, files.length, files);
-       let token: string = btoa('joe:bloggspwd');
-       xhr.open('PUT', this.appConfig.updateUri, true);
-       xhr.setRequestHeader('Authorization', 'Basic ' +  token);
-       xhr.send(formData);
-     });
-   }
-
-  private handleError(error: Response) {
-    console.log("in service error: ", error);
-    return Observable.throw(error.json() || 'server error');
-  }
-
 }
 

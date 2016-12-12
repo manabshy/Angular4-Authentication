@@ -43,12 +43,4 @@ export class UploadSuccessComponent implements OnInit{
     });
   }
 
-  updateMetaData(): void{
-
-    let metaDataResponseModel = <MetaDataResponseModel>this.myForm.value.metaDataArray[0];
-    this._service.updateMetaData(metaDataResponseModel);
-    console.log( metaDataResponseModel);
-
-  }
-
 }
