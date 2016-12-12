@@ -1,13 +1,13 @@
   <ul class="nav nav-pills nav-stacked">
     <li class="nav-item">
-      <a (click)="navigateTo('/')">
+      <a routerLink = "/" routerLinkActive="active">
         <span class="icon-dashboard"></span>
         Dashboard
       </a>
     </li>
     <li class="nav-item active">
-      <a (click)="navigateTo('/create')">
-        <span class="icon-upload"></span>
+      <a routerLink = "/create">
+        <span class="icon-upload" routerLinkActive="active"></span>
         Upload File
       </a>
     </li>
