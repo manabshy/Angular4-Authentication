@@ -14,6 +14,11 @@ import {FileUploadService} from '../file-upload/file-upload.service';
 import {LoginService} from '../login/login.service';
 import {Router, RouterModule, ActivatedRoute} from '@angular/router';
 import {LocationStrategy} from "@angular/common";
+import { Component } from '@angular/core';
+
+
+@Component({selector: 'app-aside', template: ''})
+class AsideStubComponent {}
 
 
 describe('FileUploadUpdateComponent', () => {
@@ -22,7 +27,7 @@ describe('FileUploadUpdateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FileUploadComponent,FileUploadUpdateComponent,AsideComponent,HeaderComponent,MetaDataComponent ],
+      declarations: [ FileUploadComponent,FileUploadUpdateComponent,AsideStubComponent,HeaderComponent,MetaDataComponent ],
       providers:[{provide:FormGroup},{provide:Router},{provide:FileUploadService},{provide:LoginService}, {provide: ActivatedRoute}, {provide: LocationStrategy }],
       imports:[ FormsModule,ReactiveFormsModule, RouterModule]
 
