@@ -6,7 +6,7 @@ export class FileUploadService {
 
   metaDataArray : MetaDataModel[];
   fileUploadResponse: MetaDataResponseModel;
-  uploadUrl: string = "http://172.19.32.126:8080/ingestion-service-web/igs/document/upload";
+  uploadUrl: string = "http://172.19.32.118:8080/ingestion-service-web/igs/document/upload";
 
   populateFileModel(file) {
     let fileReader = new FileReader();
@@ -22,7 +22,7 @@ export class FileUploadService {
     );
 
     const jsonMetadata = JSON.stringify(fileMetadata);
-    console.log(jsonMetadata);
+    // console.log(jsonMetadata);
 
     return jsonMetadata;
   }
@@ -31,7 +31,7 @@ export class FileUploadService {
     // added params log to silence linting until we need it
     // params will include header options
     if(params){
-      console.log(params);
+      // console.log(params);
     }
 
     return new Promise((resolve, reject) => {
