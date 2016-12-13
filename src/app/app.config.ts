@@ -6,7 +6,7 @@ export class AppConfigs {
 
 	constructor() { }
 
-	private useMockData:boolean = false;
+	private useMockData:boolean = true;
 	private mockUrl: string = "http://localhost:8090";
 
 	//upload url

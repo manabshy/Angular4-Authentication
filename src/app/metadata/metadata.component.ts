@@ -48,7 +48,7 @@ export class MetaDataComponent {
          this._service.fileUploadResponse = <MetaDataResponseModel>result;
 
          //update responce
-         this.metaDataForm.controls['documentId'].setValue(result.documentId);
+         //this.metaDataForm.controls['documentId'].setValue(result.documentId);
          this.metaDataForm.controls['uploadDate'].setValue(result.uploadDate);
          this.metaDataForm.controls['version'].setValue(result.version);
          // this._router.navigate(['update-success']);

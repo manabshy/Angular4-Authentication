@@ -1,5 +1,4 @@
 <form [formGroup]="metaDataForm">
-  
   <div class="form-group" *ngIf="viewType">
     <input type="file" id="fileUpdateButton" class="form-control" (change)="fileChangeEvent($event)"
                 placeholder="Upload a file...">
@@ -53,7 +52,6 @@
 
 
   <div class="form-group" >
-    <!-- <a class="btn btn-primary float-xs-right" *ngIf="!viewType" (click)="upload()"> Upload Document</a>  -->
     <a class="btn btn-primary float-xs-right" id="updateDocumentButton" *ngIf="viewType" (click)="updateMe()">Update Me (+)</a> 
   </div>
 </form>
