@@ -1,8 +1,10 @@
 import {Component, Input,OnInit } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
-import {MetaDataModel, MetaDataResponseModel} from "../metadata/metadata.model";
-import {FileUploadService} from "./file-upload.service";
-import {Router} from "@angular/router";
+import {MetaDataModel, MetaDataResponseModel} from '../metadata/metadata.model';
+import {FileUploadService} from './file-upload.service';
+import {Router} from '@angular/router';
+import {MetaDataComponent} from '../metadata/metadata.component';
+import {MetaDataService} from '../metadata/metadata.service';
 
 @Component({
   selector: 'app-fileupload',
@@ -10,6 +12,10 @@ import {Router} from "@angular/router";
   styleUrls: ['./file-upload.component.css']
 })
 export class FileUploadComponent  implements OnInit{
+  @Input() updatable: boolean = false;
+
+  viewUploadInCreate: boolean;
+  @Input() showUploadButton: boolean;
 
   myForm: FormGroup;
   filesToUpload: Array<File>;
@@ -32,6 +38,8 @@ export class FileUploadComponent  implements OnInit{
     this.filesToUpload = <Array<File>>file;
     this.metaData = this.populateFileModel(this.filesToUpload[0]);
     this.addMetaDataForm(this.metaData);
+
+    this.showUploadButton = true;
   }
   addMetaDataForm(newMetaData: MetaDataModel) {
     const control = <FormArray>this.myForm.controls['metaDataArray'];
@@ -64,38 +72,29 @@ export class FileUploadComponent  implements OnInit{
     return fileMetadata;
   }
 
+  //create New document 
   upload() {
-
     this._service.makeFileRequestXHR([], this.filesToUpload)
-      .then((result) => {
-        console.log("results: ", result);
+      .subscribe((result) => {
+        console.log('results: ', result);
         this._service.fileUploadResponse = <MetaDataResponseModel>result;
         this._router.navigate(['upload-success']);
       }, (error) => {
-        console.log("ERRORS",error);
+        console.error(error);
       });
-
-
-    // let currentMetaData = <MetaDataModel>this.myForm.value.metaDataArray[0];
-    // this._service.makeFileRequest(currentMetaData, this.filesToUpload)
-    //   .subscribe(
-    //     (response) => {
-    //       console.log('got a upload response');
-    //       this.metaDataResponse = response;
-    //       this._router.navigate(['upload-success']);
-    //     },
-    //     error=> this.errorMessage = <any>error );
-
-    //   .then((result) => {
-    //     // this.router.navigate(['upload-success']);
-    //   }, (error) => {
-    //     console.error(error);
-    //   });
-    //
-    // let metaData = <MetaDataModel>this.myForm.value.metaDataArray[0];
-    // this._service.InitFileUploadResponse(metaData);
-    // console.log(this._service.fileUploadResponse.DocId);
   }
 
+  //upload new document for existing document based on its doucmentId;
+  // public update() {
+  //     console.log('i am in file-upload');
+  //     this._service.updateFileRequestXHR([], this.filesToUpload, '979df79d7f')
+  //      .subscribe((result) => {
+  //        console.log('results to update: ', result);
+  //        this._service.fileUploadResponse = <MetaDataResponseModel>result;
+  //        this._router.navigate(['upload-success']);
+  //      }, (error) => {
+  //        console.error(error);
+  //      });
+  //  }
 }
 

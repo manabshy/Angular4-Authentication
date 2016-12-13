@@ -2,8 +2,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FileUploadComponent } from './file-upload.component';
 import { MetaDataComponent } from '../metadata/metadata.component';
-import {FileUploadService} from "./file-upload.service";
-import { FormGroup, FormControl, Validators, FormBuilder, FormsModule,ReactiveFormsModule } from '@angular/forms';
+import {FileUploadService} from './file-upload.service';
+import { FormGroup, FormControl, Validators, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router,RouterModule,ActivatedRoute,RouterLink } from '@angular/router';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { Provider } from '@angular/core';
@@ -27,8 +27,9 @@ describe('FileUploadComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [ FileUploadComponent,MetaDataComponent ],
-      providers: [{provide: Router},{provide:MetaDataComponent},{provide:FileUploadService},{provide:ActivatedRoute},{provide:LocationStrategy}],
-      imports:[ FormsModule, ReactiveFormsModule, RouterModule]
+      providers: [{provide: Router},{provide:MetaDataComponent},{provide:FileUploadService},
+                  {provide:Router},{provide:ActivatedRoute},{provide:LocationStrategy} ],
+      imports:[ FormsModule,ReactiveFormsModule,RouterModule ]
     })
     .compileComponents();
   }));
