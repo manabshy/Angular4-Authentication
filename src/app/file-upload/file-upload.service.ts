@@ -6,7 +6,7 @@ export class FileUploadService {
 
   metaDataArray : MetaDataModel[];
   fileUploadResponse: MetaDataResponseModel;
-  uploadUrl: string = "http://172.19.32.118:8080/ingestion-service-web/igs/document/upload";
+  uploadUrl: string = "http://172.19.32.45:8080/ingestion-service-web/igs/document/upload";
 
   populateFileModel(file) {
     let fileReader = new FileReader();
