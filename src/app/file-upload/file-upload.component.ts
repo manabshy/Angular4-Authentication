@@ -83,18 +83,5 @@ export class FileUploadComponent  implements OnInit{
         console.error(error);
       });
   }
-
-  //upload new document for existing document based on its doucmentId;
-  // public update() {
-  //     console.log('i am in file-upload');
-  //     this._service.updateFileRequestXHR([], this.filesToUpload, '979df79d7f')
-  //      .subscribe((result) => {
-  //        console.log('results to update: ', result);
-  //        this._service.fileUploadResponse = <MetaDataResponseModel>result;
-  //        this._router.navigate(['upload-success']);
-  //      }, (error) => {
-  //        console.error(error);
-  //      });
-  //  }
 }
 

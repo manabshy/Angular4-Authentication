@@ -1,37 +1,45 @@
-
-<div class="container">
-
-  <div class="flex-items-xs-center">
-    <div class="card">
-      <div class="card-block">
-        <Form [formGroup]="myForm" novalidate>
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <div class="alert alert-success" >File uploaded successfully</div>
-              </div>
-            </div>
-          </div>
-          <div formArrayName="metaDataArray">
-            <div *ngFor="let md of myForm.controls.metaDataArray.controls; let i=index" class="panel panel-default">
-              <div class="card">
-                <h3 class="card-header">
-                  Meta Data Response
-                </h3>
-                <div class="card-block" [formGroupName]="i">
-                    <app-metadata [group]="myForm.controls.metaDataArray.controls[i]" 
-                                  [isUploadDateVisible]="true" 
-                                  [viewType]="true"> </app-metadata>
-                    <hr>
-
+<app-header></app-header>
+<div class="container-fluid">
+  <span class="row">
+    <div class="col-xs-1 sidebar">
+      <app-aside></app-aside>
+    </div>
+    <div class="col-xs-11 offset-xs-1 main">
+      <div class="flex-items-xs-center">
+            <Form [formGroup]="myForm" novalidate>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <div class="alert alert-success" >File uploaded successfully</div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </Form>
-      </div>
-    </div>
-  </div>
+              <div formArrayName="metaDataArray">
+                <div *ngFor="let md of myForm.controls.metaDataArray.controls; let i=index" class="panel panel-default">
+                  <div class="card">
+                    <h3 class="card-header">
+                      Meta Data Response
+                    </h3>
+                    <div class="card-block" [formGroupName]="i">
+                        <app-metadata [group]="myForm.controls.metaDataArray.controls[i]" 
+                                      [isUploadDateVisible]="true" 
+                                      [viewType]="true"> </app-metadata>
+                        <hr>
 
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Form>
+          </div>
+    </div>
+  </span>
 </div>
+
+
+
+
+
+
+
 
