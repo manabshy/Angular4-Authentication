@@ -14,16 +14,16 @@ describe('FileUploadComponent', () => {
 
   beforeEach(async(() => {
 
-    let fileUploadServiceStub: {
-      isFileUploaded: boolean;
-      fileMeta: {
-        customerId: string,
-        sourceSystem: string,
-        receivedDate: string,
-        uploadDate: string,
-        contentType: string,
-      }
-    };
+    // let fileUploadServiceStub: {
+    //   isFileUploaded: boolean;
+    //   fileMeta: {
+    //     customerId: string,
+    //     sourceSystem: string,
+    //     receivedDate: string,
+    //     uploadDate: string,
+    //     contentType: string,
+    //   }
+    // };
 
     TestBed.configureTestingModule({
       declarations: [ FileUploadComponent,MetaDataComponent ],

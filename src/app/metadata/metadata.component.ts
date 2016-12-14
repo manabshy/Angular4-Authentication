@@ -1,6 +1,6 @@
 
-import { Component, Input, Output, EventEmitter} from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
+import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import { MetaDataModel, MetaDataResponseModel } from '../metadata/metadata.model';
 import { FileUploadService } from '../file-upload/file-upload.service';
 
@@ -11,24 +11,24 @@ import {Router} from '@angular/router';
   selector: 'app-metadata',
   templateUrl: './metadata.component.html'
 })
-export class MetaDataComponent {
+export class MetaDataComponent{
     @Output() myEvent = new EventEmitter();
-    //myForm: FormGroup;
+
     filesToUpload: Array<File>;
     metaData: MetaDataModel;
     metaDataResponse: MetaDataResponseModel;
     errorMessage: string;
 
     @Input('group')
-    public metaDataForm: FormGroup;
+    metaDataForm: FormGroup;
     @Input() viewType: boolean = false;
     @Input() isUploadDateVisible: boolean;
     @Input() metaDataModel : MetaDataModel;
 
-    constructor(private _fb: FormBuilder, private _service: FileUploadService, private _router: Router) {
+    constructor( private _service: FileUploadService, private _router: Router) {
         this.filesToUpload = [];
     }
-
+    
     fileChangeEvent(fileInput: any) {
         let selectedFile = <Array<File>>fileInput.target.files;
         this.filesToUpload = selectedFile;
@@ -48,11 +48,10 @@ export class MetaDataComponent {
          this._service.fileUploadResponse = <MetaDataResponseModel>result;
 
          // update responce
-         // this.metaDataForm.controls['documentId'].setValue(result.documentId);
+         this.metaDataForm.controls['documentId'].setValue(result.documentId);
          this.metaDataForm.controls['uploadDate'].setValue(result.uploadDate);
          this.metaDataForm.controls['version'].setValue(result.version);
-         this._router.navigate(['update-success']);
-
+    
          alert('The new document verison ('+result.version+') updated successfully!');
 
        }, (error) => {
