@@ -9,9 +9,7 @@ export class AppComponent {
 
   title = 'Login Page!!';
 
-  constructor(private _service: LoginService){
-
-  }
+  constructor(private _service: LoginService) { }
 
 }
 
