@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import {MetaDataComponent} from '../metadata/metadata.component';
 import {MetaDataResponseModel} from '../metadata/metadata.model';
-import {FormBuilder, FormArray, FormsModule,FormGroup,ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, FormArray, FormsModule, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {FileUploadService} from '../file-upload/file-upload.service';
 import {LoginService} from '../login/login.service';
 import { UploadSuccessComponent } from './upload-success.component';
@@ -13,15 +13,16 @@ import { Router, RouterModule, ActivatedRoute, RouterLink, ActivatedRouteSnapsho
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { Provider } from '@angular/core';
 
-describe('UploadSuccessComponent',() => {
+describe('UploadSuccessComponent', () => {
   let component: UploadSuccessComponent;
   let fixture: ComponentFixture<UploadSuccessComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UploadSuccessComponent,MetaDataComponent ],
-      providers:[{provide:FileUploadService}, {provide:FormGroup}, {provide:Router}, {provide:LoginService}, {provide:ActivatedRoute}],
-      imports:[ FormsModule,ReactiveFormsModule]
+      declarations: [ UploadSuccessComponent, MetaDataComponent ],
+      providers: [{provide: FileUploadService}, {provide: FormGroup}, {provide: Router}, 
+      {provide: LoginService}, {provide: ActivatedRoute }],
+      imports: [FormsModule, ReactiveFormsModule]
     })
     .compileComponents();
   }));

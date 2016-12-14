@@ -8,11 +8,10 @@ import { NO_ERRORS_SCHEMA }          from '@angular/core';
 import { Component }                 from '@angular/core';
 import { AsideComponent }              from './aside.component';
 import { HomeComponent }           from '../../home/home.component';
-import { HomeModule } from '../../home/home.module';
 
 import { RouterLinkStubDirective }   from '../../testing';
 import { RouterOutletStubComponent } from '../../testing';
-import { Router,Routes, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({selector: 'app-header', template: ''})
@@ -27,12 +26,10 @@ let fixture: ComponentFixture<AsideComponent>;
 describe('AsideComponent & TestModule', () => {
   beforeEach( async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AsideComponent,
-        HomeComponent, HeaderStubComponent,FileUploadStubComponent,
+      declarations: [AsideComponent, HomeComponent, HeaderStubComponent, FileUploadStubComponent,
         RouterLinkStubDirective, RouterOutletStubComponent
       ],
-      providers:[{provide:Router}]
+      providers:[{ provide:Router }]
     })
 
     .compileComponents()
@@ -49,7 +46,7 @@ describe('AsideComponent & NO_ERRORS_SCHEMA', () => {
   beforeEach( async(() => {
     TestBed.configureTestingModule({
       declarations: [ AsideComponent, RouterLinkStubDirective ],
-      providers:[{provide:Router}],
+      providers:[{ provide:Router }],
       schemas:      [ NO_ERRORS_SCHEMA ]
     })
 
@@ -85,7 +82,7 @@ function tests() {
   });
 
   it('can get RouterLinks from template', () => {
-    //console.log('Links in Aside Component:' + links.length);
+    // console.log('Links in Aside Component:' + links.length);
     expect(links.length).toBe(2, 'should have 2 links');
     expect(links[0].linkParams).toBe('/', '1st link should go to HomeComponent');
     expect(links[1].linkParams).toBe('/create', '1st link should go to HomeComponent');
