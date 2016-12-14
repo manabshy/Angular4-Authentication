@@ -49,7 +49,7 @@ export class MetaDataService {
      // added params log to silence linting until we need it
      // params will include header options
      if(params){
-       console.log('params:updateFileRequestXHR::',  params);
+       // console.log('params:updateFileRequestXHR::',  params);
      }
      
      let formData: any = new FormData();
@@ -60,7 +60,7 @@ export class MetaDataService {
 
      return this._http.put(this.appConfig.updateUri + documentId, formData, this.httpClient.getHeaders() )
         .map((res: Response) =>  {
-          console.log('in service response:');
+          // console.log('in service response:');
           this.fileUploadResponse = <MetaDataResponseModel>res.json();
           return <MetaDataResponseModel>res.json();
         })
@@ -68,7 +68,7 @@ export class MetaDataService {
    }
 
   private handleError(error: Response) {
-    console.log('in service error: ', error);
+    // console.log('in service error: ', error);
     return Observable.throw(error.json() || 'server error');
   }
 }

@@ -14,7 +14,7 @@ describe('HeaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HeaderComponent ],
-      providers:[{provide:LoginService},{provide:Router}]
+      providers:[{provide:LoginService}, {provide:Router}]
     })
     .compileComponents();
   }));

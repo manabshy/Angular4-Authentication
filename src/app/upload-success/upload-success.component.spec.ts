@@ -6,10 +6,10 @@ import {MetaDataComponent} from '../metadata/metadata.component';
 import {MetaDataResponseModel} from '../metadata/metadata.model';
 import {FormBuilder, FormArray, FormsModule,FormGroup,ReactiveFormsModule} from '@angular/forms';
 import {FileUploadService} from '../file-upload/file-upload.service';
-import {LoginService} from "../login/login.service";
+import {LoginService} from '../login/login.service';
 import { UploadSuccessComponent } from './upload-success.component';
 import { Component, OnInit } from '@angular/core';
-import { Router,RouterModule,ActivatedRoute,RouterLink,ActivatedRouteSnapshot } from '@angular/router';
+import { Router, RouterModule, ActivatedRoute, RouterLink, ActivatedRouteSnapshot } from '@angular/router';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { Provider } from '@angular/core';
 
@@ -20,7 +20,7 @@ describe('UploadSuccessComponent',() => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ UploadSuccessComponent,MetaDataComponent ],
-      providers:[{provide:FileUploadService},{provide:FormGroup},{provide:Router},{provide:LoginService},{provide:ActivatedRoute}],
+      providers:[{provide:FileUploadService}, {provide:FormGroup}, {provide:Router}, {provide:LoginService}, {provide:ActivatedRoute}],
       imports:[ FormsModule,ReactiveFormsModule]
     })
     .compileComponents();

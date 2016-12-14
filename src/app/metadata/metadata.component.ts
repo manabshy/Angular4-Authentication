@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 })
 export class MetaDataComponent {
     @Output() myEvent = new EventEmitter();
-    myForm: FormGroup;
+    //myForm: FormGroup;
     filesToUpload: Array<File>;
     metaData: MetaDataModel;
     metaDataResponse: MetaDataResponseModel;
@@ -44,14 +44,14 @@ export class MetaDataComponent {
       
       this._service.updateFileRequestXHR([], this.filesToUpload, oldMetadata)
        .subscribe((result) => {
-         //console.log('results to update: ', result);
+         // console.log('results to update: ', result);
          this._service.fileUploadResponse = <MetaDataResponseModel>result;
 
-         //update responce
-         //this.metaDataForm.controls['documentId'].setValue(result.documentId);
+         // update responce
+         // this.metaDataForm.controls['documentId'].setValue(result.documentId);
          this.metaDataForm.controls['uploadDate'].setValue(result.uploadDate);
          this.metaDataForm.controls['version'].setValue(result.version);
-         // this._router.navigate(['update-success']);
+         this._router.navigate(['update-success']);
 
          alert('The new document verison ('+result.version+') updated successfully!');
 
