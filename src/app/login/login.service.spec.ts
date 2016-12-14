@@ -80,7 +80,7 @@ describe('Service: Login', () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
         service.getUsers().toPromise()
-          //.then(() => Promise.reject('deliberate'))
+          // .then(() => Promise.reject('deliberate'))
           .then(users => {
           //  console.log('users.length:' + users.length);
 

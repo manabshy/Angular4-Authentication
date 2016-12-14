@@ -31,7 +31,7 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule( {
       declarations: [ HomeComponent, FileUploadComponent, MetaDataComponent, AsideStubComponent, HeaderComponent ],
-      providers: [{provide: FileUploadService}, {provide:LoginService},
+      providers: [{provide: FileUploadService}, {provide: LoginService},
                   {provide: Router}, {provide: ActivatedRoute}, {provide: LocationStrategy}, FormBuilder  ],
       imports: [HttpModule, ReactiveFormsModule, FormsModule, RouterModule ]
     })

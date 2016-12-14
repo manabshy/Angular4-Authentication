@@ -1,5 +1,4 @@
-import { Component, Input, OnInit, Directive} from '@angular/core';
-import { FileUploadComponent } from '../file-upload/file-upload.component';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +6,8 @@ import { FileUploadComponent } from '../file-upload/file-upload.component';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  loggedIn:boolean = true;
-  constructor() {
-  }
+  loggedIn: boolean = true;
+  constructor() { }
 
   ngOnInit() { }
 

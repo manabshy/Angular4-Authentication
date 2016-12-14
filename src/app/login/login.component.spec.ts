@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { async, ComponentFixture, inject,TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
@@ -24,7 +24,7 @@ let loginServiceStub: {
 let location: SpyLocation;
 
   function expectPathToBe(path: string, expectationFailOutput?: any) {
-    //console.log('location:' + location);
+    // console.log('location:' + location);
     expect('/login').toEqual(path, expectationFailOutput || 'location.path()');
   }
 
@@ -33,18 +33,17 @@ let location: SpyLocation;
     // stub UserService for test purposes
     loginServiceStub = {
       isLoggedIn: true,
-      user: { email: 'test@test.com',password:'test'}
-    };   
+      user: { email: 'test@test.com',password: 'test'}
+    };
     class RouterStub {
       navigateByUrl(url: string) { return url; }
     }
     TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
-      providers:    [ //{provide: LoginService}, //Don't provide a real service,provide a test double instead
+      providers:    [ // {provide: LoginService}, //Don't provide a real service,provide a test double instead
                       {provide: LoginService , useValue: loginServiceStub },
-                      {provide: Router, useClass: RouterStub} ], 
+                      {provide: Router, useClass: RouterStub } ], 
       imports: [ FormsModule ]
-      
     }) 
     .compileComponents(); // compile template and css
     fixture = TestBed.createComponent(LoginComponent);
@@ -52,7 +51,7 @@ let location: SpyLocation;
     loginBtn  = fixture.debugElement.query(By.css('.btn'));
     fixture.detectChanges();
  
-   // LoginService actually injected into the component
+    // LoginService actually injected into the component
     loginService = fixture.debugElement.injector.get(LoginService);
     componentLoginService = loginService;
     // loginService from the root injector
@@ -69,8 +68,8 @@ let location: SpyLocation;
   it('should check for input fields Email and Password',() =>{
     fixture.detectChanges();
 
-    let emailInput = fixture.debugElement.query(By.css('input[name="email"]')).nativeElement
-    let passwordInput = fixture.debugElement.query(By.css('input[name="password"]')).nativeElement
+    let emailInput = fixture.debugElement.query(By.css('input[name="email"]')).nativeElement;
+    let passwordInput = fixture.debugElement.query(By.css('input[name="password"]')).nativeElement;
     
     expect(emailInput).toBeTruthy();
     expect(passwordInput).toBeTruthy();   
@@ -106,13 +105,13 @@ let location: SpyLocation;
   /***************************************************************************************/
   it('check if on a login page',
     inject([Router], (router: Router) => { // ...
-    //console.log('loginBtn::' + loginBtn);  
+    // console.log('loginBtn::' + loginBtn);  
     loginBtn.triggerEventHandler('click', null);
     expect(loginBtn).toBeDefined();
     
     expectPathToBe('/login');
     const spy = spyOn(router, 'navigateByUrl');
-    //console.log('spy:' + spy);
+    // console.log('spy:' + spy);
   }));
 });
 
