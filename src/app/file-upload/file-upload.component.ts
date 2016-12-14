@@ -1,17 +1,15 @@
-import {Component, Input,OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
-import {MetaDataModel, MetaDataResponseModel} from '../metadata/metadata.model';
-import {FileUploadService} from './file-upload.service';
-import {Router} from '@angular/router';
-import {MetaDataComponent} from '../metadata/metadata.component';
-import {MetaDataService} from '../metadata/metadata.service';
+import { MetaDataModel, MetaDataResponseModel } from '../metadata/metadata.model';
+import { FileUploadService } from './file-upload.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-fileupload',
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.css']
 })
-export class FileUploadComponent  implements OnInit{
+export class FileUploadComponent  implements OnInit {
   @Input() updatable: boolean = false;
 
   viewUploadInCreate: boolean;
@@ -54,7 +52,7 @@ export class FileUploadComponent  implements OnInit{
       receivedDate: [newMetaData.receivedDate],
       uploadDate: null,
       utr: [''],
-      version:null
+      version: null
     });
   }
   populateFileModel(file: any) {
@@ -72,7 +70,7 @@ export class FileUploadComponent  implements OnInit{
     return fileMetadata;
   }
 
-  //create New document 
+  // create New document 
   upload() {
     this._service.makeFileRequestXHR([], this.filesToUpload)
       .subscribe((result) => {

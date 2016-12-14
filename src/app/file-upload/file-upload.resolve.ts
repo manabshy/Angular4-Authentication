@@ -5,7 +5,7 @@ import {FileUploadService} from './file-upload.service';
 @Injectable()
 export class FileUploadResolve implements Resolve<any> {
 
-  constructor(private _fileUploadService: FileUploadService){}
+  constructor(private _fileUploadService: FileUploadService) { }
 
   resolve(route: ActivatedRouteSnapshot) {
 

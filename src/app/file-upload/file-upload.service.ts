@@ -19,7 +19,7 @@ export class FileUploadService {
   constructor(private _http: Http, private appConfig: AppConfigs, private httpClient: HttpClient){  }
 
   InitFileUploadResponse(fileUploadMetaData: MetaDataModel): void {
-    //this.fileUploadResponse = new MetaDataResponseModel(fileUploadMetaData);
+    // this.fileUploadResponse = new MetaDataResponseModel(fileUploadMetaData);
     // this.fileUploadResponse.utr ='4343455454323';
     // this.fileUploadResponse.responseCode = '200';
     // this.fileUploadResponse.totalExecutionTime = '12.12ms';
@@ -74,17 +74,17 @@ export class FileUploadService {
         .catch(this.handleError)
   }
 
-  updateFileRequestXHR(params: Array<string>, files: Array<File>, metadata:MetaDataResponseModel) {
+  updateFileRequestXHR(params: Array<string>, files: Array<File>, metadata: MetaDataResponseModel) {
      // added params log to silence linting until we need it
      // params will include header options
      
      let formData: any = new FormData();
-     if(files.length) {
+     if (files.length) {
        for (let i = 0; i < files.length; i++) {
           formData.append('file', files[i], files[i].name);
           formData.append('metaData', this.populateFileModel(files[i], metadata) );
         }
-     } else if(metadata) {
+     } else if (metadata) {
          formData.append('metaData', JSON.stringify(metadata) );
      }
 

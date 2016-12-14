@@ -1,6 +1,6 @@
-import {Component,Input, OnInit, Directive} from '@angular/core';
-import {FileUploadComponent} from '../file-upload/file-upload.component';
-import {SharedModule} from '../shared/shared.module';
+import { Component, Input, OnInit, Directive} from '@angular/core';
+import { FileUploadComponent } from '../file-upload/file-upload.component';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
