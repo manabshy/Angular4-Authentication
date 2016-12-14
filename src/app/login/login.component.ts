@@ -24,9 +24,9 @@ export class LoginComponent {
     this.loginService.getUsers();
     this.loginService.login(this.user)
       .subscribe(result => {
-        if (result) {     
-             console.log('result' + result);   
-             loggedIn = result;         
+        if (result) {
+             console.log('result' + result);
+             loggedIn = result;
              this.router.navigate(['/']);
         } else {
           this.errorMsg = 'It seems your details are not correct. Please enter them again.';

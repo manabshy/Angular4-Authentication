@@ -18,15 +18,11 @@ export class LoginService {
 
   constructor(private _http: Http) {}
 
-  ngOnInit() {
-    console.log('userName', localStorage.getItem('userName'));
-  }
-
   getUsers (): Observable<User[]> {
     // console.log('in getUsers');
     return this._http.get(this._userDataUrl)
                     .map(this.extractData)
-                    //.do(data => console.log('In Login service data' + data)) // eyeball results in the console
+                    // .do(data => console.log('In Login service data' + data)) // eyeball results in the console
                     .catch(this.handleError);
   }
 
@@ -41,7 +37,7 @@ export class LoginService {
 
   }
 
-  Authenticate(user:User): Boolean{
+  Authenticate (user: User): Boolean {
     // console.log("In Authenticate"  + this._users);
     let LoggedInUser = this._users.find(u => u.email === user.email && u.password === user.password);
     if (LoggedInUser) {
@@ -72,7 +68,7 @@ export class LoginService {
     let errMsg = error.message || 'Server error';
     // console.error(errMsg); // log to console instead
     return Observable.throw(errMsg);
-    //return Observable.throw('server error');
+    // return Observable.throw('server error');
   }
 
   logout(): void {

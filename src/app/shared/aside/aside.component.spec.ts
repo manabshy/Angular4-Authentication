@@ -20,7 +20,7 @@ class HeaderStubComponent {}
 @Component({selector: 'app-fileupload', template: ''})
 class FileUploadStubComponent {}
 
-let comp:    AsideComponent;
+let comp: AsideComponent;
 let fixture: ComponentFixture<AsideComponent>;
 
 describe('AsideComponent & TestModule', () => {
@@ -29,7 +29,7 @@ describe('AsideComponent & TestModule', () => {
       declarations: [AsideComponent, HomeComponent, HeaderStubComponent, FileUploadStubComponent,
         RouterLinkStubDirective, RouterOutletStubComponent
       ],
-      providers:[{ provide:Router }]
+      providers: [{ provide: Router }]
     })
 
     .compileComponents()
@@ -46,8 +46,8 @@ describe('AsideComponent & NO_ERRORS_SCHEMA', () => {
   beforeEach( async(() => {
     TestBed.configureTestingModule({
       declarations: [ AsideComponent, RouterLinkStubDirective ],
-      providers:[{ provide:Router }],
-      schemas:      [ NO_ERRORS_SCHEMA ]
+      providers: [{ provide: Router }],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
 
     .compileComponents()

@@ -20,7 +20,7 @@ describe('UploadSuccessComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ UploadSuccessComponent, MetaDataComponent ],
-      providers: [{provide: FileUploadService}, {provide: FormGroup}, {provide: Router}, 
+      providers: [{provide: FileUploadService}, {provide: FormGroup}, {provide: Router},
       {provide: LoginService}, {provide: ActivatedRoute }],
       imports: [FormsModule, ReactiveFormsModule]
     })

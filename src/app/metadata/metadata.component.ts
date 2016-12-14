@@ -1,6 +1,6 @@
 
-import { Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
-import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { MetaDataModel, MetaDataResponseModel } from '../metadata/metadata.model';
 import { FileUploadService } from '../file-upload/file-upload.service';
 
@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
   selector: 'app-metadata',
   templateUrl: './metadata.component.html'
 })
-export class MetaDataComponent{
+export class MetaDataComponent {
     @Output() myEvent = new EventEmitter();
 
     filesToUpload: Array<File>;
@@ -19,29 +19,29 @@ export class MetaDataComponent{
     metaDataResponse: MetaDataResponseModel;
     errorMessage: string;
 
-    @Input('group')
+    @Input('group');
     metaDataForm: FormGroup;
     @Input() viewType: boolean = false;
     @Input() isUploadDateVisible: boolean;
-    @Input() metaDataModel : MetaDataModel;
+    @Input() metaDataModel: MetaDataModel;
 
     constructor( private _service: FileUploadService, private _router: Router) {
         this.filesToUpload = [];
     }
-    
+
     fileChangeEvent(fileInput: any) {
         let selectedFile = <Array<File>>fileInput.target.files;
         this.filesToUpload = selectedFile;
 
-        let file:File = <File>selectedFile[0];
+        let file: File = <File>selectedFile[0];
         this.metaDataForm.controls['contentType'].setValue(file.type);
         this.metaDataForm.controls['receivedDate'].setValue(file.lastModifiedDate);
     }
 
-      //upload new document for existing document based on its doucmentId;
+    // upload new document for existing document based on its doucmentId;
     updateMe() {
-      let oldMetadata = this.metaDataForm.value;//here updated metadata...
-      
+      let oldMetadata = this.metaDataForm.value; // here updated metadata...
+
       this._service.updateFileRequestXHR([], this.filesToUpload, oldMetadata)
        .subscribe((result) => {
          // console.log('results to update: ', result);
@@ -51,8 +51,8 @@ export class MetaDataComponent{
          this.metaDataForm.controls['documentId'].setValue(result.documentId);
          this.metaDataForm.controls['uploadDate'].setValue(result.uploadDate);
          this.metaDataForm.controls['version'].setValue(result.version);
-    
-         alert('The new document verison ('+result.version+') updated successfully!');
+
+         alert ('The new document verison (' + result.version + ') updated successfully!');
 
        }, (error) => {
          console.error(error);

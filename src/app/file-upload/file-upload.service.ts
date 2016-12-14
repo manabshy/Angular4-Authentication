@@ -11,7 +11,7 @@ import { AppConfigs } from '../app.config';
 @Injectable()
 export class FileUploadService {
 
-  metaDataArray : MetaDataModel[];
+  metaDataArray: MetaDataModel[];
   fileUploadResponse: MetaDataResponseModel;
 
   constructor(private _http: Http, private appConfig: AppConfigs, private httpClient: HttpClient) {  }
@@ -68,13 +68,13 @@ export class FileUploadService {
           this.fileUploadResponse = <MetaDataResponseModel>res.json();
           return <MetaDataResponseModel>res.json();
         })
-        .catch(this.handleError)
+        .catch (this.handleError);
   }
 
   updateFileRequestXHR(params: Array<string>, files: Array<File>, metadata: MetaDataResponseModel) {
      // added params log to silence linting until we need it
      // params will include header options
-     
+
      let formData: any = new FormData();
      if (files.length) {
        for (let i = 0; i < files.length; i++) {
@@ -91,7 +91,7 @@ export class FileUploadService {
           this.fileUploadResponse = <MetaDataResponseModel>res.json();
           return <MetaDataResponseModel>res.json();
         })
-        .catch(this.handleError)
+        .catch (this.handleError);
    }
 
   private handleError(error: Response) {
