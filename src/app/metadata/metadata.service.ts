@@ -1,20 +1,19 @@
-import {Injectable} from '@angular/core';
-import {MetaDataModel, MetaDataResponseModel} from '../metadata/metadata.model';
-import {Http, Response, Headers, RequestOptions} from '@angular/http';
-import {Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { MetaDataModel, MetaDataResponseModel } from '../metadata/metadata.model';
+import { Http, Response, Headers } from '@angular/http';
+import { Observable } from 'rxjs';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
-
-import {HttpClient} from '../core/http-client'
-
-import { AppConfigs } from '../app.config'
+import {HttpClient} from '../core/http-client';
+import { AppConfigs } from '../app.config';
 
 @Injectable()
 
 export class MetaDataService {
 
-  metaDataArray : MetaDataModel[];
+  metaDataArray: MetaDataModel[];
+
   fileUploadResponse: MetaDataResponseModel;
 
   constructor(private _http: Http, private appConfig: AppConfigs, private httpClient: HttpClient) {  }
@@ -26,7 +25,7 @@ export class MetaDataService {
   createAuthorizationHeader(headers: Headers) {
     headers.append('Authorization', 'Basic ' + btoa('joe:bloggspwd'));
   }
-    
+
   populateFileModel(file) {
     let fileReader = new FileReader();
     fileReader.onload = function (e) {
@@ -45,13 +44,13 @@ export class MetaDataService {
     return jsonMetadata;
   }
 
-  updateFileRequestXHR(params: Array<string>, files: Array<File>, documentId:string) {
+  updateFileRequestXHR (params: Array<string>, files: Array<File>, documentId: string) {
      // added params log to silence linting until we need it
      // params will include header options
-     if(params){
+     if (params) {
        // console.log('params:updateFileRequestXHR::',  params);
      }
-     
+
      let formData: any = new FormData();
      for (let i = 0; i < files.length; i++) {
       formData.append('file', files[i], files[i].name);
@@ -64,7 +63,7 @@ export class MetaDataService {
           this.fileUploadResponse = <MetaDataResponseModel>res.json();
           return <MetaDataResponseModel>res.json();
         })
-        .catch(this.handleError) 
+        .catch(this.handleError);
    }
 
   private handleError(error: Response) {

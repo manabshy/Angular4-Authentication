@@ -2,7 +2,7 @@
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormArray, FormsModule,FormGroup,ReactiveFormsModule} from '@angular/forms';
+import { FormBuilder, FormArray, FormsModule, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { MetaDataModel } from './metadata.model';
@@ -20,8 +20,8 @@ class MetaDataStubComponent {}
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MetaDataStubComponent ],
-      providers:[ {provide: FileUploadService}, {provide:Router}],
-      imports:[FormsModule,ReactiveFormsModule]
+      providers: [ {provide: FileUploadService}, {provide: Router}],
+      imports: [FormsModule, ReactiveFormsModule]
 
     })
     .compileComponents();

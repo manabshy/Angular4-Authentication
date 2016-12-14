@@ -7,16 +7,14 @@ import { HeaderComponent } from '../shared/header/header.component';
 import { FileUploadComponent } from '../file-upload/file-upload.component';
 
 import { MetaDataComponent } from '../metadata/metadata.component';
-import { UploadSuccessComponent } from '../upload-success/upload-success.component'
+import { UploadSuccessComponent } from '../upload-success/upload-success.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule,FormGroup } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-//import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 
 
 @NgModule({
- imports: [FormsModule,BrowserModule,ReactiveFormsModule, RouterModule
-  ],
+ imports: [FormsModule, BrowserModule, ReactiveFormsModule, RouterModule ],
   declarations: [
     HomeComponent,
     AsideComponent,
@@ -24,6 +22,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     FileUploadComponent,
     MetaDataComponent,
     UploadSuccessComponent
-     ],
+    ],
 })
 export class HomeModule {}

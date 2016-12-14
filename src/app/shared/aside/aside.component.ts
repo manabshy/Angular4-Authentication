@@ -10,7 +10,7 @@ export class AsideComponent {
 
   constructor(private _router: Router) {}
 
-  navigateTo(location: string): void{
+  navigateTo (location: string): void {
     this._router.navigate([location]);
   }
 

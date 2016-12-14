@@ -12,7 +12,7 @@ export class LoginComponent {
   public user = new User('', '');
   public errorMsg = '';
   public loading = false;
-  title = "Welcome to this App.";
+  title = 'Welcome to this App.';
   public loggedIn = Boolean;
 
   constructor(private router: Router,
@@ -20,13 +20,13 @@ export class LoginComponent {
   }
   login(): Boolean {
     let loggedIn;
-    console.log('LoginComponent:' + this.user.email + "," + this.user.password);
+    console.log('LoginComponent:' + this.user.email + ',' + this.user.password);
     this.loginService.getUsers();
     this.loginService.login(this.user)
       .subscribe(result => {
-        if (result) {     
-             console.log('result' + result);   
-             loggedIn = result;         
+        if (result) {
+             console.log('result' + result);
+             loggedIn = result;
              this.router.navigate(['/']);
         } else {
           this.errorMsg = 'It seems your details are not correct. Please enter them again.';

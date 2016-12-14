@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   private userName: string;
-  isLoggedIn:boolean = false;
+  isLoggedIn: boolean = false;
 
-  constructor( private _loginService:LoginService, private _router: Router) {
+  constructor( private _loginService: LoginService, private _router: Router) {
   }
   ngOnInit() {
     this.userName = localStorage.getItem('userName');

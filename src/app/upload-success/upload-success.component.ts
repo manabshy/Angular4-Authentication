@@ -21,7 +21,7 @@ export class UploadSuccessComponent implements OnInit {
       metaDataArray: this._fb.array([])
     });
 
-    if( mdResponseModel ) {
+    if ( mdResponseModel ) {
       this.addMetaDataForm( mdResponseModel );
     }
   }

@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 describe('Service: AuthGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthGuardService,{provide:Router}]
+      providers: [AuthGuardService, {provide: Router}]
     });
   });
 

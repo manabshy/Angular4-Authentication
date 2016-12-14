@@ -5,8 +5,8 @@
 // import {FileUploadUpdateComponent} from '../file-upload-update/file-upload-update.component';
 
 // import {AuthGuardService} from '../guards/auth-guard.service';
-// import {UploadSuccessComponent} from "../upload-success/upload-success.component";
-// import {FileUploadResolve} from "../file-upload/file-upload.resolve";
+// import {UploadSuccessComponent} from '../upload-success/upload-success.component';
+// import {FileUploadResolve} from '../file-upload/file-upload.resolve';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent, canActivate: [AuthGuardService]},
@@ -14,7 +14,8 @@
 //   {path: 'create', component: HomeComponent, canActivate: [AuthGuardService]},
 //   {path: 'update', component: FileUploadUpdateComponent, canActivate: [AuthGuardService]},
 //   {path: 'dashboard', component: HomeComponent, canActivate: [AuthGuardService]},
-//   {path: 'upload-success', component: UploadSuccessComponent, canActivate: [AuthGuardService], resolve: { uploadResponse: FileUploadResolve }},
+//   {path: 'upload-success', component: UploadSuccessComponent, canActivate: [AuthGuardService], 
+//    resolve: { uploadResponse: FileUploadResolve }},
 //   {path: '**', redirectTo: ''}
 // ];
 
@@ -23,14 +24,14 @@
 
 
 import { NgModule }       from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import { RouterModule} from '@angular/router';
 
-import {LoginComponent} from '../login/login.component';
-import {HomeComponent} from '../home/home.component';
+import { LoginComponent} from '../login/login.component';
+import { HomeComponent} from '../home/home.component';
 
-import {AuthGuardService} from '../guards/auth-guard.service';
-import {UploadSuccessComponent} from "../upload-success/upload-success.component";
-import {FileUploadResolve} from "../file-upload/file-upload.resolve";
+import { AuthGuardService} from '../guards/auth-guard.service';
+import { UploadSuccessComponent} from '../upload-success/upload-success.component';
+import { FileUploadResolve} from '../file-upload/file-upload.resolve';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import {FileUploadResolve} from "../file-upload/file-upload.resolve";
       {path: 'login', component: LoginComponent},
       {path: 'create', component: HomeComponent, canActivate: [AuthGuardService]},
       {path: 'dashboard', component: HomeComponent, canActivate: [AuthGuardService]},
-      {path: 'upload-success', component: UploadSuccessComponent, canActivate: [AuthGuardService], resolve: { uploadResponse: FileUploadResolve }},
+      {path: 'upload-success', component: UploadSuccessComponent, canActivate: [AuthGuardService],
+       resolve: { uploadResponse: FileUploadResolve }},
       {path: '**', redirectTo: ''}
     ])
   ],

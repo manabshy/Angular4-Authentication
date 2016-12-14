@@ -24,12 +24,12 @@ import { LoginService } from './login.service';
 
 const makeUserData = () =>
 [
-  {"email": "ali@qa.com" , "password": "a", "firstName": "M", "lastName": "Ali"},
-  {"email": "mj@qa.com" , "password": "m", "firstName": "MJ", "lastName": "B"},
-  {"email": "ty@qa.com" , "password": "t", "firstName": "Terry", "lastName": "B"},
-  {"email": "hugo@qa.com" , "password": "password123", "firstName": "Hugo", "lastName": "Rente"},
-  {"email": "shahid@qa.com" , "password": "password123", "firstName": "Shahid", "lastName": "S"},
-  {"email": "prabhu@qa.com" , "password": "password123", "firstName": "Prabhu", "lastName": "P"}
+  {'email': 'ali@qa.com' , 'password': 'a', 'firstName': 'M', 'lastName': 'Ali'},
+  {'email': 'mj@qa.com' , 'password': 'm', 'firstName': 'MJ', 'lastName': 'B'},
+  {'email': 'ty@qa.com' , 'password': 't', 'firstName': 'Terry', 'lastName': 'B'},
+  {'email': 'hugo@qa.com' , 'password': 'password123', 'firstName': 'Hugo', 'lastName': 'Rente'},
+  {'email': 'shahid@qa.com' , 'password': 'password123', 'firstName': 'Shahid', 'lastName': 'S'},
+  {'email': 'prabhu@qa.com' , 'password': 'password123', 'firstName': 'Prabhu', 'lastName': 'P'}
 
 ] as User[];
 
@@ -80,7 +80,7 @@ describe('Service: Login', () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
         service.getUsers().toPromise()
-          //.then(() => Promise.reject('deliberate'))
+          // .then(() => Promise.reject('deliberate'))
           .then(users => {
           //  console.log('users.length:' + users.length);
 

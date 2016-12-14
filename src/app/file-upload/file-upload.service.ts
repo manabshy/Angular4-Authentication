@@ -1,33 +1,30 @@
 import {Injectable} from '@angular/core';
 import {MetaDataModel, MetaDataResponseModel} from '../metadata/metadata.model';
-import {Http, Response, Headers, RequestOptions} from '@angular/http';
+import {Http, Response, Headers} from '@angular/http';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
-
-import {HttpClient} from '../core/http-client'
-
-import { AppConfigs } from '../app.config'
+import {HttpClient} from '../core/http-client';
+import { AppConfigs } from '../app.config';
 
 @Injectable()
 export class FileUploadService {
 
-  metaDataArray : MetaDataModel[];
+  metaDataArray: MetaDataModel[];
   fileUploadResponse: MetaDataResponseModel;
 
-  constructor(private _http: Http, private appConfig: AppConfigs, private httpClient: HttpClient){  }
+  constructor(private _http: Http, private appConfig: AppConfigs, private httpClient: HttpClient) {  }
 
   InitFileUploadResponse(fileUploadMetaData: MetaDataModel): void {
-    //this.fileUploadResponse = new MetaDataResponseModel(fileUploadMetaData);
+    // this.fileUploadResponse = new MetaDataResponseModel(fileUploadMetaData);
     // this.fileUploadResponse.utr ='4343455454323';
     // this.fileUploadResponse.responseCode = '200';
     // this.fileUploadResponse.totalExecutionTime = '12.12ms';
     // this.fileUploadResponse.DocId = '12345';
   }
 
-  updateMetaData(fileUpdateMetaData: MetaDataResponseModel): void{
-  }
+  updateMetaData(fileUpdateMetaData: MetaDataResponseModel): void { }
 
   createAuthorizationHeader(headers: Headers) {
     headers.append('Authorization', 'Basic ' + btoa('joe:bloggspwd'));
@@ -46,7 +43,7 @@ export class FileUploadService {
       file.lastModifiedDate
     );
 
-    if(metadata) {
+    if (metadata) {
       fileMetadata.customerId = metadata.customerId;
       fileMetadata.sourceSystem =  metadata.sourceSystem;
     }
@@ -71,20 +68,20 @@ export class FileUploadService {
           this.fileUploadResponse = <MetaDataResponseModel>res.json();
           return <MetaDataResponseModel>res.json();
         })
-        .catch(this.handleError)
+        .catch (this.handleError);
   }
 
-  updateFileRequestXHR(params: Array<string>, files: Array<File>, metadata:MetaDataResponseModel) {
+  updateFileRequestXHR(params: Array<string>, files: Array<File>, metadata: MetaDataResponseModel) {
      // added params log to silence linting until we need it
      // params will include header options
-     
+
      let formData: any = new FormData();
-     if(files.length) {
+     if (files.length) {
        for (let i = 0; i < files.length; i++) {
           formData.append('file', files[i], files[i].name);
           formData.append('metaData', this.populateFileModel(files[i], metadata) );
         }
-     } else if(metadata) {
+     } else if (metadata) {
          formData.append('metaData', JSON.stringify(metadata) );
      }
 
@@ -94,7 +91,7 @@ export class FileUploadService {
           this.fileUploadResponse = <MetaDataResponseModel>res.json();
           return <MetaDataResponseModel>res.json();
         })
-        .catch(this.handleError)
+        .catch (this.handleError);
    }
 
   private handleError(error: Response) {
