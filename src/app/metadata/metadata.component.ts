@@ -19,12 +19,10 @@ export class MetaDataComponent {
     metaDataResponse: MetaDataResponseModel;
     errorMessage: string;
 
-    @Input('group');
-    metaDataForm: FormGroup;
+    @Input('group') metaDataForm: FormGroup;
     @Input() viewType: boolean = false;
     @Input() isUploadDateVisible: boolean;
     @Input() metaDataModel: MetaDataModel;
-
     constructor( private _service: FileUploadService, private _router: Router) {
         this.filesToUpload = [];
     }
