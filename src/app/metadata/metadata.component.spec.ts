@@ -1,34 +1,40 @@
 /* tslint:disable:no-unused-variable */
+
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder, FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormArray, FormsModule,FormGroup,ReactiveFormsModule} from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { MetaDataModel } from "./metadata.model";
+import { MetaDataModel } from './metadata.model';
 import { MetaDataComponent } from './metadata.component';
+import { FileUploadService } from '../file-upload/file-upload.service';
+import { Router } from '@angular/router';
 
-// describe('MetadataComponent', () => {
-//   let component: MetadataComponent;
-//   let fixture: ComponentFixture<MetadataComponent>;
+describe('MetadataComponent', () => {
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ MetadataComponent ],
-//       providers:[ FormBuilder],
-//       imports:[FormsModule]
+@Component({selector: 'app-metadata', template: ''})
+class MetaDataStubComponent {}
+  let component: MetaDataStubComponent;
+  let fixture: ComponentFixture<MetaDataStubComponent>;
 
-//     })
-//     .compileComponents();
-//   }));
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ MetaDataStubComponent ],
+      providers:[ {provide: FileUploadService}, {provide:Router}],
+      imports:[FormsModule,ReactiveFormsModule]
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(MetadataComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+    })
+    .compileComponents();
+  }));
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(MetaDataStubComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-// });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+});

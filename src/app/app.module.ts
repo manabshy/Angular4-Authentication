@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import {Router,RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { routing } from './routing/routing.component';
+import { AppRoutingModule } from './routing/routing.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { FileUploadService } from "./file-upload/file-upload.service";
 import { GlobalEventsManagerService } from './global-events-manager.service';
@@ -28,7 +28,7 @@ import { HomeModule } from './home/home.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing,
+    AppRoutingModule,
     ReactiveFormsModule,
     LoginModule,
     HomeModule

@@ -16,16 +16,7 @@ export class MetaDataResponseModel extends MetaDataModel {
   documentId: string;
   uploadDate: Date;
   version: string;
-  constructor(private _metaData: MetaDataModel){ super(_metaData.customerId, _metaData.sourceSystem, _metaData.contentType, _metaData.receivedDate)}
-}
-
-export class FileDocument {
-  file: File;
-  type: string;
-  name: string;
-  size: string;
-  customer: string;
-  receivedDate: Date;
-  creationDate: Date;
-  uploadDate: Date;
+  constructor(private _metaData: MetaDataModel) { 
+    super(_metaData.customerId, _metaData.sourceSystem, _metaData.contentType, _metaData.receivedDate)
+  }
 }

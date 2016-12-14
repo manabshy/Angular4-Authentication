@@ -5,7 +5,6 @@ import { HomeComponent } from './home.component';
 import { AsideComponent } from '../shared/aside/aside.component';
 import { HeaderComponent } from '../shared/header/header.component';
 import { FileUploadComponent } from '../file-upload/file-upload.component';
-import { FileUploadUpdateComponent } from '../file-upload-update/file-upload-update.component';
 
 import { MetaDataComponent } from '../metadata/metadata.component';
 import { UploadSuccessComponent } from '../upload-success/upload-success.component'
@@ -24,7 +23,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     FileUploadComponent,
     MetaDataComponent,
-    FileUploadUpdateComponent,
     UploadSuccessComponent
      ],
 })

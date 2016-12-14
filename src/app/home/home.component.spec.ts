@@ -16,8 +16,10 @@ import {LoginService} from "../login/login.service";
 import {FileUploadService} from "../file-upload/file-upload.service";
 import { Router,RouterModule,ActivatedRoute,RouterLink } from '@angular/router';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { Provider } from '@angular/core';
+import { Provider,Component } from '@angular/core';
 
+@Component({selector: 'app-aside', template: ''})
+class AsideStubComponent {}
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -28,7 +30,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent, FileUploadComponent,MetaDataComponent,AsideComponent,HeaderComponent ],
+      declarations: [ HomeComponent, FileUploadComponent,MetaDataComponent,AsideStubComponent,HeaderComponent ],
       providers:[{provide: FileUploadService},{provide:LoginService},
                   {provide:Router}, {provide:ActivatedRoute},{provide:LocationStrategy},FormBuilder  ],
       imports:[HttpModule, ReactiveFormsModule, FormsModule, RouterModule ]
