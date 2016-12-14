@@ -14,7 +14,7 @@ import {FileUploadService} from './file-upload/file-upload.service';
 import { RouterLinkStubDirective }   from './testing/router-stubs';
 import { RouterOutletStubComponent } from './testing/router-stubs';
 import { Router} from '@angular/router';
-import { FormBuilder, FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AsideComponent } from './shared/aside/aside.component';
 import { HeaderComponent } from './shared/header/header.component';
 
@@ -28,11 +28,11 @@ describe('AppComponent & TestModule', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        LoginComponent, HomeComponent,FileUploadComponent,AsideComponent,HeaderComponent,
-        RouterLinkStubDirective, RouterOutletStubComponent,MetaDataComponent
+        LoginComponent, HomeComponent, FileUploadComponent, AsideComponent, HeaderComponent,
+        RouterLinkStubDirective, RouterOutletStubComponent, MetaDataComponent
       ],
-      providers:[FormBuilder,{provide:LoginService},{provide:Router},{provide:FileUploadService}],
-      imports:[FormsModule,ReactiveFormsModule]
+      providers: [FormBuilder, {provide: LoginService}, {provide: Router}, {provide: FileUploadService}],
+      imports: [FormsModule, ReactiveFormsModule]
     })
 
     .compileComponents()
@@ -58,7 +58,7 @@ function tests() {
       .queryAll(By.directive(RouterLinkStubDirective));
 
     // get the attached link directive instances using the DebugElement injectors
-    //console.log('linkDes:' + linkDes);
+    // console.log('linkDes:' + linkDes);
     links = linkDes
       .map(de => de.injector.get(RouterLinkStubDirective) as RouterLinkStubDirective);
 
@@ -72,7 +72,7 @@ function tests() {
     });
 
   it('can get RouterLinks from HomeComponent template', () => {
-    //console.log('links.length:' +  links.length);
+    // console.log('links.length:' +  links.length);
     expect(links.length).toBe(2, 'should have two RouterLinks present');
   });
 }

@@ -1,9 +1,9 @@
 /* tslint:disable:no-unused-variable */
 
 import { FileOperationHistoryService } from './file-operation-history.service';
-import {FileOperationResolver} from './file-operations-resolver';
-import{ Component} from '@angular/core';
-import { async, ComponentFixture, inject,TestBed } from '@angular/core/testing';
+import { FileOperationResolver } from './file-operations-resolver';
+import { Component } from '@angular/core';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
 import {Resolve, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import {FileOperationRecord} from './file-operation-record';
@@ -11,7 +11,8 @@ import {FileOperationRecord} from './file-operation-record';
 describe('Resolver: FileOperationResolver', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [FileOperationResolver,{provide:FileOperationHistoryService, useValue: FileOperationHistoryService},{provide:FileOperationRecord}]
+      providers: [FileOperationResolver,
+                  {provide: FileOperationHistoryService, useValue: FileOperationHistoryService}, {provide: FileOperationRecord}]
     });
   });
 

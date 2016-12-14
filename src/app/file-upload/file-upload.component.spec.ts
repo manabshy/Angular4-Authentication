@@ -47,7 +47,7 @@ describe('FileUploadComponent', () => {
 
   });
   it('should accept a file for upload', () => {
-    //var file = new File()
+    // var file = new File()
   });
 
 });
