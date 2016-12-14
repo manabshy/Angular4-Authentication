@@ -44,9 +44,11 @@
   font-size: 0.75rem;
 }
 
-.nav-item a:hover, .nav-item a:not([href]):hover {
+.nav-item a:hover, .nav-item a:hover:not([href]) {
+  color: #fff;
   text-decoration: none;
   background-color: #666;
+  cursor: pointer;
 }
 
 .main {

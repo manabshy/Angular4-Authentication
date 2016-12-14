@@ -1,9 +1,9 @@
-<form [formGroup]="myForm" novalidate>
+<form id="selectFileHeaderText" [formGroup]="myForm" novalidate>
   <h2>Select a file to upload</h2>
   <div class="row">
      <div class="col-sm-12">
         <div class="form-group">
-          <input type="file" id="fileUploadButton" class="form-control" (change)="fileChangeEvent($event)"
+          <input type="file" id="browseFile" class="form-control" (change)="fileChangeEvent($event)"
                 formControlName="file" placeholder="Upload a file...">
         </div>
      </div>
@@ -11,7 +11,7 @@
   <div formArrayName="metaDataArray">
     <div *ngFor="let md of myForm.controls.metaDataArray.controls; let i=index" class="panel panel-default">
       <div class="card">
-        <h3 class="card-header">
+        <h3 id="metaDataHeader" class="card-header">
           Meta Data
         </h3>
         <div class="card-block" [formGroupName]="i">
@@ -27,7 +27,7 @@
     </div>
   </div>
   <div>
-    <a class="btn btn-primary float-xs-right" id="uploadDocumentButton" [hidden]=(!showUploadButton) (click)="upload()" >Upload Document</a>
+    <button class="btn btn-primary float-xs-right" id="uploadDocumentButton" [hidden]=(!showUploadButton) (click)="upload()" >Upload Document</button>
   </div>
 </form>
 
