@@ -13,22 +13,15 @@ module.exports = function (config) {
     ],
     files: [
             //Paths loaded by Karma
-            {pattern: 'node_modules/angular2/bundles/angular2-polyfills.js', included: true, watched: true},
             {pattern: 'node_modules/systemjs/dist/system.src.js', included: true, watched: true},
             {pattern: 'node_modules/rxjs/bundles/Rx.js', included: true, watched: true},
-            {pattern: 'node_modules/angular2/bundles/angular2.dev.js', included: true, watched: true},
-            {pattern: 'node_modules/angular2/bundles/testing.dev.js', included: true, watched: true},
-            {pattern: 'node_modules/angular2/bundles/http.dev.js', included: true, watched: true},
-
- 	    // paths loaded via module imports
-            {pattern: 'dist/**/*', included: false, watched: true},
    
-	    { pattern: './src/test.ts', watched: false },
-            { pattern: 'karma-test-shim.js', included: true, watched: true},
-
-           // Distribution folder
+ 	          // paths loaded via module imports
+            {pattern: 'dist/**/*', included: false, watched: true},
+	          {pattern: './src/test.ts', watched: false },
+   
+            // Distribution folder
             { pattern: 'src/**/*.ts', included: false, watched: false },
-            { pattern: 'dist/**/*.js.map', included: false, watched: false } 
     ],
     preprocessors: {
       './src/test.ts': ['angular-cli'],
