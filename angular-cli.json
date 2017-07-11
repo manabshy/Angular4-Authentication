@@ -1,7 +1,7 @@
 {
   "project": {
-    "version": "1.0.0-beta.19-3",
-    "name": "ifs-poc"
+    "version": "1.0.0-beta.26",
+    "name": "ccs-ui"
   },
   "apps": [
     {
@@ -21,10 +21,10 @@
         "assets/scss/main.scss"
       ],
       "scripts": [],
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "source": "environments/environment.ts",
-        "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
+      "dev": "environments/environment.ts",
+      "prod": "environments/environment.prod.ts"
       }
     }
   ],
