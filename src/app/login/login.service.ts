@@ -26,7 +26,7 @@ export class LoginService {
                     .catch(this.handleError);
   }
 
-  login(user: User): Observable<boolean> {
+  login(user: User): Observable<any> {
     return this._http.get(this._userDataUrl)
     .map((response: Response) => {
         this.extractData(response);
